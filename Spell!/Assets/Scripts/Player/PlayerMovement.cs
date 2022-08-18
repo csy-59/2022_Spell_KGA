@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerMovement : MonoBehaviour
+{
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float sitSpeed = 2f;
+
+    public GameObject[] Colliders;
+
+    private Rigidbody rigidbody;
+    private PlayerInput input;
+
+
+    private void Awake()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+        input = GetComponent<PlayerInput>();
+
+        SitAndSand(false);
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
+        SitAndSand(input.Shift);
+    }
+
+    private void Move()
+    {
+        float speed = input.Shift ? sitSpeed : moveSpeed;
+
+        Vector3 moveOffset = input.X * speed * Time.fixedDeltaTime * transform.right
+            + input.Z * speed * Time.fixedDeltaTime * transform.forward;
+
+        rigidbody.MovePosition(transform.position + moveOffset);
+    }
+    private void SitAndSand(bool isSit)
+    {
+        Colliders[0].SetActive(!isSit);
+        Colliders[1].SetActive(isSit);
+    }
+}

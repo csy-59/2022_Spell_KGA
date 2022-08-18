@@ -1,0 +1,11 @@
+Model Information:
+* title:	Low-Poly Ladder
+* source:	https://sketchfab.com/3d-models/low-poly-ladder-4e1514ea39f34914a307b81a57d807ed
+* author:	Emma-Lie Kamping (https://sketchfab.com/Ellemieke25)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Low-Poly Ladder" (https://sketchfab.com/3d-models/low-poly-ladder-4e1514ea39f34914a307b81a57d807ed) by Emma-Lie Kamping (https://sketchfab.com/Ellemieke25) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
