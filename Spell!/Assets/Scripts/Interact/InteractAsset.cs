@@ -10,6 +10,11 @@ namespace InteractAsset
         ItemMax
     }
 
+    public interface IInteractive
+    {
+        void Interact();
+    }
+
     public static class CurrentItem
     {
 

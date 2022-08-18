@@ -1,12 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using InteractAsset;
 
-
-public interface IInteractive
-{
-    void Interact();
-}
 
 public class InteractorableObject: MonoBehaviour, IInteractive
 {
@@ -24,10 +20,12 @@ public class InteractorableObject: MonoBehaviour, IInteractive
 
     public void OnFocus()
     {
+        Debug.Log($"{gameObject.name}: Focus");
         outline.OutlineWidth = lineWidth;
     }
     public void OutFocus()
     {
+        Debug.Log($"{gameObject.name}: Out Focus");
         outline.OutlineWidth = 0f;
     }
 
