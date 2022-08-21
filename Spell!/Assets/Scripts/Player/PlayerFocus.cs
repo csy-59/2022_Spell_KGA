@@ -22,21 +22,27 @@ public class PlayerFocus : MonoBehaviour
     {
         // ∑π¿Ã ΩÓ±‚
         LayerMask interactiveLayer = LayerMask.NameToLayer("Interactive");
+        int layerMask = 1 << interactiveLayer;
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hit;
-        //Debug.DrawRay(ray.origin, ray.direction, Color.green, 100f);
-        if(Physics.Raycast(ray.origin, ray.direction, out hit, 200f))
+        if(Physics.Raycast(ray.origin, ray.direction, out hit, 200f, layerMask))
         {
-            Debug.Log(hit.collider.gameObject.name);
-            if(hit.collider.gameObject.layer != interactiveLayer.value)
+            InteractorableObject nowFocus = hit.transform.gameObject.GetComponent<InteractorableObject>();
+            if(nowFocus)
             {
-                focusItem?.OutFocus();
-                focusItem = null;
-                return;
-            }
+                if (focusItem == nowFocus)
+                    return;
 
-            hit.transform.gameObject.SetActive(false);
+                focusItem?.OutFocus();
+                focusItem = nowFocus;
+                focusItem.OnFocus();
+            }
+            else
+            {
+                focusItem.OutFocus();
+                focusItem = null;
+            }
             //BoxCollider collider = hit.transform.gameObject.GetComponent<BoxCollider>();
             //Debug.Assert(collider == null);
             //hit.transform.GetComponent<MeshRenderer>().material.color = Color.red;
@@ -50,6 +56,11 @@ public class PlayerFocus : MonoBehaviour
             //focusItem.OutFocus();
             //focusItem = hitItem;
             //focusItem.OnFocus();
+        }
+        else
+        {
+            focusItem?.OutFocus();
+            focusItem = null;
         }
 
     }

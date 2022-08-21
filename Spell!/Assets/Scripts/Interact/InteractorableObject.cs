@@ -6,27 +6,31 @@ using InteractAsset;
 
 public class InteractorableObject: MonoBehaviour, IInteractive
 {
-    [SerializeField] private float lineWidth = 3.5f;
+    private float lineWidth = 5f;
     private Outline outline;
 
     private void Awake()
     {
-        outline = gameObject.AddComponent<Outline>();
+        gameObject.layer = LayerMask.NameToLayer("Interactive");
 
-        outline.OutlineMode = Outline.Mode.OutlineAll;
+        outline = gameObject.AddComponent<Outline>();
+        outline.OutlineMode = Outline.Mode.OutlineVisible;
         outline.OutlineColor = Color.yellow;
-        outline.OutlineWidth = 0f;
+        outline.OutlineWidth = lineWidth;
+        outline.enabled = false;
     }
 
     public void OnFocus()
     {
         Debug.Log($"{gameObject.name}: Focus");
-        outline.OutlineWidth = lineWidth;
+        //outline.OutlineWidth = lineWidth;
+        outline.enabled = true;
     }
     public void OutFocus()
     {
         Debug.Log($"{gameObject.name}: Out Focus");
-        outline.OutlineWidth = 0f;
+        //outline.OutlineWidth = lineWidth;
+        outline.enabled = false;
     }
 
     public void Interact()
