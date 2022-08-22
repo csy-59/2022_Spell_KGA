@@ -14,7 +14,7 @@ public class InteractiveObject: MonoBehaviour
     [SerializeField] protected EffectList necessaryEffect = EffectList.DontCare;
     [SerializeField] protected ItemList necessaryItem = ItemList.DontCare;
 
-    public virtual void Awake()
+    protected virtual void Awake()
     {
         gameObject.layer = LayerMask.NameToLayer("Interactive");
 

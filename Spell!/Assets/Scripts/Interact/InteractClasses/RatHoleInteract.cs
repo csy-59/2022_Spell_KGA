@@ -14,7 +14,7 @@ public class RatHoleInteract : InteractiveObject
     [SerializeField] private GameObject wall;
     [SerializeField] private float destroyTime = 1.75f;
 
-    public override void Awake()
+    protected override void Awake()
     {
         base.Awake();
         wallBreakEffect.SetActive(false);
