@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerFocus : MonoBehaviour
 {
-    [SerializeField] public Camera camera;
+    [SerializeField] private Camera camera;
 
     private InteractorableObject focusItem;
 
     private void Awake()
     {
-        //camera = GetComponentInChildren<Camera>().GetComponent<Transform>();
     }
 
     void Update()
@@ -34,34 +34,34 @@ public class PlayerFocus : MonoBehaviour
                 if (focusItem == nowFocus)
                     return;
 
-                focusItem?.OutFocus();
-                focusItem = nowFocus;
-                focusItem.OnFocus();
+
+                setFocusItem(nowFocus);
             }
             else
             {
-                focusItem.OutFocus();
-                focusItem = null;
+                setFocusItem();
             }
-            //BoxCollider collider = hit.transform.gameObject.GetComponent<BoxCollider>();
-            //Debug.Assert(collider == null);
-            //hit.transform.GetComponent<MeshRenderer>().material.color = Color.red;
-            //InteractorableObject hitItem = hit.collider.gameObject.GetComponent<InteractorableObject>();
-            //Debug.Assert(hitItem == null);
-            //if(focusItem != null && focusItem == hitItem)
-            //{
-            //    return;
-            //}
-            //
-            //focusItem.OutFocus();
-            //focusItem = hitItem;
-            //focusItem.OnFocus();
         }
         else
         {
-            focusItem?.OutFocus();
-            focusItem = null;
+            setFocusItem();
         }
 
+    }
+
+    private void setFocusItem(InteractorableObject item)
+    {
+        focusItem?.OutFocus();
+        focusItem = item;
+
+        if(focusItem)
+        {
+            focusItem.OnFocus();
+        }
+    }
+
+    private void setFocusItem()
+    {
+        setFocusItem(null);
     }
 }

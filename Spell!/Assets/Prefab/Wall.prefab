@@ -1424,7 +1424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7586093321967142111, guid: 4b437f1c2454a2c409b1b7f35e69d661, type: 3}
       propertyPath: m_Name
-      value: Torch_Wall
+      value: Torch
       objectReference: {fileID: 0}
     - target: {fileID: 7586093321967142111, guid: 4b437f1c2454a2c409b1b7f35e69d661, type: 3}
       propertyPath: m_Layer
@@ -1517,7 +1517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00afe64c4fa587c4aaafe81a8cb4f2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineWidth: 3.5
+  mode: 1
 --- !u!4 &7607999142581522767 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7586093321967573247, guid: 4b437f1c2454a2c409b1b7f35e69d661, type: 3}
@@ -1606,7 +1606,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
       propertyPath: m_Name
-      value: Wall 2
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
       propertyPath: m_Layer
@@ -1731,7 +1731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00afe64c4fa587c4aaafe81a8cb4f2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineWidth: 3.5
+  mode: 1
 --- !u!4 &7858396098776742575 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -1746,7 +1746,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
       propertyPath: m_Name
-      value: Wall 1
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
       propertyPath: m_Layer
@@ -1871,7 +1871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00afe64c4fa587c4aaafe81a8cb4f2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineWidth: 3.5
+  mode: 1
 --- !u!4 &7858396099459677994 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -1886,7 +1886,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
       propertyPath: m_Name
-      value: Wall 3
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
       propertyPath: m_Layer
@@ -2007,7 +2007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00afe64c4fa587c4aaafe81a8cb4f2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineWidth: 3.5
+  mode: 1
 --- !u!4 &7858396099536242820 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2172,7 +2172,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
       propertyPath: m_Name
-      value: Wall 2
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
       propertyPath: m_Layer
@@ -2297,7 +2297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00afe64c4fa587c4aaafe81a8cb4f2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineWidth: 3.5
+  mode: 1
 --- !u!4 &7858396097802735145 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2312,7 +2312,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
       propertyPath: m_Name
-      value: Wall 1
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
       propertyPath: m_Layer
@@ -2485,7 +2485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00afe64c4fa587c4aaafe81a8cb4f2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineWidth: 3.5
+  mode: 1
 --- !u!4 &7858396098197702205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2500,7 +2500,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
       propertyPath: m_Name
-      value: Wall 2
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
       propertyPath: m_Layer
@@ -2621,7 +2621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00afe64c4fa587c4aaafe81a8cb4f2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineWidth: 3.5
+  mode: 1
 --- !u!4 &7858396098274647612 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2636,7 +2636,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
       propertyPath: m_Name
-      value: Wall 1
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
       propertyPath: m_Layer
@@ -2761,7 +2761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00afe64c4fa587c4aaafe81a8cb4f2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineWidth: 3.5
+  mode: 1
 --- !u!4 &7858396098461997560 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2776,7 +2776,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
       propertyPath: m_Name
-      value: Wall 3
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
       propertyPath: m_Layer
@@ -2897,7 +2897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00afe64c4fa587c4aaafe81a8cb4f2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineWidth: 3.5
+  mode: 1
 --- !u!4 &7858396098667461948 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2912,7 +2912,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
       propertyPath: m_Name
-      value: Wall 3
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
       propertyPath: m_Layer
@@ -3037,7 +3037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00afe64c4fa587c4aaafe81a8cb4f2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineWidth: 3.5
+  mode: 1
 --- !u!4 &7858396098686688772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
