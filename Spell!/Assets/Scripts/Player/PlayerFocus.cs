@@ -1,24 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using InteractAsset;
 
 public class PlayerFocus : MonoBehaviour
 {
+    [Header ("Focus Obejct")]
     [SerializeField] private Camera camera;
+    [SerializeField] private float reach = 1.8f;
+    private InteractiveObject focusObject;
 
-    private InteractorableObject focusItem;
+    [Header ("Player State")]
+    [SerializeField] private ItemList item;
+    [SerializeField] private EffectList effect;
+
+    private PlayerInput input;
 
     private void Awake()
     {
+        input = GetComponent<PlayerInput>();
     }
 
     void Update()
     {
-        FocusInteractorable();
+        FocusInteractive();
+        InteractWithObejct();
     }
 
-    private void FocusInteractorable()
+    private void FocusInteractive()
     {
         // ∑π¿Ã ΩÓ±‚
         LayerMask interactiveLayer = LayerMask.NameToLayer("Interactive");
@@ -26,16 +35,16 @@ public class PlayerFocus : MonoBehaviour
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hit;
-        if(Physics.Raycast(ray.origin, ray.direction, out hit, 200f, layerMask))
+        if(Physics.Raycast(ray.origin, ray.direction, out hit, reach, layerMask))
         {
-            InteractorableObject nowFocus = hit.transform.gameObject.GetComponent<InteractorableObject>();
-            if(nowFocus)
+            InteractiveObject nowFocusObejct = hit.transform.gameObject.GetComponent<InteractiveObject>();
+            if(nowFocusObejct)
             {
-                if (focusItem == nowFocus)
+                if (focusObject == nowFocusObejct)
                     return;
 
 
-                setFocusItem(nowFocus);
+                SetFocusObject(nowFocusObejct);
             }
             else
             {
@@ -49,19 +58,29 @@ public class PlayerFocus : MonoBehaviour
 
     }
 
-    private void setFocusItem(InteractorableObject item)
+    private void InteractWithObejct()
     {
-        focusItem?.OutFocus();
-        focusItem = item;
-
-        if(focusItem)
+        if(input.MouseClick)
         {
-            focusItem.OnFocus();
+            Debug.Log("Clicked");
+            focusObject?.Interact(item, effect);
         }
     }
 
-    private void setFocusItem()
+    private void SetFocusObject(InteractiveObject item)
     {
-        setFocusItem(null);
+        focusObject?.OutFocus();
+        focusObject = item;
+        Debug.Log($"{focusObject.necessaryItem} {focusObject.necessaryEffect}");
+
+        if(focusObject)
+        {
+            focusObject.OnFocus();
+        }
+    }
+
+    private void SetFocusObject()
+    {
+        SetFocusObject(null);
     }
 }
