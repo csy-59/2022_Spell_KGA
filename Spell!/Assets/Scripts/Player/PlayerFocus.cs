@@ -48,12 +48,12 @@ public class PlayerFocus : MonoBehaviour
             }
             else
             {
-                setFocusItem();
+                SetFocusObject();
             }
         }
         else
         {
-            setFocusItem();
+            SetFocusObject();
         }
 
     }
@@ -71,7 +71,7 @@ public class PlayerFocus : MonoBehaviour
     {
         focusObject?.OutFocus();
         focusObject = item;
-        Debug.Log($"{focusObject.necessaryItem} {focusObject.necessaryEffect}");
+        //Debug.Log($"{focusObject.necessaryItem} {focusObject.necessaryEffect}");
 
         if(focusObject)
         {
