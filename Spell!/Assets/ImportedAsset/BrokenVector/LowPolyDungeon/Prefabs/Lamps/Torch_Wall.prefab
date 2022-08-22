@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7586093321968376031}
   - component: {fileID: 7586093321969343007}
   - component: {fileID: 1232143751471484909}
+  - component: {fileID: 8349074996681155326}
   m_Layer: 0
   m_Name: Torch_Wall
   m_TagString: Untagged
@@ -96,11 +97,24 @@ MeshCollider:
   m_GameObject: {fileID: 7586093321967142111}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: fe2e85b4d6271d84797599c39656320c, type: 3}
+--- !u!65 &8349074996681155326
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7586093321967142111}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.13013111, y: 0.81342804, z: 0.17}
+  m_Center: {x: 0, y: -0.01369445, z: 0.19}
 --- !u!1 &9222988866110790705
 GameObject:
   m_ObjectHideFlags: 0

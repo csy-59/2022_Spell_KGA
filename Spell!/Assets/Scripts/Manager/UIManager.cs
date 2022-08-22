@@ -7,9 +7,9 @@ public class UIManager : SingletonBehaviour<UIManager>
 {
     public TextMeshProUGUI InfoText;
 
-    void Start()
+    private void Awake()
     {
-        
+        SetInfoTextBar("");
     }
 
     void Update()

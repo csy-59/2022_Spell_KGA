@@ -9,15 +9,17 @@ public class PlayerInput : MonoBehaviour
 
     public float MouseX { get; private set; }
     public float MouseY { get; private set; }
+    public bool MouseClick { get; private set; }
 
     public bool Shift { get; private set; }
-    private void FixedUpdate()
+    private void Update()
     {
         X = Input.GetAxis("Horizontal");
         Z = Input.GetAxis("Vertical");
 
         MouseX = Input.GetAxis("Mouse X");
         MouseY = Input.GetAxis("Mouse Y");
+        MouseClick = Input.GetMouseButtonDown(0);
 
         Shift = Input.GetKey(KeyCode.LeftShift);
     }
