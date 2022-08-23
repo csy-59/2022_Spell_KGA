@@ -2,6 +2,7 @@ using InteractAsset;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UtilityAsset;
 
 public class LeverInteract : InteractiveObject
 {
@@ -42,33 +43,26 @@ public class LeverInteract : InteractiveObject
     {
         if(isLeverOn)
         {
-            StartCoroutine(LeverRotate(-leverRotateAmount, -1));
+            ObjectMove.Instance.ObjectRotateToTargetRotation(
+                lever,
+                lever.rotation * Quaternion.Euler(-leverRotateAmount * 2, 0f, 0f),
+                leverRotateSpeed, BeforeRotate, AfterRotate);
         }
         else
         {
-            StartCoroutine(LeverRotate(leverRotateAmount, 1));
+            ObjectMove.Instance.ObjectRotateToTargetRotation(
+                lever,
+                lever.rotation * Quaternion.Euler(leverRotateAmount * 2, 0f, 0f),
+                leverRotateSpeed, BeforeRotate, AfterRotate);
         }
     }
-    
-    private IEnumerator LeverRotate(float endAngle, float offset)
+    private void BeforeRotate()
     {
         gameObject.layer = LayerMask.NameToLayer("Default");
+    }
 
-        float currentAngle = -endAngle;
-        while(true)
-        {
-            float deltaAngle = offset * leverRotateSpeed * Time.deltaTime;
-            currentAngle += deltaAngle;
-
-            lever.rotation *= Quaternion.Euler(deltaAngle, 0f, 0f);
-            Debug.Log(lever.rotation.eulerAngles.x);
-
-            if (Mathf.Abs(currentAngle) > Mathf.Abs(endAngle))
-                break;
-
-            yield return null;
-        }
-
+    private void AfterRotate()
+    {
         isLeverOn = !isLeverOn;
         gameObject.layer = LayerMask.NameToLayer("Interactive");
     }
