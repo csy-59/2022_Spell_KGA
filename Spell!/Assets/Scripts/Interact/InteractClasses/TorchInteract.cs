@@ -15,17 +15,6 @@ public class TorchInteract : InteractiveObject
     {
         base.Awake();
 
-        //necessaryEffect = new EffectList[]
-        //{
-        //    EffectList.DontCare,
-        //    EffectList.DontCare
-        //};
-        //necessaryItem = new ItemList[]
-        //{
-        //    ItemList.TourchWithFire,
-        //    ItemList.DontCare
-        //};
-
         tourchLight.SetActive(false);
     }
 
