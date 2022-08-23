@@ -2,23 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using InteractAsset;
+using UtilityAsset;
 
 public class RatHoleInteract : InteractiveObject
 {
-    [Header("Wall Interact")]
-    [SerializeField] private int knockCount;
-    [SerializeField] private float knockTimeOffset = 1f;
-    private float currentOffect;
+    [Header("\nRat Hole Interact")]
+    [SerializeField] private GameObject key;
+    [SerializeField] private float keySlideSpeed = 5;
+    [SerializeField] private Transform keyPosition;
 
-    [SerializeField] private GameObject wallBreakEffect;
-    [SerializeField] private GameObject wall;
-    [SerializeField] private float destroyTime = 1.75f;
+    private bool isKeyGiven = false;
 
     protected override void Awake()
     {
         base.Awake();
-        wallBreakEffect.SetActive(false);
-        wall.SetActive(true);
     }
 
     void Update()
@@ -27,13 +24,9 @@ public class RatHoleInteract : InteractiveObject
 
     public override void Interact(ItemList item, EffectList effect)
     {
-        base.Interact(item, effect);
-
-        --knockCount;
-
-        if (knockCount > 0)
+        if(base.InteractPreAssert(item, effect) == -1)
         {
-            StartCoroutine(knockCountReset());
+            UIManager.Instance.SetInfoTextBar("Rat seems hungry");
             return;
         }
 
@@ -43,23 +36,20 @@ public class RatHoleInteract : InteractiveObject
 
     private void RatReactAndGiveKey()
     {
-        wall.SetActive(false);
-        wallBreakEffect.SetActive(true);
-        wallBreakEffect.GetComponent<ParticleSystem>().Play();
-        Destroy(gameObject, destroyTime);
-        gameObject.layer = LayerMask.NameToLayer("Default");
-    }
-
-    private IEnumerator knockCountReset()
-    {
-        currentOffect = knockTimeOffset;
-
-        while (currentOffect > 0)
+        if(isKeyGiven)
         {
-            currentOffect -= Time.deltaTime;
-            yield return null;
+            UIManager.Instance.SetInfoTextBar("Rat seems happy");
+            return;
         }
 
-        knockCount = 0;
+        UIManager.Instance.SetInfoTextBar("Rat is eating Cheese");
+
+        key.SetActive(true);
+        isKeyGiven = true;
+        ObjectMove.Instance.ObjectMoveToTargetPosition(key.transform, keyPosition.position, keySlideSpeed);
+
+        necessaryItem[0] = ItemList.DontCare;
     }
+
+
 }
