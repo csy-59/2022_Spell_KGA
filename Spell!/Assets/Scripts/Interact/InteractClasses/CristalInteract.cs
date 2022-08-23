@@ -7,7 +7,7 @@ public class CristalInteract : InteractiveObject
 {
     [Header ("\nCristal Interaction")]
     [SerializeField] private GameObject cristalShard;
-    [SerializeField] private float popForce;
+    [SerializeField] private float popForce = 10;
 
     protected override void Awake()
     {
@@ -18,12 +18,12 @@ public class CristalInteract : InteractiveObject
     {
         base.Interact(item, effect);
 
-        int matchNumber;
-        if(!base.InteractPreAssert(item, effect, out matchNumber))
+        if(base.InteractPreAssert(item, effect) == -1)
         {
             return;
         }
 
-
+        GameObject shard = Instantiate(cristalShard, transform.position, transform.rotation);
+        shard.GetComponent<Rigidbody>().AddForce(Vector3.forward * popForce, ForceMode.Impulse);
     }
 }

@@ -53,14 +53,13 @@ public class InteractiveObject: MonoBehaviour
     public virtual void Interact(ItemList item, EffectList effect)
     {
         Debug.Log("Interact");
-        int matchNumber;
-        if (InteractPreAssert(item, effect, out matchNumber))
+        if (InteractPreAssert(item, effect) != -1)
         {
             UIManager.Instance.SetInfoTextBar($"{gameObject.name}: interact");
         }
     }
 
-    protected virtual bool InteractPreAssert(ItemList item, EffectList effect, out int matchNum)
+    protected virtual int InteractPreAssert(ItemList item, EffectList effect)
     {
         for(int i = 0;i < necessaryEffect.Length; ++i)
         {
@@ -74,11 +73,9 @@ public class InteractiveObject: MonoBehaviour
                 continue;
             }
 
-            matchNum = i;
-            return true;
+            return i;
         }
 
-        matchNum = -1;
-        return false;
+        return -1;
     }
 }
