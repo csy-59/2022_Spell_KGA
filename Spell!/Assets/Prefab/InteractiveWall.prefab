@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
-  necessaryEffect: 
-  necessaryItem: 
+  necessaryEffect: 01000000
+  necessaryItem: 02000000
   knockCount: 0
   currentKnockCount: 0
   knockTimeOffset: 1

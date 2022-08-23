@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3305102757315832041}
+  - component: {fileID: 8884339648271744269}
+  - component: {fileID: 713634034271325066}
   m_Layer: 0
   m_Name: PinkCristal
   m_TagString: Untagged
@@ -24,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2409228414846846231}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.46, y: -0.58, z: 6.59}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32,8 +34,74 @@ Transform:
   - {fileID: 1353049852299982097}
   - {fileID: 1353049853398946274}
   - {fileID: 1353049853478203177}
+  - {fileID: 1340096657508110436}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &8884339648271744269
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2409228414846846231}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 1.7
+  m_Direction: 1
+  m_Center: {x: 0.27, y: 1.03, z: 0.15}
+--- !u!114 &713634034271325066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2409228414846846231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5686f27e401828145a6bc05ffc06dfe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 1
+  necessaryEffect: 0b000000
+  necessaryItem: 02000000
+  cristalShard: {fileID: 6387647243328604237, guid: cc337fe1bf0ea684fa417d4953f9146d, type: 3}
+  popForce: 3
+  shardPosition: {fileID: 1340096657508110436}
+  target: {fileID: 0}
+  shardGenerateOffsetTime: 15
+--- !u!1 &7594236518480711631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1340096657508110436}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1340096657508110436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7594236518480711631}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.247, y: 0.959, z: -0.727}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3305102757315832041}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1353049852299849617
 PrefabInstance:

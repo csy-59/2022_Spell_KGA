@@ -7,24 +7,30 @@ public class CristalInteract : InteractiveObject
 {
     [Header ("\nCristal Interaction")]
     [SerializeField] private GameObject cristalShard;
-    [SerializeField] private float popForce = 200;
+    [SerializeField] private float popForce = 3;
 
     [SerializeField] private Transform shardPosition;
     [SerializeField] private Transform target;
 
+    [SerializeField] private float shardGenerateOffsetTime = 15f;
+    private float lastShardGenerateTime;
+
     protected override void Awake()
     {
         base.Awake();
+
+        lastShardGenerateTime = Time.time;
     }
 
     public override void Interact(ItemList item, EffectList effect)
     {
-        base.Interact(item, effect);
-
-        if(base.InteractPreAssert(item, effect) == -1)
+        if(Time.time - lastShardGenerateTime < shardGenerateOffsetTime)
         {
+            UIManager.Instance.SetInfoTextBar("Cristal is not ready...");
             return;
         }
+
+        lastShardGenerateTime = Time.time;
 
         GameObject shard = Instantiate(cristalShard, shardPosition.position, shardPosition.rotation);
         shard.transform.LookAt(target);

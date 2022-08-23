@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4091079494663139091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6331631378542167469}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6331631378542167469
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4091079494663139091}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.333, y: 0.325, z: -0.033}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8983369658487365131}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7710319559051196617
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,6 +40,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8983369658487365131}
+  - component: {fileID: 79225054605128134}
+  - component: {fileID: 8367360125897771215}
+  - component: {fileID: 2170487161512447458}
+  - component: {fileID: 7678657204319805709}
   m_Layer: 0
   m_Name: BrownCristal
   m_TagString: Untagged
@@ -24,16 +59,76 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7710319559051196617}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.799, y: -0.021, z: 2.5696}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.8839, y: 1.8839, z: 1.8839}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7747333740496908205}
   - {fileID: 7747333739635191557}
   - {fileID: 7747333738779941035}
+  - {fileID: 6331631378542167469}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &79225054605128134
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7710319559051196617}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.29, y: 0.65, z: 0.38}
+  m_Center: {x: 0.21, y: 0.3, z: -0.28}
+--- !u!65 &8367360125897771215
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7710319559051196617}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.31, y: 0.52, z: 0.37}
+  m_Center: {x: 0.12, y: 0.24, z: -0.12}
+--- !u!65 &2170487161512447458
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7710319559051196617}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.23, y: 0.44, z: 0.33}
+  m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!114 &7678657204319805709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7710319559051196617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5686f27e401828145a6bc05ffc06dfe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 1
+  necessaryEffect: 0b000000
+  necessaryItem: 02000000
+  cristalShard: {fileID: 4899494781019504682, guid: 1d880dcc6a0c70e4783752da12f93f62, type: 3}
+  popForce: 3
+  shardPosition: {fileID: 6331631378542167469}
+  target: {fileID: 0}
+  shardGenerateOffsetTime: 3
 --- !u!1001 &7747333738780328491
 PrefabInstance:
   m_ObjectHideFlags: 0

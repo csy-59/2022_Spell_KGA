@@ -1518,8 +1518,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
-  necessaryEffect: 0
-  necessaryItem: 0
+  necessaryEffect: 
+  necessaryItem: 
 --- !u!4 &7607999142581522767 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7586093321967573247, guid: 4b437f1c2454a2c409b1b7f35e69d661, type: 3}
@@ -1661,8 +1661,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
-  necessaryEffect: 11
-  necessaryItem: 1
+  necessaryEffect: 0b000000
+  necessaryItem: 02000000
 --- !u!1001 &7854711522535129736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1872,8 +1872,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 3
-  necessaryEffect: 11
-  necessaryItem: 1
+  necessaryEffect: 0b000000
+  necessaryItem: 02000000
 --- !u!4 &7858396098776742575 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2014,8 +2014,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
-  necessaryEffect: 11
-  necessaryItem: 1
+  necessaryEffect: 0b000000
+  necessaryItem: 02000000
 --- !u!4 &7858396099459677994 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2152,8 +2152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
-  necessaryEffect: 11
-  necessaryItem: 1
+  necessaryEffect: 0b000000
+  necessaryItem: 02000000
 --- !u!4 &7858396099536242820 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2444,8 +2444,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 3
-  necessaryEffect: 11
-  necessaryItem: 1
+  necessaryEffect: 0b000000
+  necessaryItem: 02000000
 --- !u!4 &7858396097802735145 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2634,8 +2634,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
-  necessaryEffect: 11
-  necessaryItem: 1
+  necessaryEffect: 0b000000
+  necessaryItem: 02000000
 --- !u!4 &7858396098197702205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2772,8 +2772,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 3
-  necessaryEffect: 11
-  necessaryItem: 1
+  necessaryEffect: 0b000000
+  necessaryItem: 02000000
 --- !u!4 &7858396098274647612 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2910,8 +2910,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
-  necessaryEffect: 11
-  necessaryItem: 1
+  necessaryEffect: 0b000000
+  necessaryItem: 02000000
 --- !u!4 &7858396098667461948 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -3052,8 +3052,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
-  necessaryEffect: 11
-  necessaryItem: 1
+  necessaryEffect: 0b000000
+  necessaryItem: 02000000
 --- !u!4 &7858396098686688772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}

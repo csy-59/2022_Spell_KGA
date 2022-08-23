@@ -11,8 +11,8 @@ public class InteractiveObject: MonoBehaviour
     private float lineWidth = 5f;
     private Outline outline;
 
-    [SerializeField] protected EffectList[] necessaryEffect;
-    [SerializeField] protected ItemList[] necessaryItem;
+    [SerializeField] protected EffectList[] necessaryEffect = { EffectList.DontCare };
+    [SerializeField] protected ItemList[] necessaryItem = { ItemList.DontCare };
 
     protected virtual void Awake()
     {

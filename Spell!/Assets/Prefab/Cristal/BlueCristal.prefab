@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5930946742397522218}
-  - component: {fileID: 719152868385873433}
   - component: {fileID: 8004894690926272431}
+  - component: {fileID: 719152868385873433}
   m_Layer: 0
   m_Name: BlueCristal
   m_TagString: Untagged
@@ -37,6 +37,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8004894690926272431
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962175744331723085}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.15, y: 0.69, z: 1}
+  m_Center: {x: -0.35, y: -0.1, z: -0.23}
 --- !u!114 &719152868385873433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,19 +69,7 @@ MonoBehaviour:
   popForce: 3
   shardPosition: {fileID: 3666140512281283558}
   target: {fileID: 0}
---- !u!65 &8004894690926272431
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 962175744331723085}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.15, y: 0.69, z: 1}
-  m_Center: {x: -0.35, y: -0.1, z: -0.23}
+  shardGenerateOffsetTime: 15
 --- !u!1 &4481416427393751266
 GameObject:
   m_ObjectHideFlags: 0
