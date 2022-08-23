@@ -11,17 +11,27 @@ public class InteractiveObject: MonoBehaviour
     private float lineWidth = 5f;
     private Outline outline;
 
-    [SerializeField] protected EffectList necessaryEffect = EffectList.DontCare;
-    [SerializeField] protected ItemList necessaryItem = ItemList.DontCare;
+    [SerializeField] protected EffectList[] necessaryEffect;
+    [SerializeField] protected ItemList[] necessaryItem;
 
     protected virtual void Awake()
     {
+        Reset(gameObject);
+    }
+
+    protected void Reset(GameObject target)
+    {
         gameObject.layer = LayerMask.NameToLayer("Interactive");
 
-        outline = gameObject.AddComponent<Outline>();
+        AddOutline(target);
+    }
+
+    protected void AddOutline(GameObject target)
+    {
+        outline = target.AddComponent<Outline>();
         if (outline == null)
         {
-            outline = GetComponent<Outline>();
+            outline = target.GetComponent<Outline>();
         }
         outline.OutlineMode = mode;
         outline.OutlineColor = Color.yellow;
@@ -43,24 +53,32 @@ public class InteractiveObject: MonoBehaviour
     public virtual void Interact(ItemList item, EffectList effect)
     {
         Debug.Log("Interact");
-        if (InteractPreAssert(item, effect))
+        int matchNumber;
+        if (InteractPreAssert(item, effect, out matchNumber))
         {
             UIManager.Instance.SetInfoTextBar($"{gameObject.name}: interact");
         }
     }
 
-    protected virtual bool InteractPreAssert(ItemList item, EffectList effect)
+    protected virtual bool InteractPreAssert(ItemList item, EffectList effect, out int matchNum)
     {
-        if (necessaryEffect != EffectList.DontCare && necessaryEffect != effect)
+        for(int i = 0;i < necessaryEffect.Length; ++i)
         {
-            return false;
+            if (necessaryEffect[i] != EffectList.DontCare && necessaryEffect[i] != effect)
+            {
+                continue;
+            }
+
+            if (necessaryItem[i] != ItemList.DontCare && necessaryItem[i] != item)
+            {
+                continue;
+            }
+
+            matchNum = i;
+            return true;
         }
 
-        if (necessaryItem != ItemList.DontCare && necessaryItem != item)
-        {
-            return false;
-        }
-
-        return true;
+        matchNum = -1;
+        return false;
     }
 }

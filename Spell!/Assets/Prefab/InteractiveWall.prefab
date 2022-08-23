@@ -47,10 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2650dcc3a9c4d24b9d1d2790e761b8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 1
-  necessaryEffect: 1
-  necessaryItem: 1
+  mode: 0
+  necessaryEffect: 
+  necessaryItem: 
   knockCount: 0
+  currentKnockCount: 0
   knockTimeOffset: 1
   wallBreakEffect: {fileID: 2926617774997251567}
   wall: {fileID: 5145849991699229898}

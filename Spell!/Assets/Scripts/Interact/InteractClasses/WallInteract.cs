@@ -5,7 +5,7 @@ using InteractAsset;
 
 public class WallInteract : InteractiveObject
 {
-    [Header ("Wall Interact")]
+    [Header ("\nWall Interact")]
     [SerializeField] private int knockCount;
     [SerializeField] private float currentKnockCount;
     [SerializeField] private float knockTimeOffset = 1f;
@@ -18,8 +18,10 @@ public class WallInteract : InteractiveObject
     protected override void Awake()
     {
         base.Awake();
+        
         wallBreakEffect.SetActive(false);
         wall.SetActive(true);
+        
         currentKnockCount = knockCount;
     }
 
