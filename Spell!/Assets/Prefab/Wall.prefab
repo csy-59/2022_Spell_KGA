@@ -1498,14 +1498,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1232143751471484909, guid: 4b437f1c2454a2c409b1b7f35e69d661, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4b437f1c2454a2c409b1b7f35e69d661, type: 3}
 --- !u!1 &7607999142581489007 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7586093321967142111, guid: 4b437f1c2454a2c409b1b7f35e69d661, type: 3}
   m_PrefabInstance: {fileID: 59177123245148592}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5473081006909156965
+--- !u!114 &1500731365623080302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1514,15 +1515,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 7607999142581489007}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00afe64c4fa587c4aaafe81a8cb4f2a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d012a2896227ce4985124f773f3d653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
-  necessaryEffect: 
-  necessaryItem: 
+  interactFailLine: Torch
+  necessaryEffect: 0b0000000b000000
+  necessaryItem: 0200000005000000
+  tourchLight: {fileID: 9163873913593255297}
+  tourchNumber: 0
 --- !u!4 &7607999142581522767 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7586093321967573247, guid: 4b437f1c2454a2c409b1b7f35e69d661, type: 3}
+  m_PrefabInstance: {fileID: 59177123245148592}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9163873913593255297 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9222988866110790705, guid: 4b437f1c2454a2c409b1b7f35e69d661, type: 3}
   m_PrefabInstance: {fileID: 59177123245148592}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7254080987632785139
@@ -1661,8 +1670,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
+  interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 02000000
+  necessaryItem: 05000000
 --- !u!1001 &7854711522535129736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1872,8 +1882,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 3
+  interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 02000000
+  necessaryItem: 05000000
 --- !u!4 &7858396098776742575 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2014,8 +2025,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
+  interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 02000000
+  necessaryItem: 05000000
 --- !u!4 &7858396099459677994 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2152,8 +2164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
+  interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 02000000
+  necessaryItem: 05000000
 --- !u!4 &7858396099536242820 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2444,8 +2457,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 3
+  interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 02000000
+  necessaryItem: 05000000
 --- !u!4 &7858396097802735145 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2634,8 +2648,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
+  interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 02000000
+  necessaryItem: 05000000
 --- !u!4 &7858396098197702205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2772,8 +2787,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 3
+  interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 02000000
+  necessaryItem: 05000000
 --- !u!4 &7858396098274647612 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2910,8 +2926,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
+  interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 02000000
+  necessaryItem: 05000000
 --- !u!4 &7858396098667461948 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -3052,8 +3069,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
+  interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 02000000
+  necessaryItem: 05000000
 --- !u!4 &7858396098686688772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}

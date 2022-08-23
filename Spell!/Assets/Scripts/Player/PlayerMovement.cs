@@ -9,13 +9,13 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject[] Colliders;
 
-    private Rigidbody rigidbody;
+    private Rigidbody rigid;
     private PlayerInput input;
 
 
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rigid = GetComponent<Rigidbody>();
         input = GetComponent<PlayerInput>();
 
         SitAndSand(false);
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveOffset = input.X * speed * Time.fixedDeltaTime * transform.right
             + input.Z * speed * Time.fixedDeltaTime * transform.forward;
 
-        rigidbody.MovePosition(transform.position + moveOffset);
+        rigid.MovePosition(transform.position + moveOffset);
     }
     private void SitAndSand(bool isSit)
     {

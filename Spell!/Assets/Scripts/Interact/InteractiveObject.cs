@@ -10,6 +10,7 @@ public class InteractiveObject: MonoBehaviour
     [SerializeField] private Outline.Mode mode = Outline.Mode.OutlineVisible;
     private float lineWidth = 5f;
     private Outline outline;
+    [SerializeField] private string interactFailLine = "interact";
 
     [SerializeField] protected EffectList[] necessaryEffect = { EffectList.DontCare };
     [SerializeField] protected ItemList[] necessaryItem = { ItemList.DontCare };
@@ -53,29 +54,42 @@ public class InteractiveObject: MonoBehaviour
     public virtual void Interact(ItemList item, EffectList effect)
     {
         Debug.Log("Interact");
-        if (InteractPreAssert(item, effect) != -1)
+        if (InteractPreAssert(item, effect) == -1)
         {
-            UIManager.Instance.SetInfoTextBar($"{gameObject.name}: interact");
+            UIManager.Instance.SetInfoTextBar(interactFailLine);
         }
     }
 
-    protected virtual int InteractPreAssert(ItemList item, EffectList effect)
+    protected int InteractPreAssert(ItemList item, EffectList effect)
     {
         for(int i = 0;i < necessaryEffect.Length; ++i)
         {
-            if (necessaryEffect[i] != EffectList.DontCare && necessaryEffect[i] != effect)
-            {
-                continue;
-            }
-
-            if (necessaryItem[i] != ItemList.DontCare && necessaryItem[i] != item)
-            {
-                continue;
-            }
-
-            return i;
+            if(InteractPreAssert(item, effect, i))
+                return i;
         }
 
         return -1;
+    }
+
+    protected bool InteractPreAssert(ItemList item, EffectList effect, int assertNumber)
+    {
+        if(assertNumber < 0 || assertNumber >= necessaryEffect.Length)
+        {
+            return false;
+        }
+
+        if (necessaryEffect[assertNumber] != EffectList.DontCare 
+            && necessaryEffect[assertNumber] != effect)
+        {
+            return false;
+        }
+
+        if (necessaryItem[assertNumber] != ItemList.DontCare 
+            && necessaryItem[assertNumber] != item)
+        {
+            return false;
+        }
+
+        return true;
     }
 }

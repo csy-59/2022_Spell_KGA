@@ -6,11 +6,11 @@ using InteractAsset;
 public class PlayerFocus : MonoBehaviour
 {
     [Header ("Focus Obejct")]
-    [SerializeField] private Camera camera;
+    [SerializeField] private Camera playerCamera;
     [SerializeField] private float reach = 1.8f;
     private InteractiveObject focusObject;
 
-    [Header ("Player State")]
+    [Header ("\nPlayer State")]
     [SerializeField] private ItemList item;
     [SerializeField] private EffectList effect;
 
@@ -32,7 +32,7 @@ public class PlayerFocus : MonoBehaviour
         // ∑π¿Ã ΩÓ±‚
         LayerMask interactiveLayer = LayerMask.NameToLayer("Interactive");
         int layerMask = 1 << interactiveLayer;
-        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hit;
         if(Physics.Raycast(ray.origin, ray.direction, out hit, reach, layerMask))
@@ -62,7 +62,6 @@ public class PlayerFocus : MonoBehaviour
     {
         if(input.MouseClick)
         {
-            Debug.Log("Clicked");
             focusObject?.Interact(item, effect);
         }
     }
@@ -71,7 +70,6 @@ public class PlayerFocus : MonoBehaviour
     {
         focusObject?.OutFocus();
         focusObject = item;
-        //Debug.Log($"{focusObject.necessaryItem} {focusObject.necessaryEffect}");
 
         if(focusObject)
         {

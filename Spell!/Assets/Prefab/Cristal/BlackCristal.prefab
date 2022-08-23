@@ -110,8 +110,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 1
+  interactLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 02000000
+  necessaryItem: 05000000
   cristalShard: {fileID: 7154118191284815494, guid: bba92781e1da7f442ae00e04a994908a, type: 3}
   popForce: 3
   shardPosition: {fileID: 3940688854762522990}

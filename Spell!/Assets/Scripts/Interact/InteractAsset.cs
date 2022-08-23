@@ -7,7 +7,10 @@ namespace InteractAsset
     public enum ItemList
     {
         NoItem,
+        Tourch,
+        TourchWithFire,
         Cheese,
+        Meat,
         DontCare,
         ItemMax
     }

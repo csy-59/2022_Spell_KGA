@@ -110,12 +110,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 1
+  interactLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 02000000
+  necessaryItem: 05000000
   isLeverOn: 0
   leverRotateAmount: 30
   leverRotateSpeed: 50
   lever: {fileID: 1697807594537403587}
+  tile: {fileID: 0}
+  tileMoveOffset: {x: 0, y: 0, z: -1.9}
+  tileMoveSpeed: 5
+  ladder: {fileID: 0}
+  ladderMovePosition: {fileID: 0}
+  ladderMoveSpeed: 5
 --- !u!1001 &1679672278084309986
 PrefabInstance:
   m_ObjectHideFlags: 0
