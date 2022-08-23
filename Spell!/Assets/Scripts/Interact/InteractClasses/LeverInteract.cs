@@ -13,6 +13,14 @@ public class LeverInteract : InteractiveObject
 
     [SerializeField] private Transform lever;
 
+    [Header("\nHiddenFloor")]
+    [SerializeField] private Transform tile;
+    [SerializeField] private Vector3 tileMoveOffset = new Vector3(0f, 0f, -1.9f);
+    [SerializeField] private float tileMoveSpeed = 5f;
+    [SerializeField] private Transform ladder;
+    [SerializeField] private Transform ladderMovePosition;
+    [SerializeField] private float ladderMoveSpeed = 5f;
+
     protected override void Awake()
     {
         base.Awake();
@@ -46,24 +54,37 @@ public class LeverInteract : InteractiveObject
             ObjectMove.Instance.ObjectRotateToTargetRotation(
                 lever,
                 lever.rotation * Quaternion.Euler(-leverRotateAmount * 2, 0f, 0f),
-                leverRotateSpeed, BeforeRotate, AfterRotate);
+                leverRotateSpeed, BeforeLeverRotate, AfterLeverRotate);
         }
         else
         {
             ObjectMove.Instance.ObjectRotateToTargetRotation(
                 lever,
                 lever.rotation * Quaternion.Euler(leverRotateAmount * 2, 0f, 0f),
-                leverRotateSpeed, BeforeRotate, AfterRotate);
+                leverRotateSpeed, BeforeLeverRotate, AfterLeverRotate);
         }
     }
-    private void BeforeRotate()
+    private void BeforeLeverRotate()
     {
         gameObject.layer = LayerMask.NameToLayer("Default");
     }
 
-    private void AfterRotate()
+    private void AfterLeverRotate()
     {
         isLeverOn = !isLeverOn;
         gameObject.layer = LayerMask.NameToLayer("Interactive");
+
+        ObjectMove.Instance.ObjectMoveToTargetPosition(
+            tile,
+            tile.position + tileMoveOffset,
+            tileMoveSpeed, null, AfterTileMove);
+    }
+
+    private void AfterTileMove()
+    {
+        ObjectMove.Instance.ObjectMoveToTargetPosition(
+            ladder,
+            ladderMovePosition.position,
+            ladderMoveSpeed);
     }
 }
