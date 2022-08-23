@@ -7,7 +7,10 @@ public class CristalInteract : InteractiveObject
 {
     [Header ("\nCristal Interaction")]
     [SerializeField] private GameObject cristalShard;
-    [SerializeField] private float popForce = 10;
+    [SerializeField] private float popForce = 200;
+
+    [SerializeField] private Transform shardPosition;
+    [SerializeField] private Transform target;
 
     protected override void Awake()
     {
@@ -23,7 +26,8 @@ public class CristalInteract : InteractiveObject
             return;
         }
 
-        GameObject shard = Instantiate(cristalShard, transform.position, transform.rotation);
-        shard.GetComponent<Rigidbody>().AddForce(Vector3.forward * popForce, ForceMode.Impulse);
+        GameObject shard = Instantiate(cristalShard, shardPosition.position, shardPosition.rotation);
+        shard.transform.LookAt(target);
+        shard.GetComponent<Rigidbody>().AddForce(Vector3.up * popForce, ForceMode.Impulse);
     }
 }

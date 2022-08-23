@@ -33,6 +33,12 @@ public class WallInteract : InteractiveObject
     {
         base.Interact(item, effect);
 
+        if(base.InteractPreAssert(item,effect) == -1)
+        {
+            UIManager.Instance.SetInfoTextBar("It seems like back of the wall is hollow");
+            return;
+        }
+
         Debug.Log("knock");
         --currentKnockCount;
 
