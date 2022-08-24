@@ -53,7 +53,6 @@ public class InteractiveObject: MonoBehaviour
 
     public virtual void Interact(ItemList item, EffectList effect)
     {
-        Debug.Log("Interact");
         if (InteractPreAssert(item, effect) == -1)
         {
             UIManager.Instance.SetInfoTextBar(interactFailLine);

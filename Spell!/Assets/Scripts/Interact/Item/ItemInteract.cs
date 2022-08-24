@@ -3,43 +3,93 @@ using System.Collections.Generic;
 using UnityEngine;
 using InteractAsset;
 
-public class ItemInteract : MonoBehaviour
+public class ItemInteract : InteractiveObject
 {
     [Header("Basic Item")]
-    [SerializeField] private Outline.Mode mode = Outline.Mode.OutlineAll;
-    private float lineWidth = 5f;
-    private Outline outline;
-
     [SerializeField] private Sprite itemImage;
-    [SerializeField] private float itemPickSize;
-    private Vector3 originalSize;
-
     [SerializeField] protected readonly ItemList itemType;
+
+    [SerializeField] private readonly float itemPickSize;
+    private Vector3 pickSize;
+    private Vector3 originalSize;
+    
+    private Rigidbody rigid;
+    private Collider[] colliders;
+    private Collider[] collidersInChild;
+
     public ItemList ItemType
     {
         get => itemType;
     }
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         gameObject.layer = LayerMask.NameToLayer("Item");
+
+        pickSize = new Vector3(itemPickSize, itemPickSize, itemPickSize);
         originalSize = gameObject.transform.localScale;
 
-        AddOutline(gameObject);
+        rigid = GetComponent<Rigidbody>();
+        colliders = GetComponents<Collider>();
+        collidersInChild = GetComponentsInChildren<Collider>();
     }
 
-    private void AddOutline(GameObject target)
+    public virtual void Interact(ItemList item)
     {
-        outline = target.AddComponent<Outline>();
-        if (outline == null)
-        {
-            outline = target.GetComponent<Outline>();
-        }
-        outline.OutlineMode = mode;
-        outline.OutlineColor = Color.yellow;
-        outline.OutlineWidth = lineWidth;
-        outline.enabled = false;
+        
     }
 
+    protected int InteractPreAssertForItem(ItemList item)
+    {
+        for (int i = 0; i < necessaryEffect.Length; ++i)
+        {
+            if (InteractPreAssertForItem(item, i))
+                return i;
+        }
 
+        return -1;
+    }
+
+    protected bool InteractPreAssertForItem(ItemList item, int assertNumber)
+    {
+        if (assertNumber < 0 || assertNumber >= necessaryItem.Length)
+        {
+            return false;
+        }
+
+        if (necessaryItem[assertNumber] != ItemList.DontCare
+            && necessaryItem[assertNumber] != item)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public virtual void PickUp()
+    {
+        itemSetting(pickSize, false);
+    }
+
+    public virtual void DropDown()
+    {
+        itemSetting(originalSize, true);
+    }
+
+    private void itemSetting(Vector3 scale, bool isDropped)
+    {
+        gameObject.transform.localScale = scale;
+
+        rigid.useGravity = isDropped;
+        foreach(Collider collider in colliders)
+        {
+            collider.enabled = isDropped;
+        }
+        foreach(Collider collider in collidersInChild)
+        {
+            collider.enabled = isDropped;
+        }
+    }
 }
