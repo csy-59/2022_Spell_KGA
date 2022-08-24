@@ -13,9 +13,16 @@ public class RatHoleInteract : InteractiveObject
 
     private bool isKeyGiven = false;
 
+    [Header("\nRat Hair Interact")]
+    [SerializeField] private GameObject hair;
+    [SerializeField] private float hairPickForce = 2f;
+    private bool isHairGiven = false;
+
     protected override void Awake()
     {
         base.Awake();
+
+        hair.SetActive(false);
     }
 
     void Update()
@@ -24,24 +31,44 @@ public class RatHoleInteract : InteractiveObject
 
     public override void Interact(ItemList item, EffectList effect)
     {
-        if(base.InteractPreAssert(item, effect) == -1)
+        if(base.InteractPreAssert(item, effect, 1))
         {
-            UIManager.Instance.SetInfoTextBar("Rat seems hungry");
-            return;
+            if(isHairGiven)
+            {
+                UIManager.Instance.SetInfoTextBar("I think i sould leave them alone...");
+                return;
+            }
+
+            UIManager.Instance.SetInfoTextBar("They almost bit me!");
+
+            hair.SetActive(true);
+            hair.transform.parent = null;
+            hair.GetComponent<Rigidbody>().AddForce(Vector3.forward * hairPickForce, ForceMode.Impulse);
+
+            isHairGiven = true;
+        }
+        else
+        {
+            if (isKeyGiven)
+            {
+                UIManager.Instance.SetInfoTextBar("Rats seem happy");
+                return;
+            }
+
+            if(!base.InteractPreAssert(item, effect, 0))
+            {
+                UIManager.Instance.SetInfoTextBar("Rats seem hungry");
+                return;
+            }
+
+            RatReactAndGiveKey();
         }
 
-        RatReactAndGiveKey();
     }
 
 
     private void RatReactAndGiveKey()
     {
-        if(isKeyGiven)
-        {
-            UIManager.Instance.SetInfoTextBar("Rat seems happy");
-            return;
-        }
-
         UIManager.Instance.SetInfoTextBar("Rat is eating Cheese");
 
         key.SetActive(true);

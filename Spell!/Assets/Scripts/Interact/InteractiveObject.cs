@@ -27,7 +27,7 @@ public class InteractiveObject: MonoBehaviour
         AddOutline(target);
     }
 
-    protected void AddOutline(GameObject target)
+    private void AddOutline(GameObject target)
     {
         outline = target.AddComponent<Outline>();
         if (outline == null)
