@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8739686081311023298}
   - component: {fileID: 6120767347425559095}
   m_Layer: 0
-  m_Name: BrownShard
+  m_Name: RedShard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

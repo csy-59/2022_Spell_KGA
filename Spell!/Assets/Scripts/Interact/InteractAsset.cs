@@ -8,12 +8,28 @@ namespace InteractAsset
     {
         NoItem,
         DontCare,
+        
         Tourch,
         TourchWithFire,
         Cheese,
         Meat,
         Key,
         FireStone,
+        Feather,
+        Bone,
+        WoodenBoard,
+        Cloth,
+        Moss,
+
+        Scroll,
+
+        BlackShard,
+        BlueShard,
+        RedShard,
+        PinkShard,
+        PurpleShard,
+        YellowShard,
+
         ItemMax
     }
 
@@ -25,6 +41,7 @@ namespace InteractAsset
         Speed,
         Goo,
         Stretch,
+
         FireBall,
         Sticky,
         SuperPower,

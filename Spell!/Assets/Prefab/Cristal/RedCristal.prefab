@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 2170487161512447458}
   - component: {fileID: 7678657204319805709}
   m_Layer: 0
-  m_Name: BrownCristal
+  m_Name: RedCristal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 1
-  interactLine: interact
+  interactFailLine: interact
   necessaryEffect: 0b000000
   necessaryItem: 05000000
   cristalShard: {fileID: 4899494781019504682, guid: 1d880dcc6a0c70e4783752da12f93f62, type: 3}
