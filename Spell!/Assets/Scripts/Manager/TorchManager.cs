@@ -41,6 +41,9 @@ public class TorchManager : SingletonBehaviour<TorchManager>
 
     private void LightCheck()
     {
+        if (isSecretOpen)
+            return;
+
         if (lightBit == secretLightMask)
         {
             isSecretOpen = true;

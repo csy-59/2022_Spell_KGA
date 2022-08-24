@@ -84,5 +84,7 @@ namespace UtilityAsset
     {
         public static readonly int Bird_Pick = Animator.StringToHash("Pick");
         public static readonly int Bird_Fly = Animator.StringToHash("Fly");
+
+        public static readonly int Bed_Punch = Animator.StringToHash("Punch");
     }
 }
