@@ -12,7 +12,7 @@ public class WallInteract : InteractiveObject
     private float currentOffect;
 
     [SerializeField] private GameObject wallBreakEffect;
-    [SerializeField] private GameObject wall;
+    [SerializeField] private GameObject[] walls;
     [SerializeField] private float destroyTime = 1.75f;
 
     protected override void Awake()
@@ -20,7 +20,10 @@ public class WallInteract : InteractiveObject
         base.Awake();
         
         wallBreakEffect.SetActive(false);
-        wall.SetActive(true);
+        foreach(GameObject wall in walls)
+        {
+            wall.SetActive(true);
+        }
         
         currentKnockCount = knockCount;
     }
@@ -53,7 +56,10 @@ public class WallInteract : InteractiveObject
 
     private void ShowHiddenItem()
     {
-        wall.SetActive(false);
+        foreach (GameObject wall in walls)
+        {
+            wall.SetActive(false);
+        }
         wallBreakEffect.SetActive(true);
         wallBreakEffect.GetComponent<ParticleSystem>().Play();
         Destroy(gameObject, destroyTime);
