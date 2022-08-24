@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 14421901392556976}
   - component: {fileID: 14421901389165456}
   - component: {fileID: 14421901390131536}
-  - component: {fileID: 14421901392392081}
+  - component: {fileID: 8447673199535010005}
+  - component: {fileID: 2705659493310000178}
   m_Layer: 0
   m_Name: Quill
   m_TagString: Untagged
@@ -84,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &14421901392392081
-MeshCollider:
+--- !u!65 &8447673199535010005
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +95,22 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 2e41661bbaacdea4dbb88e6b20ca88d3, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.1712757, y: 0.03456088, z: 0.56508213}
+  m_Center: {x: 0.025931854, y: 0.00062224176, z: -0.2334508}
+--- !u!54 &2705659493310000178
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14421901392392080}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

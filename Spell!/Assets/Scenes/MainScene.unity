@@ -1180,7 +1180,12 @@ MonoBehaviour:
   playerCamera: {fileID: 1310124627}
   reach: 3
   item: 0
-  effect: 0
+  effect: 4
+--- !u!95 &175318150 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8801374020429372961, guid: c049f2ddb14de7b46ab74ffabc1084f9, type: 3}
+  m_PrefabInstance: {fileID: 1218518883}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &182751455 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7854711523203372398, guid: d93975aa230e8954a9aa725d959bb9ba, type: 3}
@@ -2392,7 +2397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403342859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.113, z: 1.247}
+  m_LocalPosition: {x: 0, y: 0.113, z: 1.497}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3002,7 +3007,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3427446915459851822, guid: 7bb9e7b54df643245b37ea07750a752d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.793
+      value: -0.613
       objectReference: {fileID: 0}
     - target: {fileID: 3427446915459851822, guid: 7bb9e7b54df643245b37ea07750a752d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3010,7 +3015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3427446915459851822, guid: 7bb9e7b54df643245b37ea07750a752d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.832
+      value: -2.258
       objectReference: {fileID: 0}
     - target: {fileID: 3427446915459851822, guid: 7bb9e7b54df643245b37ea07750a752d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3701,7 +3706,7 @@ MonoBehaviour:
   mode: 0
   interactFailLine: interact
   necessaryEffect: 0b0000000b00000001000000
-  necessaryItem: 020000000500000005000000
+  necessaryItem: 020000000500000000000000
   tourchLight: {fileID: 1146167490}
   tourchNumber: 0
   backWall: {fileID: 1235902081}
@@ -5351,7 +5356,7 @@ MonoBehaviour:
   mode: 0
   interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 01000000
+  necessaryItem: 03000000
   key: {fileID: 234834914}
   keySlideSpeed: 5
   keyPosition: {fileID: 1327615396}
@@ -10023,7 +10028,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999294645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.07, y: 0, z: -6.45}
+  m_LocalPosition: {x: -2.01, y: 0, z: -1.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10370,9 +10375,11 @@ MonoBehaviour:
   hintScroll: {fileID: 1644591569}
   feather: {fileID: 14421901392392080, guid: 7874f9f7bd42c914492e8ad72133bec3, type: 3}
   featherPosition: {fileID: 403342860}
-  featherPickedCount: 0
+  featherPickedCount: 5
+  pigeonModel: {fileID: 64505568}
+  pigeonAnim: {fileID: 175318150}
   awayPoint: {fileID: 1999294646}
-  flySpeed: 5
+  flySpeed: 1
 --- !u!1 &2059161472
 GameObject:
   m_ObjectHideFlags: 0
