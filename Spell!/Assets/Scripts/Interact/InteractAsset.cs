@@ -13,6 +13,7 @@ namespace InteractAsset
         Cheese,
         Meat,
         Key,
+        FireStone,
         ItemMax
     }
 
