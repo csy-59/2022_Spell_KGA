@@ -32,8 +32,11 @@ namespace UtilityAsset
 
                 objectToMove.position = newPosition;
 
-                if (objectToMove.position == targetPosition)
+                if ((objectToMove.position - targetPosition).sqrMagnitude < 0.001)
+                {
+                    objectToMove.position = targetPosition;
                     break;
+                }
 
                 yield return null;
             }
@@ -64,13 +67,22 @@ namespace UtilityAsset
                 
                 objectToRotate.rotation = newRotation;
 
-                if (objectToRotate.rotation == targetRotation)
+                if ((objectToRotate.rotation.eulerAngles - targetRotation.eulerAngles).sqrMagnitude < 0.001)
+                {
+                    objectToRotate.rotation = targetRotation;
                     break;
+                }
 
                 yield return null;
             }
 
             afterService?.Invoke();
         }
+    }
+
+    public class AnimationID
+    {
+        public static readonly int Bird_Pick = Animator.StringToHash("Pick");
+        public static readonly int Bird_Fly = Animator.StringToHash("Fly");
     }
 }
