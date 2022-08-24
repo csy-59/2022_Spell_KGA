@@ -1521,7 +1521,7 @@ MonoBehaviour:
   mode: 0
   interactFailLine: Torch
   necessaryEffect: 0b0000000b000000
-  necessaryItem: 0200000005000000
+  necessaryItem: 0300000001000000
   tourchLight: {fileID: 9163873913593255297}
   tourchNumber: 0
 --- !u!4 &7607999142581522767 stripped
@@ -1672,7 +1672,7 @@ MonoBehaviour:
   mode: 0
   interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 05000000
+  necessaryItem: 01000000
 --- !u!1001 &7854711522535129736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1884,7 +1884,7 @@ MonoBehaviour:
   mode: 3
   interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 05000000
+  necessaryItem: 01000000
 --- !u!4 &7858396098776742575 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2027,7 +2027,7 @@ MonoBehaviour:
   mode: 0
   interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 05000000
+  necessaryItem: 01000000
 --- !u!4 &7858396099459677994 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2166,7 +2166,7 @@ MonoBehaviour:
   mode: 0
   interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 05000000
+  necessaryItem: 01000000
 --- !u!4 &7858396099536242820 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2459,7 +2459,7 @@ MonoBehaviour:
   mode: 3
   interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 05000000
+  necessaryItem: 01000000
 --- !u!4 &7858396097802735145 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2650,7 +2650,7 @@ MonoBehaviour:
   mode: 0
   interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 05000000
+  necessaryItem: 01000000
 --- !u!4 &7858396098197702205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2789,7 +2789,7 @@ MonoBehaviour:
   mode: 3
   interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 05000000
+  necessaryItem: 01000000
 --- !u!4 &7858396098274647612 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -2928,7 +2928,7 @@ MonoBehaviour:
   mode: 0
   interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 05000000
+  necessaryItem: 01000000
 --- !u!4 &7858396098667461948 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
@@ -3071,7 +3071,7 @@ MonoBehaviour:
   mode: 0
   interactFailLine: interact
   necessaryEffect: 0b000000
-  necessaryItem: 05000000
+  necessaryItem: 01000000
 --- !u!4 &7858396098686688772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}

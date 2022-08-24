@@ -28,14 +28,15 @@ public class CupboardInteract : InteractiveObject
             {
                 DoorOpen(doors[0], -doorOpenYOffset);
                 DoorOpen(doors[1], doorOpenYOffset);
-                return;
             }
             else
             {
                 DoorOpen(doors[0], doorOpenYOffset);
                 DoorOpen(doors[1], -doorOpenYOffset);
-                return;
             }
+
+            isDoorOpen = !isDoorOpen;
+            return;
         }
         else
         {
