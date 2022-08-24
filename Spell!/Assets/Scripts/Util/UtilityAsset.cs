@@ -14,13 +14,23 @@ namespace UtilityAsset
             StartCoroutine(MoveToPosition(objectToMove, targetPosition, Speed, null, null));
         }
         
+        public void ObjectMoveToTargetPosition(Transform objectToMove, Vector3 targetPosition, 
+            float Speed, GameObject layerChangeObject)
+        {
+            StartCoroutine(MoveToPosition(
+                objectToMove, targetPosition, Speed,
+                new BeforeService(() => { layerChangeObject.layer = LayerMask.NameToLayer("Default"); }),
+                new AfterService(()=> { layerChangeObject.layer = LayerMask.NameToLayer("Interactive"); })
+                ));
+        }
+        
         public void ObjectMoveToTargetPosition(Transform objectToMove, Vector3 targetPosition, float Speed,
             in BeforeService beforeService, in AfterService afterService)
         {
             StartCoroutine(MoveToPosition(objectToMove, targetPosition, Speed, beforeService, afterService));
         }
 
-        public IEnumerator MoveToPosition(
+        private IEnumerator MoveToPosition(
             Transform objectToMove, Vector3 targetPosition, float Speed,
             BeforeService beforeService, AfterService afterService)
         {
@@ -44,9 +54,18 @@ namespace UtilityAsset
             afterService?.Invoke();
         }
 
-        public void ObjectRotateToTargetRotation(Transform objectToMove, Quaternion targetPosition, float Speed)
+        public void ObjectRotateToTargetRotation(Transform objectToMove, Quaternion targetRotation, float Speed)
         {
-            StartCoroutine(RotateToRotation(objectToMove, targetPosition, Speed, null, null));
+            StartCoroutine(RotateToRotation(objectToMove, targetRotation, Speed, null, null));
+        }
+        public void ObjectRotateToTargetRotation(Transform objectToMove, Quaternion targetRotation,
+            float Speed, GameObject layerChangeObject)
+        {
+            StartCoroutine(RotateToRotation(
+                objectToMove, targetRotation, Speed,
+                new BeforeService(() => { layerChangeObject.layer = LayerMask.NameToLayer("Default"); }),
+                new AfterService(() => { layerChangeObject.layer = LayerMask.NameToLayer("Interactive"); })
+                ));
         }
 
         public void ObjectRotateToTargetRotation(Transform objectToMove, Quaternion targetPosition, float Speed,
@@ -55,7 +74,7 @@ namespace UtilityAsset
             StartCoroutine(RotateToRotation(objectToMove, targetPosition, Speed, beforeService, afterService));
         }
 
-        public IEnumerator RotateToRotation(
+        private IEnumerator RotateToRotation(
             Transform objectToRotate, Quaternion targetRotation, float Speed,
             BeforeService beforeService, AfterService afterService)
         {

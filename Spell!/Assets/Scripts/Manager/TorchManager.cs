@@ -6,7 +6,7 @@ using UtilityAsset;
 public class TorchManager : SingletonBehaviour<TorchManager>
 {
     private int lightBit = 0;
-    [SerializeField] private int[] secretLightNumber = { 4, 9 };
+    [SerializeField] private int[] secretPathLightNumber = { 4, 9 };
     [SerializeField] private bool isSecretOpen = false;
     private int secretLightMask;
 
@@ -16,7 +16,7 @@ public class TorchManager : SingletonBehaviour<TorchManager>
 
     private void Awake()
     {
-        foreach (int num in secretLightNumber)
+        foreach (int num in secretPathLightNumber)
         {
             secretLightMask = secretLightMask | (1 << num);
         }
