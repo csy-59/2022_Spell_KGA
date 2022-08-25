@@ -13,6 +13,8 @@ public class PlayerInput : MonoBehaviour
     public bool Mouse1Click { get; private set; }
 
     public bool Shift { get; private set; }
+    public bool E { get; private set; }
+
     private void Update()
     {
         X = Input.GetAxis("Horizontal");
@@ -23,5 +25,6 @@ public class PlayerInput : MonoBehaviour
         Mouse0Click = Input.GetMouseButtonDown(0);
 
         Shift = Input.GetKey(KeyCode.LeftShift);
+        E = Input.GetKeyDown(KeyCode.E);
     }
 }

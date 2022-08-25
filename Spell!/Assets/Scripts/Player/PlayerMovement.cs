@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveOffset = input.X * speed * Time.fixedDeltaTime * transform.right
             + input.Z * speed * Time.fixedDeltaTime * transform.forward;
 
-        rigid.MovePosition(transform.position + moveOffset);
+        rigid.MovePosition(rigid.position + moveOffset);
     }
     private void SitAndSand(bool isSit)
     {

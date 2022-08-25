@@ -6,6 +6,7 @@ using TMPro;
 public class UIManager : SingletonBehaviour<UIManager>
 {
     public TextMeshProUGUI InfoText;
+    public TextMeshProUGUI InstructionText;
 
     private void Awake()
     {
@@ -20,5 +21,10 @@ public class UIManager : SingletonBehaviour<UIManager>
     public void SetInfoTextBar(string info)
     {
         InfoText.text = info;
+    }
+
+    public void SetInstructionText(string instruction)
+    {
+        InstructionText.text = instruction;
     }
 }

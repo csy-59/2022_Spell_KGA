@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 
@@ -30,8 +30,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Item
+  - PickedItem
   - 
   - 
   - 

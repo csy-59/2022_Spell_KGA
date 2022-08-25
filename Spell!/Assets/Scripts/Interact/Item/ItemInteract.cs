@@ -9,12 +9,15 @@ public class ItemInteract : InteractiveObject
 
     [Header("Basic Item")]
     [SerializeField] private Sprite itemImage;
-    [SerializeField] protected readonly ItemList itemType;
+    [SerializeField] protected ItemList itemType = ItemList.NoItem;
 
-    [SerializeField] private readonly float itemPickSize;
+    [SerializeField] private float itemPickSize;
+    [SerializeField] private Vector3 itemPickRotation;
     private Vector3 pickSize;
     private Vector3 originalSize;
-    
+
+    private bool isItemPicked = false;
+
     private Rigidbody rigid;
     private Collider[] colliders;
     private Collider[] collidersInChild;
@@ -37,6 +40,11 @@ public class ItemInteract : InteractiveObject
         rigid = GetComponent<Rigidbody>();
         colliders = GetComponents<Collider>();
         collidersInChild = GetComponentsInChildren<Collider>();
+    }
+
+    private void Update()
+    {
+        transform.localPosition = Vector3.zero;    
     }
 
     public virtual bool Interact(ItemList item, ObjectList objectToInteract)
@@ -82,14 +90,34 @@ public class ItemInteract : InteractiveObject
         return true;
     }
 
-    public virtual void PickUp()
+    public virtual void PickUp(Transform itemPosition)
     {
         itemSetting(pickSize, false);
+        gameObject.layer = LayerMask.NameToLayer("PickedItem");
+
+        transform.rotation = itemPosition.rotation * Quaternion.Euler(itemPickRotation);
+        transform.parent = itemPosition;
+        transform.localPosition = Vector3.zero;
+
+        gameObject.SetActive(true);
+    }
+
+    public virtual void ToInventory(Transform itemPosition)
+    {
+        if(!isItemPicked)
+        {
+            PickUp(itemPosition);
+        }
+
+        gameObject.SetActive(false);
     }
 
     public virtual void DropDown()
     {
         itemSetting(originalSize, true);
+        gameObject.transform.parent = null;
+        gameObject.layer = LayerMask.NameToLayer("Item");
+        gameObject.SetActive(true);
     }
 
     private void itemSetting(Vector3 scale, bool isDropped)
@@ -105,6 +133,8 @@ public class ItemInteract : InteractiveObject
         {
             collider.enabled = isDropped;
         }
+
+        isItemPicked = !isDropped;
     }
 
     public virtual bool Use()

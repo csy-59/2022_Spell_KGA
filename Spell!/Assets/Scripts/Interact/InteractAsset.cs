@@ -20,6 +20,7 @@ namespace InteractAsset
         WoodenBoard,
         Cloth,
         Moss,
+        Spoon,
 
         Scroll,
 

@@ -19,15 +19,18 @@ public class PlayerFocus : MonoBehaviour
     }
 
     private PlayerInput input;
+    private PlayerInteract interact;
 
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
+        interact = GetComponent<PlayerInteract>();
     }
 
     void Update()
     {
         FocusInteractive();
+        interact.Do(focusObject);
     }
 
     private void FocusInteractive()

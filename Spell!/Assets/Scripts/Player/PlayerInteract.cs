@@ -11,37 +11,119 @@ public class PlayerInteract : MonoBehaviour
 
     [SerializeField] private EffectList effect;
 
-    private PlayerFocus focus;
     private PlayerInput input;
+    private PlayerInventory inventory;
+
+    [Header("Item Position")]
+    [SerializeField] private Transform handPosition;
 
     private void Awake()
     {
-        focus = GetComponent<PlayerFocus>();
         input = GetComponent<PlayerInput>();
+        inventory = GetComponent<PlayerInventory>();
+
+        pickedItem = null;
     }
 
-    private void Update()
+    public void Do(InteractiveObject focusObject)
     {
-        InteractWithObejct();
-        UseItem();
-    }
-
-    private void InteractWithObejct()
-    {
-        if (input.Mouse0Click && focus.FocusObject != null)
+        if(focusObject)
         {
-            if(focus.FocusObject.Interact(item, effect))
+            if (!PickOrMoveToInventoryItem(focusObject))
             {
-                pickedItem?.Interact(item, focus.FocusObject.ObjectType);
+                InteractWithObejct(focusObject);
+            }
+        }
+
+        if(item != ItemList.NoItem)
+        {
+            UseItem();
+        }
+    }
+
+    private bool PickOrMoveToInventoryItem(InteractiveObject focusObject)
+    {
+        if(!input.Mouse0Click && !input.E)
+        {
+            return false;
+        }
+
+        if (focusObject.ObjectType != ObjectList.Item)
+        {
+            return false;
+        }
+
+        ItemInteract newItem = (ItemInteract)focusObject;
+
+        if(input.Mouse0Click)
+        {
+            if(item != ItemList.NoItem)
+            {
+                return false;
+            }
+
+            PickItem(newItem);
+        }
+        else // E
+        {
+            if(!ItemToInventory(newItem))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private void InteractWithObejct(InteractiveObject focusObject)
+    {
+        if (input.Mouse0Click)
+        {
+            if(focusObject.Interact(item, effect) && item != ItemList.NoItem)
+            {
+                pickedItem.Interact(item, focusObject.ObjectType);
             }
         }
     }
 
     private void UseItem()
     {
-        if(input.Mouse1Click)
+        if(input.Mouse1Click && item != ItemList.NoItem)
         {
-            pickedItem?.Use();
+            pickedItem.Use();
         }
+    }
+
+    public void PickItem(ItemInteract item)
+    {
+        if (this.item != ItemList.NoItem)
+        {
+            inventory.AddItemToInventory(pickedItem);
+        }
+        SetPickedItem(item);
+        item.PickUp(handPosition);
+    }
+
+    public void DropItem(ItemInteract item)
+    {
+        item.DropDown();
+        SetPickedItem();
+    }
+
+    private bool ItemToInventory(ItemInteract item)
+    {
+        return inventory.AddItemToInventory(item);
+    }
+
+    private void SetPickedItem(ItemInteract item)
+    {
+        pickedItem = item;
+        this.item = item.ItemType;
+    }
+
+    private void SetPickedItem()
+    {
+        pickedItem = null;
+        this.item = ItemList.NoItem;
     }
 }
