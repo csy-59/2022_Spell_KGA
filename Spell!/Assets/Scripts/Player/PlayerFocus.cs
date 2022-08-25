@@ -29,7 +29,7 @@ public class PlayerFocus : MonoBehaviour
 
     void Update()
     {
-        if(!UIManager.Instance.isInventoryOn)
+        if(!UIManager.Instance.IsUIShown)
         {
             FocusInteractive();
             interact.Do(focusObject);

@@ -55,6 +55,11 @@ namespace InteractAsset
         EffectMax
     }
 
+    public enum ChangeEndingList
+    {
+        
+    }
+
     public enum ObjectList
     {
         NoObject,

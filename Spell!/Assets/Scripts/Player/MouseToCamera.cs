@@ -24,7 +24,7 @@ public class MouseToCamera : MonoBehaviour
 
     private void Update()
     {
-        if(!UIManager.Instance.isInventoryOn)
+        if(!UIManager.Instance.IsUIShown)
         {
             CamaraRotateToCursor();
             SitAndStand();

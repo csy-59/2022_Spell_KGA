@@ -102,7 +102,14 @@ public class PlayerInteraction : MonoBehaviour
     public void DropItem(ItemInteract item)
     {
         item.DropDown();
-        SetPickedItem();
+        if(item == pickedItem)
+            SetPickedItem();
+    }
+
+    public void DestroyItem(ItemInteract item)
+    {
+        if (item == pickedItem)
+            SetPickedItem();
     }
 
     private bool ItemToInventory(ItemInteract item)

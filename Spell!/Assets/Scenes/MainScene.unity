@@ -7979,6 +7979,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e31ce836fd3fd4479f4e5ffa5fb3469, type: 3}
+--- !u!1 &1352153814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1359375955376506586, guid: d6ade90f396755c42b43f8006323ec2c, type: 3}
+  m_PrefabInstance: {fileID: 1501116279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1352153818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352153814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d4cc0cde813b9a4b9c2621b2e918265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 1
+  interactFailLine: interact
+  objectType: 10
+  necessaryEffect: 0b0000000b0000000b0000000b000000
+  necessaryItem: 10000000110000001200000014000000
+--- !u!136 &1352153819
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352153814}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.41599834
+  m_Height: 1.0255249
+  m_Direction: 1
+  m_Center: {x: -0.0036780834, y: -0.040211648, z: 0.000000074505806}
 --- !u!1001 &1353987693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8899,7 +8935,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cauldron_Full
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6796805398523835098, guid: d6ade90f396755c42b43f8006323ec2c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d6ade90f396755c42b43f8006323ec2c, type: 3}
 --- !u!1001 &1530149789
 PrefabInstance:
@@ -9204,7 +9241,7 @@ MonoBehaviour:
   xStartPos: -405
   yStartPos: 100
   positionOffset: 90
-  isInventoryOn: 0
+  IsUIShown: 0
 --- !u!4 &1555896036
 Transform:
   m_ObjectHideFlags: 0
@@ -11443,8 +11480,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 313029745}
   - {fileID: 1668960010}
+  - {fileID: 313029745}
   m_Father: {fileID: 304460105}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

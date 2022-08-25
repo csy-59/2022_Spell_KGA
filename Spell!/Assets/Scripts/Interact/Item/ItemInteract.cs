@@ -11,8 +11,8 @@ public class ItemInteract : InteractiveObject
     public Sprite itemImage;
     [SerializeField] protected ItemList itemType = ItemList.NoItem;
 
-    [SerializeField] private float itemPickSize;
-    [SerializeField] private Vector3 itemPickRotation;
+    [SerializeField] protected float itemPickSize;
+    [SerializeField] protected Vector3 itemPickRotation;
     private Vector3 pickSize;
     private Vector3 originalSize;
 
@@ -21,6 +21,8 @@ public class ItemInteract : InteractiveObject
     private Rigidbody rigid;
     private Collider[] colliders;
     private Collider[] collidersInChild;
+
+    private static PlayerInteraction player;
 
     protected static readonly Vector3 zeroVector = Vector3.zero;
 
@@ -42,6 +44,14 @@ public class ItemInteract : InteractiveObject
         rigid = GetComponent<Rigidbody>();
         colliders = GetComponents<Collider>();
         collidersInChild = GetComponentsInChildren<Collider>();
+    }
+
+    private void OnEnable()
+    {
+        if (!player)
+        {
+            player = FindObjectOfType<PlayerInteraction>();
+        }
     }
 
     private void Update()
@@ -147,5 +157,13 @@ public class ItemInteract : InteractiveObject
     public virtual bool Use()
     {
         return false;
+    }
+
+    private void OnDestroy()
+    {
+        if (player)
+        {
+            player.DestroyItem(this);
+        }
     }
 }

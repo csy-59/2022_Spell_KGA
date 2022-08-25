@@ -24,7 +24,8 @@ public class UIManager : SingletonBehaviour<UIManager>
     
     private List<Image> itemInventory = new List<Image>();
 
-    public bool isInventoryOn = false;
+    public bool IsUIShown = false;
+    private bool isInventoryShown = false;
 
     private readonly Color originalColor = new Color(1f, 1f, 1f, 1f);
     private readonly Color readyColor = new Color(1f, 1f, 1f, 0f);
@@ -62,13 +63,14 @@ public class UIManager : SingletonBehaviour<UIManager>
         InfoText.text = info;
     }
 
-    public bool ShowInventory(List<ItemInteract> inventory)
+    public void ShowInventory(List<ItemInteract> inventory)
     {
+        isInventoryShown = !isInventoryShown;
+        IsUIShown = isInventoryShown;
 
-        isInventoryOn = !isInventoryOn;
-        inventoryPanel.SetActive(isInventoryOn);
+        inventoryPanel.SetActive(isInventoryShown);
 
-        if(isInventoryOn)
+        if(isInventoryShown)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -80,8 +82,6 @@ public class UIManager : SingletonBehaviour<UIManager>
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
-
-        return isInventoryOn;
     }
 
     public void SetInventory(List<ItemInteract> inventory)

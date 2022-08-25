@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!UIManager.Instance.isInventoryOn)
+        if(!UIManager.Instance.IsUIShown)
         {
             Move();
             SitAndSand(input.Shift);
