@@ -22,12 +22,12 @@ public class CristalInteract : InteractiveObject
         lastShardGenerateTime = Time.time;
     }
 
-    public override void Interact(ItemList item, EffectList effect)
+    public override bool Interact(ItemList item, EffectList effect)
     {
         if(Time.time - lastShardGenerateTime < shardGenerateOffsetTime)
         {
             UIManager.Instance.SetInfoTextBar("Cristal is not ready...");
-            return;
+            return false;
         }
 
         lastShardGenerateTime = Time.time;
@@ -35,5 +35,6 @@ public class CristalInteract : InteractiveObject
         GameObject shard = Instantiate(cristalShard, shardPosition.position, shardPosition.rotation);
         shard.transform.LookAt(target);
         shard.GetComponent<Rigidbody>().AddForce(Vector3.up * popForce, ForceMode.Impulse);
+        return true;
     }
 }

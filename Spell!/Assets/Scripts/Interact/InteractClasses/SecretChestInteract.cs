@@ -78,7 +78,7 @@ public class SecretChestInteract : InteractiveObject
         meshRenderers[1].material.SetFloat("_Cutoff", 1f);
     }
 
-    public override void Interact(ItemList item, EffectList effect)
+    public override bool Interact(ItemList item, EffectList effect)
     {
         if(isChestOpen)
         {
@@ -102,6 +102,7 @@ public class SecretChestInteract : InteractiveObject
         }
 
         isChestOpen = !isChestOpen;
+        return true;
     }
 
 }

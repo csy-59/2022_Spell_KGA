@@ -36,31 +36,33 @@ public class SkeletonInteract : InteractiveObject
         item.SetActive(false);
     }
 
-    public override void Interact(ItemList item, EffectList effect)
+    public override bool Interact(ItemList item, EffectList effect)
     {
         if(base.InteractPreAssert(item, effect, 1))
         {
             if(isBoneGiven)
             {
                 UIManager.Instance.SetInfoTextBar(afterBoneLine);
-                return;
+                return false;
             }
 
             UIManager.Instance.SetInfoTextBar(getBoneLine);
             Instantiate(bone, bonePosition.position, bonePosition.rotation);
             isBoneGiven = true;
+            return true;
         }
         else
         {
             if (isItemGiven)
             {
                 UIManager.Instance.SetInfoTextBar(afterItemLine);
-                return;
+                return false;
             }
 
             UIManager.Instance.SetInfoTextBar(getItemLine);
             this.item.SetActive(true);
             isItemGiven = true;
+            return true;
         }
     }
 }

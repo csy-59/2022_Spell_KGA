@@ -27,7 +27,7 @@ public class BedInteract : InteractiveObject
         brakeEffect.SetActive(false);
     }
 
-    public override void Interact(ItemList item, EffectList effect)
+    public override bool Interact(ItemList item, EffectList effect)
     {
         if(base.InteractPreAssert(item, effect, 0))
         {
@@ -36,7 +36,7 @@ public class BedInteract : InteractiveObject
             {
                 UIManager.Instance.SetInfoTextBar("More Punch!!");
                 punchEffect.SetTrigger(AnimationID.Bed_Punch);
-                return;
+                return true;
             }
 
             UIManager.Instance.SetInfoTextBar("I did it!");
@@ -50,6 +50,9 @@ public class BedInteract : InteractiveObject
             brakeEffect.GetComponent<ParticleSystem>().Play();
             
             gameObject.SetActive(false);
+            return true;
         }
+
+        return false;
     }
 }

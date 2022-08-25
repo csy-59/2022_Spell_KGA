@@ -32,14 +32,14 @@ public class WallInteract : InteractiveObject
     {
     }
 
-    public override void Interact(ItemList item, EffectList effect)
+    public override bool Interact(ItemList item, EffectList effect)
     {
         base.Interact(item, effect);
 
         if(base.InteractPreAssert(item,effect) == -1)
         {
-            UIManager.Instance.SetInfoTextBar("It seems like back of this wall is hollow");
-            return;
+            UIManager.Instance.SetInfoTextBar("Wall");
+            return false;
         }
 
         Debug.Log("knock");
@@ -48,10 +48,13 @@ public class WallInteract : InteractiveObject
         if (currentKnockCount > 0)
         {
             StartCoroutine(knockCountReset());
-            return;
+        }
+        else
+        {
+            ShowHiddenItem();
         }
 
-        ShowHiddenItem();
+        return true;
     }
 
     private void ShowHiddenItem()

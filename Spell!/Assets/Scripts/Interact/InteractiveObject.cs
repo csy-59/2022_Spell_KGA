@@ -12,6 +12,16 @@ public class InteractiveObject: MonoBehaviour
     private Outline outline;
     [SerializeField] private string interactFailLine = "interact";
 
+    [SerializeField] protected ObjectList objectType;
+    public ObjectList ObjectType
+    {
+        get => objectType;
+        protected set
+        {
+            objectType = value;
+        }
+    }
+
     [SerializeField] protected EffectList[] necessaryEffect = { EffectList.DontCare };
     [SerializeField] protected ItemList[] necessaryItem = { ItemList.DontCare };
 
@@ -51,12 +61,15 @@ public class InteractiveObject: MonoBehaviour
         UIManager.Instance.SetInfoTextBar("");
     }
 
-    public virtual void Interact(ItemList item, EffectList effect)
+    public virtual bool Interact(ItemList item, EffectList effect)
     {
         if (InteractPreAssert(item, effect) == -1)
         {
             UIManager.Instance.SetInfoTextBar(interactFailLine);
+            return false;
         }
+
+        return true;
     }
 
     protected int InteractPreAssert(ItemList item, EffectList effect)

@@ -20,12 +20,12 @@ public class FirepitInteract : InteractiveObject
         fire.SetActive(false);
     }
 
-    public override void Interact(ItemList item, EffectList effect)
+    public override bool Interact(ItemList item, EffectList effect)
     {
         if(isFireOn)
         {
             UIManager.Instance.SetInfoTextBar("The fire is warm");
-            return;
+            return false;
         }
 
         if(base.InteractPreAssert(item, effect) != -1)
@@ -33,17 +33,18 @@ public class FirepitInteract : InteractiveObject
             UIManager.Instance.SetInfoTextBar("I set the fire");
             isFireOn = true;
             fire.SetActive(true);
-            return;
+            return true;
         }
 
         if(isScrollGiven)
         {
             UIManager.Instance.SetInfoTextBar("I need something to make fire");
-            return;
+            return false;
         }
 
         UIManager.Instance.SetInfoTextBar("There was something in the ashes");
         fireScroll.SetActive(true);
         isScrollGiven = true;
+        return true;
     }
 }

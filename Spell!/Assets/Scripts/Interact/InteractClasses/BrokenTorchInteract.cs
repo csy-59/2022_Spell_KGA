@@ -17,9 +17,9 @@ public class BrokenTorchInteract : TorchInteract
         backWallEffect.SetActive(false);
     }
 
-    public override void Interact(ItemList item, EffectList effect)
+    public override bool Interact(ItemList item, EffectList effect)
     {
-        base.Interact(item, effect);
+        bool tourchInteractResult = base.Interact(item, effect);
 
         if(base.InteractPreAssert(item, effect, 2))
         {
@@ -34,10 +34,14 @@ public class BrokenTorchInteract : TorchInteract
 
             GetComponent<MeshRenderer>().enabled = false;
             Destroy(gameObject, destroyTimeOffset);
+            return true;
         }
         else if(!base.InteractPreAssert(item, effect, 0))
         {
             UIManager.Instance.SetInfoTextBar("With more power, i think i can brake it");
+            return false;
         }
+
+        return tourchInteractResult;
     }
 }

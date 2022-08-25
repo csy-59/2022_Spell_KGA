@@ -41,11 +41,11 @@ public class MossedWallInteract : InteractiveObject
         }
     }
 
-    public override void Interact(ItemList item, EffectList effect)
+    public override bool Interact(ItemList item, EffectList effect)
     {
         if(mossStack.Count <= 0)
         {
-            return;
+            return false;
         }
 
         UIManager.Instance.SetInfoTextBar("It's slimy...");
@@ -60,6 +60,7 @@ public class MossedWallInteract : InteractiveObject
         {
             gameObject.name = "Cleaned Wall";
         }
+        return true;
     }
 
 }

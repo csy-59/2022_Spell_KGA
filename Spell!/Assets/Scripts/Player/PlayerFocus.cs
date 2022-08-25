@@ -9,10 +9,14 @@ public class PlayerFocus : MonoBehaviour
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float reach = 1.8f;
     private InteractiveObject focusObject;
-
-    [Header ("\nPlayer State")]
-    [SerializeField] private ItemList item;
-    [SerializeField] private EffectList effect;
+    public InteractiveObject FocusObject
+    {
+        get => focusObject;
+        private set 
+        {
+            focusObject = value;
+        }
+    }
 
     private PlayerInput input;
 
@@ -24,7 +28,6 @@ public class PlayerFocus : MonoBehaviour
     void Update()
     {
         FocusInteractive();
-        InteractWithObejct();
     }
 
     private void FocusInteractive()
@@ -32,6 +35,10 @@ public class PlayerFocus : MonoBehaviour
         // ∑π¿Ã ΩÓ±‚
         LayerMask interactiveLayer = LayerMask.NameToLayer("Interactive");
         int layerMask = 1 << interactiveLayer;
+
+        LayerMask itemLayer = LayerMask.NameToLayer("Item");
+        layerMask = layerMask | (1 << itemLayer);
+        
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hit;
@@ -56,14 +63,6 @@ public class PlayerFocus : MonoBehaviour
             SetFocusObject();
         }
 
-    }
-
-    private void InteractWithObejct()
-    {
-        if(input.MouseClick)
-        {
-            focusObject?.Interact(item, effect);
-        }
     }
 
     private void SetFocusObject(InteractiveObject item)

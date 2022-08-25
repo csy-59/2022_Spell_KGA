@@ -40,11 +40,12 @@ public class LeverInteract : InteractiveObject
         
     }
 
-    public override void Interact(ItemList item, EffectList effect)
+    public override bool Interact(ItemList item, EffectList effect)
     {
         base.Interact(item, effect);
 
         LeverRotateHelper();
+        return true;
     }
 
     private void LeverRotateHelper()

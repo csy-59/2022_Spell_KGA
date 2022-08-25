@@ -5,6 +5,8 @@ using InteractAsset;
 
 public class ItemInteract : InteractiveObject
 {
+    [SerializeField] protected ObjectList[] necessaryObject  = { ObjectList.DontCare };
+
     [Header("Basic Item")]
     [SerializeField] private Sprite itemImage;
     [SerializeField] protected readonly ItemList itemType;
@@ -26,6 +28,7 @@ public class ItemInteract : InteractiveObject
     {
         base.Awake();
 
+        ObjectType = ObjectList.Item;
         gameObject.layer = LayerMask.NameToLayer("Item");
 
         pickSize = new Vector3(itemPickSize, itemPickSize, itemPickSize);
@@ -36,23 +39,28 @@ public class ItemInteract : InteractiveObject
         collidersInChild = GetComponentsInChildren<Collider>();
     }
 
-    public virtual void Interact(ItemList item)
+    public virtual bool Interact(ItemList item, ObjectList objectToInteract)
     {
-        
+        if(InteractPreAssertForItem(item, objectToInteract) != -1)
+        {
+            return true;
+        }
+
+        return false;
     }
 
-    protected int InteractPreAssertForItem(ItemList item)
+    protected int InteractPreAssertForItem(ItemList item, ObjectList objectToInteract)
     {
         for (int i = 0; i < necessaryEffect.Length; ++i)
         {
-            if (InteractPreAssertForItem(item, i))
+            if (InteractPreAssertForItem(item, objectToInteract, i))
                 return i;
         }
 
         return -1;
     }
 
-    protected bool InteractPreAssertForItem(ItemList item, int assertNumber)
+    protected bool InteractPreAssertForItem(ItemList item, ObjectList objectToInteract, int assertNumber)
     {
         if (assertNumber < 0 || assertNumber >= necessaryItem.Length)
         {
@@ -61,6 +69,12 @@ public class ItemInteract : InteractiveObject
 
         if (necessaryItem[assertNumber] != ItemList.DontCare
             && necessaryItem[assertNumber] != item)
+        {
+            return false;
+        }
+
+        if (necessaryObject[assertNumber] != ObjectList.DontCare
+            && necessaryObject[assertNumber] != objectToInteract)
         {
             return false;
         }
@@ -91,5 +105,10 @@ public class ItemInteract : InteractiveObject
         {
             collider.enabled = isDropped;
         }
+    }
+
+    public virtual bool Use()
+    {
+        return false;
     }
 }

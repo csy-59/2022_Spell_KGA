@@ -53,9 +53,23 @@ namespace InteractAsset
         EffectMax
     }
 
-    public interface IInteractive
+    public enum ObjectList
     {
-        void Interact();
+        NoObject,
+        DontCare,
+
+        Wall,
+        Tourch,
+        Window,
+        Bird,
+        RatHole,
+        Bed,
+        Skeleton,
+        Door,
+        Cauldron,
+        Item,
+
+        ObjectMax
     }
 
     public static class CurrentItem

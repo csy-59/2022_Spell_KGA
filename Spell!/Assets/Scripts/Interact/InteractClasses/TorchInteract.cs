@@ -18,11 +18,11 @@ public class TorchInteract : InteractiveObject
         tourchLight.SetActive(false);
     }
 
-    public override void Interact(ItemList item, EffectList effect)
+    public override bool Interact(ItemList item, EffectList effect)
     {
         if(base.InteractPreAssert(item, effect) == -1)
         {
-            return;
+            return false;
         }
 
         if(isTourchOn)
@@ -36,7 +36,7 @@ public class TorchInteract : InteractiveObject
             if(!base.InteractPreAssert(item, effect, 0))
             {
                 UIManager.Instance.SetInfoTextBar("It's dark");
-                return;
+                return false;
             }
 
             isTourchOn = true;
@@ -45,5 +45,6 @@ public class TorchInteract : InteractiveObject
         }
 
         tourchLight.SetActive(isTourchOn);
+        return true;
     }
 }

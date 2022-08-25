@@ -20,11 +20,11 @@ public class CupboardInteract : InteractiveObject
         base.Awake();
     }
 
-    public override void Interact(ItemList item, EffectList effect)
+    public override bool Interact(ItemList item, EffectList effect)
     {
-        if(isLockOpen)
+        if (isLockOpen)
         {
-            if(isDoorOpen)
+            if (isDoorOpen)
             {
                 DoorOpen(doors[0], -doorOpenYOffset);
                 DoorOpen(doors[1], doorOpenYOffset);
@@ -36,19 +36,20 @@ public class CupboardInteract : InteractiveObject
             }
 
             isDoorOpen = !isDoorOpen;
-            return;
+            return true;
         }
         else
         {
-            if(base.InteractPreAssert(item, effect) == -1)
+            if (base.InteractPreAssert(item, effect) == -1)
             {
                 UIManager.Instance.SetInfoTextBar("It has a lock. I need a key to open it");
-                return;
+                return false;
             }
 
             UIManager.Instance.SetInfoTextBar("Lock opened");
             isLockOpen = true;
             lockToShelf.SetActive(false);
+            return true;
         }
     }
 

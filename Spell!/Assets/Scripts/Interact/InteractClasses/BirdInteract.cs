@@ -27,19 +27,19 @@ public class BirdInteract : InteractiveObject
         hintScroll.SetActive(false);
     }
 
-    public override void Interact(ItemList item, EffectList effect)
+    public override bool Interact(ItemList item, EffectList effect)
     {
         if(base.InteractPreAssert(item, effect) == -1)
         {
             if(isHintGiven)
             {
                 UIManager.Instance.SetInfoTextBar("Bird seems happy");
-                return;
+                return false;
             }
             else
             {
                 UIManager.Instance.SetInfoTextBar("The Bird is staring at me. He seems hungry");
-                return;
+                return false;
             }
         }
 
@@ -48,7 +48,7 @@ public class BirdInteract : InteractiveObject
             UIManager.Instance.SetInfoTextBar("The Bird is eating meat.");
             hintScroll.SetActive(true);
             isHintGiven = true;
-            return;
+            return true;
         }
 
         if(base.InteractPreAssert(item, effect, 1))
@@ -59,13 +59,15 @@ public class BirdInteract : InteractiveObject
                 pigeonAnim.SetTrigger(AnimationID.Bird_Pick);
                 --featherPickedCount;
                 Instantiate(feather, featherPosition);
-                return;
+                return true;
             }
 
             UIManager.Instance.SetInfoTextBar("The Bird left");
             FlyAway();
-            return;
+            return true;
         }
+
+        return false;
     }
 
     private void FlyAway()

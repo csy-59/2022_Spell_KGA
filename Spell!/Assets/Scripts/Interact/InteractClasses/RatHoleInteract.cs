@@ -29,14 +29,14 @@ public class RatHoleInteract : InteractiveObject
     {
     }
 
-    public override void Interact(ItemList item, EffectList effect)
+    public override bool Interact(ItemList item, EffectList effect)
     {
         if(base.InteractPreAssert(item, effect, 1))
         {
             if(isHairGiven)
             {
                 UIManager.Instance.SetInfoTextBar("I think i sould leave them alone...");
-                return;
+                return false;
             }
 
             UIManager.Instance.SetInfoTextBar("They almost bit me!");
@@ -46,22 +46,24 @@ public class RatHoleInteract : InteractiveObject
             hair.GetComponent<Rigidbody>().AddForce(Vector3.forward * hairPickForce, ForceMode.Impulse);
 
             isHairGiven = true;
+            return true;
         }
         else
         {
             if (isKeyGiven)
             {
                 UIManager.Instance.SetInfoTextBar("Rats seem happy");
-                return;
+                return false;
             }
 
             if(!base.InteractPreAssert(item, effect, 0))
             {
                 UIManager.Instance.SetInfoTextBar("Rats seem hungry");
-                return;
+                return false;
             }
 
             RatReactAndGiveKey();
+            return true;
         }
 
     }

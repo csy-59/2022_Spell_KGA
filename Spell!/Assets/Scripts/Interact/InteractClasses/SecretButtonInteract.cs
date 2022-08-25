@@ -27,7 +27,7 @@ public class SecretButtonInteract : InteractiveObject
     {
     }
 
-    public override void Interact(ItemList item, EffectList effect)
+    public override bool Interact(ItemList item, EffectList effect)
     {
         ObjectMove.Instance.ObjectMoveToTargetPosition(
             button,
@@ -36,5 +36,7 @@ public class SecretButtonInteract : InteractiveObject
             new ObjectMove.BeforeService(() => { gameObject.layer = LayerMask.NameToLayer("Default"); }),
             new ObjectMove.AfterService(() => { chest.SetActive(true); })
             );
+
+        return true;
     }
 }
