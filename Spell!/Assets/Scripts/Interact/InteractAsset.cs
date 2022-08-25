@@ -21,6 +21,7 @@ namespace InteractAsset
         Cloth,
         Moss,
         Spoon,
+        Bowl,
 
         Scroll,
 

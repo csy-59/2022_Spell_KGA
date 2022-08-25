@@ -22,6 +22,8 @@ public class ItemInteract : InteractiveObject
     private Collider[] colliders;
     private Collider[] collidersInChild;
 
+    protected static readonly Vector3 zeroVector = Vector3.zero;
+
     public ItemList ItemType
     {
         get => itemType;
@@ -44,7 +46,8 @@ public class ItemInteract : InteractiveObject
 
     private void Update()
     {
-        transform.localPosition = Vector3.zero;    
+        if(isItemPicked)
+            transform.localPosition = zeroVector;    
     }
 
     public virtual bool Interact(ItemList item, ObjectList objectToInteract)
@@ -94,10 +97,11 @@ public class ItemInteract : InteractiveObject
     {
         itemSetting(pickSize, false);
         gameObject.layer = LayerMask.NameToLayer("PickedItem");
+        rigid.velocity = zeroVector;
 
         transform.rotation = itemPosition.rotation * Quaternion.Euler(itemPickRotation);
         transform.parent = itemPosition;
-        transform.localPosition = Vector3.zero;
+        transform.localPosition = zeroVector;
 
         gameObject.SetActive(true);
     }
@@ -108,6 +112,9 @@ public class ItemInteract : InteractiveObject
         {
             PickUp(itemPosition);
         }
+
+        transform.parent = itemPosition;
+        transform.localPosition = zeroVector;
 
         gameObject.SetActive(false);
     }

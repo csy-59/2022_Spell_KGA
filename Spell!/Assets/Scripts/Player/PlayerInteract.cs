@@ -57,11 +57,6 @@ public class PlayerInteract : MonoBehaviour
 
         if(input.Mouse0Click)
         {
-            if(item != ItemList.NoItem)
-            {
-                return false;
-            }
-
             PickItem(newItem);
         }
         else // E
