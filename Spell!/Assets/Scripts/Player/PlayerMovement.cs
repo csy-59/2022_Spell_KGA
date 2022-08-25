@@ -23,8 +23,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
-        SitAndSand(input.Shift);
+        if(!UIManager.Instance.isInventoryOn)
+        {
+            Move();
+            SitAndSand(input.Shift);
+        }
     }
 
     private void Move()

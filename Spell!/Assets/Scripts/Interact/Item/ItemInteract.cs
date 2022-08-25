@@ -8,7 +8,7 @@ public class ItemInteract : InteractiveObject
     [SerializeField] protected ObjectList[] necessaryObject  = { ObjectList.DontCare };
 
     [Header("Basic Item")]
-    [SerializeField] private Sprite itemImage;
+    public Sprite itemImage;
     [SerializeField] protected ItemList itemType = ItemList.NoItem;
 
     [SerializeField] private float itemPickSize;
@@ -93,27 +93,27 @@ public class ItemInteract : InteractiveObject
         return true;
     }
 
-    public virtual void PickUp(Transform itemPosition)
+    public virtual void PickUp(Transform itemTransform)
     {
         itemSetting(pickSize, false);
         gameObject.layer = LayerMask.NameToLayer("PickedItem");
         rigid.velocity = zeroVector;
 
-        transform.rotation = itemPosition.rotation * Quaternion.Euler(itemPickRotation);
-        transform.parent = itemPosition;
+        transform.rotation = itemTransform.rotation * Quaternion.Euler(itemPickRotation);
+        transform.parent = itemTransform;
         transform.localPosition = zeroVector;
 
         gameObject.SetActive(true);
     }
 
-    public virtual void ToInventory(Transform itemPosition)
+    public virtual void ToInventory(Transform itemTransform)
     {
         if(!isItemPicked)
         {
-            PickUp(itemPosition);
+            PickUp(itemTransform);
         }
 
-        transform.parent = itemPosition;
+        transform.parent = itemTransform;
         transform.localPosition = zeroVector;
 
         gameObject.SetActive(false);

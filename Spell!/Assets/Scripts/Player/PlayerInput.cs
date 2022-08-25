@@ -23,6 +23,7 @@ public class PlayerInput : MonoBehaviour
         MouseX = Input.GetAxis("Mouse X");
         MouseY = Input.GetAxis("Mouse Y");
         Mouse0Click = Input.GetMouseButtonDown(0);
+        Mouse1Click = Input.GetMouseButtonDown(1);
 
         Shift = Input.GetKey(KeyCode.LeftShift);
         E = Input.GetKeyDown(KeyCode.E);

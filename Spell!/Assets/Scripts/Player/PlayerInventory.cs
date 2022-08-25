@@ -5,17 +5,26 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     [Header("Inventory")]
-    [SerializeField] private readonly int inventoryCapacity = 25;
-    [SerializeField] private Transform InventoryPosition;
+    private int capacity;
+    [SerializeField] private Transform position;
     private List<ItemInteract> inventory = new List<ItemInteract>();
 
     private PlayerInput input;
-    private PlayerInteract interact;
+    private PlayerInteraction interaction;
 
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
-        interact = GetComponent<PlayerInteract>();
+        interaction = GetComponent<PlayerInteraction>();
+        capacity = UIManager.Instance.inventoryCapacity;
+    }
+
+    private void Update()
+    {
+        if(input.E)
+        {
+           UIManager.Instance.ShowInventory(inventory);
+        }
     }
 
     public void SelectItem(int itemNumber)
@@ -24,13 +33,16 @@ public class PlayerInventory : MonoBehaviour
             return;
 
         ItemInteract selectedItem = inventory[itemNumber];
+        
         inventory.RemoveAt(itemNumber);
-        interact.PickItem(selectedItem);
+        interaction.PickItem(selectedItem);
+
+        UIManager.Instance.SetInventory(inventory);
     }
 
     public bool AddItemToInventory(ItemInteract item)
     {
-        if(inventory.Count >= inventoryCapacity)
+        if(inventory.Count >= capacity)
         {
             UIManager.Instance.SetInfoTextBar("Inventory is Full");
             return false;
@@ -41,7 +53,7 @@ public class PlayerInventory : MonoBehaviour
             return false;
         }
 
-        item.ToInventory(InventoryPosition);
+        item.ToInventory(position);
         inventory.Add(item);
 
         return true;

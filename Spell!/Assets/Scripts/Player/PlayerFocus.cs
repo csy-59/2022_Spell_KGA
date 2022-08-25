@@ -19,18 +19,21 @@ public class PlayerFocus : MonoBehaviour
     }
 
     private PlayerInput input;
-    private PlayerInteract interact;
+    private PlayerInteraction interact;
 
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
-        interact = GetComponent<PlayerInteract>();
+        interact = GetComponent<PlayerInteraction>();
     }
 
     void Update()
     {
-        FocusInteractive();
-        interact.Do(focusObject);
+        if(!UIManager.Instance.isInventoryOn)
+        {
+            FocusInteractive();
+            interact.Do(focusObject);
+        }
     }
 
     private void FocusInteractive()
@@ -65,7 +68,6 @@ public class PlayerFocus : MonoBehaviour
         {
             SetFocusObject();
         }
-
     }
 
     private void SetFocusObject(InteractiveObject item)

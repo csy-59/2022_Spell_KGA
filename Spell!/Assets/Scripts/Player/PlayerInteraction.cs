@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using InteractAsset;
 
-public class PlayerInteract : MonoBehaviour
+public class PlayerInteraction : MonoBehaviour
 {
     [Header("Player State")]
     [SerializeField] private ItemList item;
@@ -43,7 +43,7 @@ public class PlayerInteract : MonoBehaviour
 
     private bool PickOrMoveToInventoryItem(InteractiveObject focusObject)
     {
-        if(!input.Mouse0Click && !input.E)
+        if (!input.Mouse0Click && !input.Mouse1Click)
         {
             return false;
         }
@@ -59,7 +59,7 @@ public class PlayerInteract : MonoBehaviour
         {
             PickItem(newItem);
         }
-        else // E
+        else // Mouse1Click
         {
             if(!ItemToInventory(newItem))
             {
