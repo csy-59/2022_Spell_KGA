@@ -110,9 +110,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 1
-  interactLine: interact
+  interactFailLine: interact
+  objectType: 16
   necessaryEffect: 0b000000
-  necessaryItem: 05000000
+  necessaryItem: 01000000
   isLeverOn: 0
   leverRotateAmount: 30
   leverRotateSpeed: 50

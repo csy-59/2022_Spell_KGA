@@ -48,14 +48,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
-  interactLine: interact
+  interactFailLine: interact
+  objectType: 2
   necessaryEffect: 01000000
-  necessaryItem: 05000000
+  necessaryItem: 00000000
   knockCount: 0
   currentKnockCount: 0
   knockTimeOffset: 1
   wallBreakEffect: {fileID: 2926617774997251567}
-  wall: {fileID: 5145849991699229898}
+  walls: []
   destroyTime: 1.75
 --- !u!65 &7461922938650803863
 BoxCollider:
@@ -211,11 +212,6 @@ PrefabInstance:
 --- !u!4 &5143795648320920182 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4269533601661346, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
-  m_PrefabInstance: {fileID: 5146846905823747028}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5145849991699229898 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1405933525448478, guid: 1a5c9e457f7d63243bfea07696875f0d, type: 3}
   m_PrefabInstance: {fileID: 5146846905823747028}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8508268826197745179

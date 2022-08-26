@@ -105,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 1
   interactFailLine: interact
+  objectType: 12
   necessaryEffect: 0b000000
   necessaryItem: 05000000
   fadeSpeed: 0.5

@@ -94,7 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 1
-  interactLine: interact
+  interactFailLine: interact
+  objectType: 14
   necessaryEffect: 0b000000
   necessaryItem: 05000000
   cristalShard: {fileID: 7096924729989000777, guid: 8a9146d83590ea34bbe328a56b5aab6a, type: 3}

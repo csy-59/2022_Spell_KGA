@@ -62,8 +62,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 1
   interactFailLine: interact
+  objectType: 8
   necessaryEffect: 0b00000001000000
-  necessaryItem: 0500000005000000
+  necessaryItem: 0100000001000000
   item: {fileID: 0}
   getItemLine: It's an old scroll
   afterItemLine: I think it's better not to touch him...

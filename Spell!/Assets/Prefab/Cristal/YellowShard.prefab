@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7252255578849547824}
   - component: {fileID: 4292503106490422843}
   - component: {fileID: 221981967789376519}
+  - component: {fileID: -6553522660449018376}
   m_Layer: 0
   m_Name: YellowShard
   m_TagString: Untagged
@@ -64,6 +65,28 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6553522660449018376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7255555062616322518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b3f93c8cadf884dae48b5c2218710f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 1
+  interactFailLine: Shining shard
+  objectType: 11
+  necessaryEffect: 0b000000
+  necessaryItem: 01000000
+  necessaryObject: 0a000000
+  itemImage: {fileID: 21300000, guid: 26c4ac11c254dc1419c4d354cff2f2ab, type: 3}
+  itemType: 21
+  itemPickSize: 0.2
+  itemPickRotation: {x: 0, y: 0, z: 0}
 --- !u!1001 &3761520314091571746
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127,6 +150,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: dded9448fd3136f4fa24fb4922f82991, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e0fa719f353ab4b46a34e0dcb178dc8a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dded9448fd3136f4fa24fb4922f82991, type: 3}
 --- !u!4 &3761520314091966626 stripped

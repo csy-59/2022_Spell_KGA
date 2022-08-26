@@ -23,7 +23,6 @@ public class MossedWallInteract : InteractiveObject
     {
         base.Awake();
 
-        bool[] isPushed = { false };
         for(int i = 0; i < mossCount; ++i)
         {
             float x = Random.Range(minMossPosition.x, maxMossPosition.x);
@@ -33,9 +32,12 @@ public class MossedWallInteract : InteractiveObject
             float scale = Random.Range(minScale, maxScale);
 
             GameObject newMoss = Instantiate(moss, transform);
+            newMoss.name = "Moss";
             newMoss.transform.Translate(newPosition);
             newMoss.transform.Rotate(90f, 0f, 0f);
             newMoss.transform.localScale = new Vector3(scale, scale, scale);
+
+            Debug.Log("newMoss");
 
             mossStack.Push(newMoss);
         }
@@ -52,8 +54,9 @@ public class MossedWallInteract : InteractiveObject
 
         GameObject pickedMoss = mossStack.Pop();
         pickedMoss.transform.parent = null;
-        Rigidbody mossRigidbody = pickedMoss.AddComponent<Rigidbody>();
+        Rigidbody mossRigidbody = pickedMoss.GetComponent<Rigidbody>();
         pickedMoss.GetComponent<BoxCollider>().enabled = true;
+        mossRigidbody.useGravity = true;
         mossRigidbody.AddForce(Vector3.forward * mossPickForce, ForceMode.Impulse);
 
         if(mossStack.Count <= 0)

@@ -85,7 +85,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if(input.Mouse1Click && item != ItemList.NoItem)
         {
-            pickedItem.Use();
+            pickedItem.Use(this);
         }
     }
 
@@ -104,6 +104,15 @@ public class PlayerInteraction : MonoBehaviour
         item.DropDown();
         if(item == pickedItem)
             SetPickedItem();
+    }
+
+    public void SendPickedItemToInventory()
+    {
+        if (this.item != ItemList.NoItem)
+        {
+            inventory.AddItemToInventory(pickedItem);
+        }
+        SetPickedItem();
     }
 
     public void DestroyItem(ItemInteract item)
@@ -127,5 +136,10 @@ public class PlayerInteraction : MonoBehaviour
     {
         pickedItem = null;
         this.item = ItemList.NoItem;
+    }
+
+    public void SetPlayerEffect(EffectList effect)
+    {
+        this.effect = effect;
     }
 }

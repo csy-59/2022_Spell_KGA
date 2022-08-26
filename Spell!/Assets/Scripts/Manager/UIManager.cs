@@ -94,6 +94,7 @@ public class UIManager : SingletonBehaviour<UIManager>
 
         for(int i = inventory.Count; i < inventoryCapacity; ++i)
         {
+            itemInventory[i].sprite = null;
             itemInventory[i].color = originalColor;
         }
     }

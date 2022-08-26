@@ -7,15 +7,15 @@ public class MagicMaterialItemInteract : ItemInteract
 {
     protected override void Awake()
     {
-        //itemPickSize = 1f;
-        //itemPickRotation = new Vector3(0f, 0f, 0f);
-
         base.Awake();
+
+        necessaryItem = new ItemList[] { ItemList.DontCare, ItemList.DontCare };
+        necessaryObject = new ObjectList[] { ObjectList.SmallCauldron, ObjectList.BigCauldron };
     }
 
     public override bool Interact(ItemList item, ObjectList objectToInteract)
     {
-        if(base.Interact(item, objectToInteract))
+        if(InteractPreAssertForItem(item, objectToInteract, 0))
         {
             Destroy(gameObject);
             return true;

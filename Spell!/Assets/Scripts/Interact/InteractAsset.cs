@@ -31,6 +31,11 @@ namespace InteractAsset
         PinkShard,
         PurpleShard,
         YellowShard,
+        WhiteShard,
+
+        Flask,
+
+        RatHair,
 
         ItemMax
     }
@@ -57,7 +62,10 @@ namespace InteractAsset
 
     public enum ChangeEndingList
     {
-        
+        Bird,
+        Skeleton,
+        Slime,
+        Rat
     }
 
     public enum ObjectList
@@ -75,6 +83,15 @@ namespace InteractAsset
         Door,
         Cauldron,
         Item,
+        Chest,
+        Cupboard,
+        Cristal,
+        Firepit,
+        Switch,
+        Clock,
+        WoodenPlank,
+        SmallCauldron,
+        BigCauldron,
 
         ObjectMax
     }

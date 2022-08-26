@@ -154,7 +154,7 @@ public class ItemInteract : InteractiveObject
         isItemPicked = !isDropped;
     }
 
-    public virtual bool Use()
+    public virtual bool Use(PlayerInteraction player)
     {
         return false;
     }

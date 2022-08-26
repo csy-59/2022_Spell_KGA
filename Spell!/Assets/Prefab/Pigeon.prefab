@@ -93,8 +93,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 3
   interactFailLine: interact
+  objectType: 5
   necessaryEffect: 0b00000004000000
-  necessaryItem: 0400000005000000
+  necessaryItem: 0400000001000000
   hintScroll: {fileID: 0}
   feather: {fileID: 4122226010053051551, guid: 7874f9f7bd42c914492e8ad72133bec3, type: 3}
   featherPosition: {fileID: 0}
@@ -257,5 +258,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 1
   interactFailLine: interact
+  objectType: 0
   necessaryEffect: 
   necessaryItem: 

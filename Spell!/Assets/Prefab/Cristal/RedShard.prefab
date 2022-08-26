@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4893567311756812012}
   - component: {fileID: 8739686081311023298}
   - component: {fileID: 6120767347425559095}
+  - component: {fileID: 8293861188177302947}
   m_Layer: 0
   m_Name: RedShard
   m_TagString: Untagged
@@ -64,6 +65,28 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8293861188177302947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4899494781019504682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b3f93c8cadf884dae48b5c2218710f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 1
+  interactFailLine: Shining shard
+  objectType: 11
+  necessaryEffect: 0b000000
+  necessaryItem: 01000000
+  necessaryObject: 0a000000
+  itemImage: {fileID: 21300000, guid: e499178f1efc82d4d8baed642a6e5818, type: 3}
+  itemType: 18
+  itemPickSize: 0.2
+  itemPickRotation: {x: 0, y: 0, z: 0}
 --- !u!1001 &7302338286684769258
 PrefabInstance:
   m_ObjectHideFlags: 0

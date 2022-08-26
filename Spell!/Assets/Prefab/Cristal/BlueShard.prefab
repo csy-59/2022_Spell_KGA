@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2181839537881613302}
   - component: {fileID: 8225724278997886096}
   - component: {fileID: 7086948393301942133}
+  - component: {fileID: 6570033231871419552}
   m_Layer: 0
   m_Name: BlueShard
   m_TagString: Untagged
@@ -64,6 +65,28 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6570033231871419552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2184437748229750150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b3f93c8cadf884dae48b5c2218710f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 1
+  interactFailLine: Shining shard
+  objectType: 11
+  necessaryEffect: 0b000000
+  necessaryItem: 01000000
+  necessaryObject: 0a000000
+  itemImage: {fileID: 21300000, guid: 4048c7f0308311c40802d759724e98ae, type: 3}
+  itemType: 17
+  itemPickSize: 0.2
+  itemPickRotation: {x: 0, y: 0, z: 0}
 --- !u!1001 &416255400903319185
 PrefabInstance:
   m_ObjectHideFlags: 0

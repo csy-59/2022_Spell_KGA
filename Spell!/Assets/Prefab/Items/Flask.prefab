@@ -1,0 +1,173 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6779926691573552221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6779926691573254269}
+  - component: {fileID: 6779926691572451421}
+  - component: {fileID: 6779926691571354269}
+  - component: {fileID: 2464637702867484241}
+  - component: {fileID: 8944999372965357036}
+  - component: {fileID: 3406136036165940280}
+  m_Layer: 0
+  m_Name: Flask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6779926691573254269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6779926691573552221}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &6779926691572451421
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6779926691573552221}
+  m_Mesh: {fileID: 4300000, guid: 9ec750fc4cf747f4fbc15d8898b84ad7, type: 3}
+--- !u!23 &6779926691571354269
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6779926691573552221}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 98d71c75f13684d4ab284a351b77b3d3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &2464637702867484241
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6779926691573552221}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.115
+  m_Center: {x: 0, y: 0.1, z: 0}
+--- !u!54 &8944999372965357036
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6779926691573552221}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 10
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &3406136036165940280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6779926691573552221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f17e0f128eae03468575c459798d5aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 1
+  interactFailLine: interact
+  objectType: 0
+  necessaryEffect: 0b000000
+  necessaryItem: 01000000
+  necessaryObject: 01000000
+  itemImage: {fileID: 21300000, guid: c1fde08ef9d01af46a2a5d4448c12e54, type: 3}
+  itemType: 23
+  itemPickSize: 0.7
+  itemPickRotation: {x: 0, y: 0, z: 0}
+  changeItem: 0
+  potionRecipes:
+  - RecipeItemlist: 14000000
+    effect: 1
+    potionColor: {r: 0.32941177, g: 0, b: 1, a: 0}
+  - RecipeItemlist: 11000000
+    effect: 2
+    potionColor: {r: 0, g: 0.039215688, b: 1, a: 0}
+  - RecipeItemlist: 10000000
+    effect: 3
+    potionColor: {r: 0, g: 0, b: 0, a: 0}
+  - RecipeItemlist: 12000000
+    effect: 4
+    potionColor: {r: 1, g: 0, b: 0, a: 0}
+  - RecipeItemlist: 10000000100000001400000007000000
+    effect: 5
+    potionColor: {r: 0.49019608, g: 0, b: 0, a: 0}
+  - RecipeItemlist: 1000000010000000120000000c000000
+    effect: 6
+    potionColor: {r: 1, g: 0.27058825, b: 0, a: 0}
+  - RecipeItemlist: 140000001400000015000000
+    effect: 7
+    potionColor: {r: 0, g: 1, b: 0.039215688, a: 0}
+  - RecipeItemlist: 12000000120000001500000014000000
+    effect: 8
+    potionColor: {r: 0.7490196, g: 1, b: 0, a: 0}
+  - RecipeItemlist: 11000000110000001100000015000000150000001300000013000000
+    effect: 9
+    potionColor: {r: 0, g: 0.8627451, b: 1, a: 0}
+  - RecipeItemlist: 10000000120000001100000014000000150000001500000013000000130000001300000001000000
+    effect: 10
+    potionColor: {r: 1, g: 1, b: 1, a: 0}
+  originalColor: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 0}
+  flaskMaterial: {fileID: 0}
