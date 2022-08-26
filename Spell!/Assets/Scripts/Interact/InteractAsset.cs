@@ -92,6 +92,8 @@ namespace InteractAsset
         WoodenPlank,
         SmallCauldron,
         BigCauldron,
+        WoodenPlankWithFire,
+        FirepitWithFire,
 
         ObjectMax
     }

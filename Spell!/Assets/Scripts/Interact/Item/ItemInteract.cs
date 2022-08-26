@@ -107,7 +107,7 @@ public class ItemInteract : InteractiveObject
     {
         itemSetting(pickSize, false);
         gameObject.layer = LayerMask.NameToLayer("PickedItem");
-        rigid.velocity = zeroVector;
+        rigid.angularVelocity = zeroVector;
 
         transform.rotation = itemTransform.rotation * Quaternion.Euler(itemPickRotation);
         transform.parent = itemTransform;
@@ -134,6 +134,7 @@ public class ItemInteract : InteractiveObject
         itemSetting(originalSize, true);
         gameObject.transform.parent = null;
         gameObject.layer = LayerMask.NameToLayer("Item");
+        rigid.AddForce(Vector3.forward * 1, ForceMode.Impulse);
         gameObject.SetActive(true);
     }
 

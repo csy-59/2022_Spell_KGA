@@ -137,4 +137,4 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: ed1632af24660f04cac074fc0dd54557, type: 3}
   itemType: 22
   itemPickSize: 0.2
-  itemPickRotation: {x: 0, y: 0, z: 0}
+  itemPickRotation: {x: -90, y: 0, z: 0}

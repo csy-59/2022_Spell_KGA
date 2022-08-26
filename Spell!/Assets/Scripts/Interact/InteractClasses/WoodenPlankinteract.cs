@@ -17,6 +17,7 @@ public class WoodenPlankinteract : InteractiveObject
         base.Awake();
 
         fire.SetActive(false);
+        objectType = ObjectList.WoodenPlank;
     }
 
     public override bool Interact(ItemList item, EffectList effect)
@@ -24,6 +25,10 @@ public class WoodenPlankinteract : InteractiveObject
         if(IsFireOn)
         {
             UIManager.Instance.SetInfoTextBar("The fire is on!");
+            if(base.InteractPreAssert(item, effect, 1))
+            {
+                return true;
+            }
             return false;
         }
 
@@ -32,6 +37,7 @@ public class WoodenPlankinteract : InteractiveObject
             UIManager.Instance.SetInfoTextBar("Water is boilling...");
             IsFireOn = true;
             fire.SetActive(true);
+            objectType = ObjectList.WoodenPlankWithFire;
             return true;
         }
 

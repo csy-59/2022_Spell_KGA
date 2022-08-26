@@ -25,7 +25,7 @@ public class CauldronInteract : InteractiveObject
     {
         if(!fire.IsFireOn)
         {
-            UIManager.Instance.SetInfoTextBar("The wate is cold... I can't make potion!");
+            UIManager.Instance.SetInfoTextBar("The water is cold... I can't make potion!");
             return false;
         }
 

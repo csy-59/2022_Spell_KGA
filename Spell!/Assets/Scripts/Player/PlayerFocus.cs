@@ -21,10 +21,23 @@ public class PlayerFocus : MonoBehaviour
     private PlayerInput input;
     private PlayerInteraction interact;
 
+    private int layerMask;
+
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
         interact = GetComponent<PlayerInteraction>();
+
+
+        // ∑π¿Ã ΩÓ±‚
+        LayerMask interactiveLayer = LayerMask.NameToLayer("Interactive");
+        layerMask = 1 << interactiveLayer;
+
+        LayerMask itemLayer = LayerMask.NameToLayer("Item");
+        layerMask = layerMask | (1 << itemLayer);
+
+        LayerMask FloorLayer = LayerMask.NameToLayer("Floor");
+        layerMask = layerMask | (1 << FloorLayer);
     }
 
     void Update()
@@ -37,19 +50,15 @@ public class PlayerFocus : MonoBehaviour
     }
 
     private void FocusInteractive()
-    {
-        // ∑π¿Ã ΩÓ±‚
-        LayerMask interactiveLayer = LayerMask.NameToLayer("Interactive");
-        int layerMask = 1 << interactiveLayer;
-
-        LayerMask itemLayer = LayerMask.NameToLayer("Item");
-        layerMask = layerMask | (1 << itemLayer);
-        
+    {        
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hit;
         if(Physics.Raycast(ray.origin, ray.direction, out hit, reach, layerMask))
         {
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
+                return;
+
             InteractiveObject nowFocusObejct = hit.transform.gameObject.GetComponent<InteractiveObject>();
             if(nowFocusObejct)
             {

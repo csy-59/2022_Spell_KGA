@@ -48,7 +48,6 @@ public class FlaskInteract : ItemInteract
 
     private bool SetEffect(List<ItemList> itemQueue)
     {
-        Debug.Log(itemQueue);
 
         for(int i = 0; i < potionRecipes.Length; ++i)
         {
@@ -75,7 +74,6 @@ public class FlaskInteract : ItemInteract
             return false;
         }
 
-        ItemList item;
         for (int i = 0; i < itemQueue.Count; ++i)
         {
             if (itemQueue[i] != recipe.RecipeItemlist[i]
@@ -94,10 +92,13 @@ public class FlaskInteract : ItemInteract
         {
             UIManager.Instance.SetInfoTextBar($"I fill something...!{potionEffect}");
             player.SetPlayerEffect(potionEffect);
+            potionEffect = EffectList.NoEffect;
+            flaskMaterial.color = originalColor;
             return true;
         }
 
         UIManager.Instance.SetInfoTextBar("I fill nothing...");
+        player.SetPlayerEffect(potionEffect);
 
         return false;
     }

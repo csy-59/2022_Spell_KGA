@@ -224,8 +224,8 @@ MonoBehaviour:
   mode: 1
   interactFailLine: interact
   objectType: 15
-  necessaryEffect: 0b0000000b000000
-  necessaryItem: 0300000007000000
+  necessaryEffect: 0b0000000b0000000b000000
+  necessaryItem: 030000000700000002000000
   fire: {fileID: 1720031779856886623}
   fireScroll: {fileID: 0}
 --- !u!4 &1720031779689440717 stripped

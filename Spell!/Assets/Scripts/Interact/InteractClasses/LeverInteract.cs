@@ -35,11 +35,6 @@ public class LeverInteract : InteractiveObject
         }
     }
 
-    void Update()
-    {
-        
-    }
-
     public override bool Interact(ItemList item, EffectList effect)
     {
         base.Interact(item, effect);

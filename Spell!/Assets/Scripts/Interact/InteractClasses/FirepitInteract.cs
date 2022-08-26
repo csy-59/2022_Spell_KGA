@@ -18,6 +18,7 @@ public class FirepitInteract : InteractiveObject
 
         fireScroll.SetActive(false);
         fire.SetActive(false);
+        objectType = ObjectList.Firepit;
     }
 
     public override bool Interact(ItemList item, EffectList effect)
@@ -33,6 +34,7 @@ public class FirepitInteract : InteractiveObject
             UIManager.Instance.SetInfoTextBar("I set the fire");
             isFireOn = true;
             fire.SetActive(true);
+            objectType = ObjectList.FirepitWithFire;
             return true;
         }
 

@@ -38,6 +38,7 @@ public class PlayerInteraction : MonoBehaviour
         if(item != ItemList.NoItem)
         {
             UseItem();
+            DropItem();
         }
     }
 
@@ -59,7 +60,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             PickItem(newItem);
         }
-        else // Mouse1Click
+        else if(input.Mouse1Click) // Mouse1Click
         {
             if(!ItemToInventory(newItem))
             {
@@ -77,15 +78,17 @@ public class PlayerInteraction : MonoBehaviour
             if(focusObject.Interact(item, effect) && item != ItemList.NoItem)
             {
                 pickedItem.Interact(item, focusObject.ObjectType);
+                SetPickedItem(pickedItem);
             }
         }
     }
 
     private void UseItem()
     {
-        if(input.Mouse1Click && item != ItemList.NoItem)
+        if(input.Mouse1Click)
         {
             pickedItem.Use(this);
+            SetPickedItem(pickedItem);
         }
     }
 
@@ -99,11 +102,13 @@ public class PlayerInteraction : MonoBehaviour
         item.PickUp(handPosition);
     }
 
-    public void DropItem(ItemInteract item)
+    public void DropItem()
     {
-        item.DropDown();
-        if(item == pickedItem)
+        if(input.Q)
+        {
+            pickedItem.DropDown();
             SetPickedItem();
+        }
     }
 
     public void SendPickedItemToInventory()

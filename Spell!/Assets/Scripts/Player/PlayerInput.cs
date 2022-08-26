@@ -14,6 +14,7 @@ public class PlayerInput : MonoBehaviour
 
     public bool Shift { get; private set; }
     public bool E { get; private set; }
+    public bool Q { get; private set; }
 
     private void Update()
     {
@@ -27,5 +28,6 @@ public class PlayerInput : MonoBehaviour
 
         Shift = Input.GetKey(KeyCode.LeftShift);
         E = Input.GetKeyDown(KeyCode.E);
+        Q = Input.GetKeyDown(KeyCode.Q);
     }
 }

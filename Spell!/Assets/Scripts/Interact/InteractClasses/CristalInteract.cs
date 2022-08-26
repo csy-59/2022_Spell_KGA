@@ -33,7 +33,7 @@ public class CristalInteract : InteractiveObject
         lastShardGenerateTime = Time.time;
 
         GameObject shard = Instantiate(cristalShard, shardPosition.position, shardPosition.rotation);
-        shard.name = $"{cristalShard}";
+        shard.name = cristalShard.name;
         shard.transform.LookAt(target);
         shard.GetComponent<Rigidbody>().AddForce(Vector3.up * popForce, ForceMode.Impulse);
         return true;

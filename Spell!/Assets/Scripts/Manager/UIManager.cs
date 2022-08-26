@@ -28,9 +28,19 @@ public class UIManager : SingletonBehaviour<UIManager>
     private bool isInventoryShown = false;
 
     private readonly Color originalColor = new Color(1f, 1f, 1f, 1f);
+    private readonly Color originalColorBlack = new Color(0f, 0f, 0f, 1f);
     private readonly Color readyColor = new Color(1f, 1f, 1f, 0f);
+    private readonly Color readyColorBlack = new Color(0f, 0f, 0f, 0f);
 
-    delegate void MyButtonEvent(int i);
+    [Header("Black Out")]
+    [SerializeField] private GameObject blackOutPanel;
+    private Image blackOutImage;
+    private bool isBlackOutPanelShown = false;
+
+    [Header("Scroll")]
+    [SerializeField] private GameObject scrollPanel;
+    private Image scrollImage;
+    private bool isScrollShown = false;
 
     private void Awake()
     {
@@ -56,6 +66,13 @@ public class UIManager : SingletonBehaviour<UIManager>
         }
 
         inventoryPanel.SetActive(false);
+        
+        blackOutImage = blackOutPanel.GetComponent<Image>();
+        blackOutImage.color = readyColorBlack;
+        blackOutPanel.SetActive(false);
+
+        scrollImage = scrollPanel.GetComponent<Image>();
+        scrollPanel.SetActive(false);
     }
 
     public void SetInfoTextBar(string info)
@@ -66,9 +83,8 @@ public class UIManager : SingletonBehaviour<UIManager>
     public void ShowInventory(List<ItemInteract> inventory)
     {
         isInventoryShown = !isInventoryShown;
-        IsUIShown = isInventoryShown;
-
         inventoryPanel.SetActive(isInventoryShown);
+        SetIsUIShown();
 
         if(isInventoryShown)
         {
@@ -97,5 +113,74 @@ public class UIManager : SingletonBehaviour<UIManager>
             itemInventory[i].sprite = null;
             itemInventory[i].color = originalColor;
         }
+    }
+
+    public delegate void BlackOutEvent();
+
+    public void BlackOut(float speed, BlackOutEvent beforeBlackOut, 
+        BlackOutEvent afterBlackOut)
+    {
+        isBlackOutPanelShown = true;
+        blackOutPanel.SetActive(true);
+        SetIsUIShown();
+
+        beforeBlackOut.Invoke();
+        StartCoroutine(BlackOut(0f, 1f, speed, afterBlackOut));
+    }
+
+    private IEnumerator BlackOut(float startAlpha, float endAlpha, float speed, 
+        BlackOutEvent afterBlackOut)
+    {
+        float currentAlpha = startAlpha;
+
+        while(true)
+        {
+            currentAlpha = Mathf.Lerp(currentAlpha, endAlpha, speed * Time.deltaTime);
+            
+            blackOutImage.color = new Color(0f, 0f, 0f, currentAlpha);
+            if(Mathf.Abs(endAlpha - currentAlpha) < 0.001f)
+            {
+                blackOutImage.color = originalColorBlack;
+                break;
+            }
+
+            yield return null;
+        }
+
+        afterBlackOut?.Invoke();
+
+        currentAlpha = endAlpha;
+
+        while (true)
+        {
+            currentAlpha = Mathf.Lerp(currentAlpha, startAlpha, speed * Time.deltaTime);
+
+            blackOutImage.color = new Color(0f, 0f, 0f, currentAlpha);
+            if (Mathf.Abs(startAlpha - currentAlpha) < 0.001f)
+            {
+                blackOutImage.color = readyColor;
+                break;
+            }
+
+            yield return null;
+        }
+
+        isBlackOutPanelShown = false;
+        blackOutPanel.SetActive(false);
+        SetIsUIShown();
+    }
+
+    public void ShowScroll(Sprite scrollSprite)
+    {
+        isScrollShown = !isScrollShown;
+        scrollPanel.SetActive(isScrollShown);
+        SetIsUIShown();
+
+        scrollImage.sprite = scrollSprite;
+    }
+
+    private void SetIsUIShown()
+    {
+        IsUIShown = isInventoryShown | isBlackOutPanelShown;
     }
 }

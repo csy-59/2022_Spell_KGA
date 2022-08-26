@@ -14,17 +14,24 @@ public class TorchManager : SingletonBehaviour<TorchManager>
     [SerializeField] private Vector3 tileOffset;
     [SerializeField] private float tileSpeed;
 
+    [SerializeField] private GameObject[] teleports;
+
     private void Awake()
     {
         foreach (int num in secretPathLightNumber)
         {
             secretLightMask = secretLightMask | (1 << num);
         }
+
+        TeleportSetting(false);
     }
 
-    void Update()
+    private void TeleportSetting(bool isActive)
     {
-
+        foreach(GameObject teleport in teleports)
+        {
+            teleport.SetActive(isActive);
+        }
     }
 
     public void LightOn(int lightNumber)
@@ -50,7 +57,14 @@ public class TorchManager : SingletonBehaviour<TorchManager>
             ObjectMove.Instance.ObjectMoveToTargetPosition(
                 secretTile,
                 secretTile.position + tileOffset,
-                tileSpeed);
+                tileSpeed,
+                null,
+                ActiveTeleport);
         }
+    }
+
+    private void ActiveTeleport()
+    {
+        TeleportSetting(true);
     }
 }
