@@ -13,6 +13,7 @@ public class FlaskInteract : ItemInteract
     {
         public ItemList[] RecipeItemlist;
         public EffectList effect;
+        public Sprite effectSprite;
         public Color potionColor;
     }
 
@@ -24,6 +25,7 @@ public class FlaskInteract : ItemInteract
     private CauldronInteract[] cauldrons;
 
     [SerializeField] private Material flaskMaterial;
+    private Sprite effectSprite;
 
     protected override void Awake()
     {
@@ -55,12 +57,14 @@ public class FlaskInteract : ItemInteract
             {
                 potionEffect = potionRecipes[i].effect;
                 flaskMaterial.color = potionRecipes[i].potionColor;
+                effectSprite = potionRecipes[i].effectSprite;
                 return true;
             }
         }
 
         potionEffect = EffectList.NoEffect;
         flaskMaterial.color = originalColor;
+        effectSprite = null;
 
         return false;
     }
@@ -91,6 +95,7 @@ public class FlaskInteract : ItemInteract
         if(potionEffect != EffectList.NoEffect)
         {
             UIManager.Instance.SetInfoTextBar($"I fill something...!{potionEffect}");
+            UIManager.Instance.SetEffectImage(effectSprite);
             player.SetPlayerEffect(potionEffect);
             potionEffect = EffectList.NoEffect;
             flaskMaterial.color = originalColor;
@@ -98,6 +103,7 @@ public class FlaskInteract : ItemInteract
         }
 
         UIManager.Instance.SetInfoTextBar("I fill nothing...");
+        UIManager.Instance.SetEffectImage(effectSprite);
         player.SetPlayerEffect(potionEffect);
 
         return false;

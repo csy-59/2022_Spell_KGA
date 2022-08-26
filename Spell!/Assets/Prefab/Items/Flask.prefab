@@ -130,9 +130,9 @@ MonoBehaviour:
   mode: 1
   interactFailLine: interact
   objectType: 0
-  necessaryEffect: 0b000000
-  necessaryItem: 01000000
-  necessaryObject: 01000000
+  necessaryEffect: 0b0000000b000000
+  necessaryItem: 0100000001000000
+  necessaryObject: 1300000014000000
   itemImage: {fileID: 21300000, guid: c1fde08ef9d01af46a2a5d4448c12e54, type: 3}
   itemType: 23
   itemPickSize: 0.7
@@ -141,33 +141,43 @@ MonoBehaviour:
   potionRecipes:
   - RecipeItemlist: 14000000
     effect: 1
+    effectSprite: {fileID: 0}
     potionColor: {r: 0.32941177, g: 0, b: 1, a: 0}
   - RecipeItemlist: 11000000
     effect: 2
+    effectSprite: {fileID: 0}
     potionColor: {r: 0, g: 0.039215688, b: 1, a: 0}
   - RecipeItemlist: 10000000
     effect: 3
+    effectSprite: {fileID: 0}
     potionColor: {r: 0, g: 0, b: 0, a: 0}
   - RecipeItemlist: 12000000
     effect: 4
+    effectSprite: {fileID: 0}
     potionColor: {r: 1, g: 0, b: 0, a: 0}
   - RecipeItemlist: 10000000100000001400000007000000
     effect: 5
+    effectSprite: {fileID: 0}
     potionColor: {r: 0.49019608, g: 0, b: 0, a: 0}
   - RecipeItemlist: 1000000010000000120000000c000000
     effect: 6
+    effectSprite: {fileID: 0}
     potionColor: {r: 1, g: 0.27058825, b: 0, a: 0}
   - RecipeItemlist: 140000001400000015000000
     effect: 7
+    effectSprite: {fileID: 0}
     potionColor: {r: 0, g: 1, b: 0.039215688, a: 0}
   - RecipeItemlist: 12000000120000001500000014000000
     effect: 8
+    effectSprite: {fileID: 0}
     potionColor: {r: 0.7490196, g: 1, b: 0, a: 0}
   - RecipeItemlist: 11000000110000001100000015000000150000001300000013000000
     effect: 9
+    effectSprite: {fileID: 0}
     potionColor: {r: 0, g: 0.8627451, b: 1, a: 0}
   - RecipeItemlist: 10000000120000001100000014000000150000001500000013000000130000001300000001000000
     effect: 10
+    effectSprite: {fileID: 0}
     potionColor: {r: 1, g: 1, b: 1, a: 0}
   originalColor: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 0}
   flaskMaterial: {fileID: 0}

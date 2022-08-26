@@ -10,6 +10,9 @@ public class UIManager : SingletonBehaviour<UIManager>
     public TextMeshProUGUI InfoText;
     public TextMeshProUGUI InstructionText;
 
+    [Header("Effect")]
+    [SerializeField] private Image effectImage;
+
     [Header("Inventory")]
     public int inventoryCapacity;
 
@@ -64,6 +67,8 @@ public class UIManager : SingletonBehaviour<UIManager>
 
             itemInventory.Add(itemImage);
         }
+
+        effectImage.sprite = null;
 
         inventoryPanel.SetActive(false);
         
@@ -182,5 +187,10 @@ public class UIManager : SingletonBehaviour<UIManager>
     private void SetIsUIShown()
     {
         IsUIShown = isInventoryShown | isBlackOutPanelShown;
+    }
+
+    public void SetEffectImage(Sprite effectSprite)
+    {
+        effectImage.sprite = effectSprite;
     }
 }
