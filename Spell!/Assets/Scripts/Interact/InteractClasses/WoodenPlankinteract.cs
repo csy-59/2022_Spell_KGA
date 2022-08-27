@@ -24,7 +24,7 @@ public class WoodenPlankinteract : InteractiveObject
     {
         if(IsFireOn)
         {
-            UIManager.Instance.SetInfoTextBar("The fire is on!");
+            UIManager.Instance.SetInfoTextBar("The fire is warm");
             if(base.InteractPreAssert(item, effect, 1))
             {
                 return true;
@@ -42,8 +42,6 @@ public class WoodenPlankinteract : InteractiveObject
         }
 
         UIManager.Instance.SetInfoTextBar("I need something to put on fire...");
-
-        fire.SetActive(IsFireOn);
         
         return false;
     }

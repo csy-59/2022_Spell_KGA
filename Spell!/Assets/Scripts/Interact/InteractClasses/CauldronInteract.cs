@@ -62,7 +62,10 @@ public class CauldronInteract : InteractiveObject
         }
 
         UIManager.Instance.SetInfoTextBar("Spell!");
-        waterMaterial.color = effectColors[interactionNumber];
+        if(interactionNumber < effectColors.Length)
+        {
+            waterMaterial.color = effectColors[interactionNumber];
+        }
         magicMaterialsQueue.Add(item);
         return true;
     }

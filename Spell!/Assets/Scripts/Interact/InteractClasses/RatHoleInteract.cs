@@ -75,9 +75,16 @@ public class RatHoleInteract : InteractiveObject
 
         key.SetActive(true);
         isKeyGiven = true;
-        ObjectMove.Instance.ObjectMoveToTargetPosition(key.transform, keyPosition.position, keySlideSpeed);
-
-        necessaryItem[0] = ItemList.DontCare;
+        ObjectMove.Instance.ObjectMoveToTargetPosition(
+            key.transform, 
+            keyPosition.position, 
+            keySlideSpeed,
+            () => { key.GetComponent<Collider>().enabled = false; },
+            () => { 
+                key.GetComponent<Collider>().enabled = true;
+                key.GetComponent<Rigidbody>().useGravity = true;
+            }
+            );
     }
 
 

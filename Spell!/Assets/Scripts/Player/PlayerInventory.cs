@@ -23,7 +23,7 @@ public class PlayerInventory : MonoBehaviour
     {
         if(input.E)
         {
-           UIManager.Instance.ShowInventory(inventory);
+            UIManager.Instance.ShowInventory(inventory);
         }
     }
 

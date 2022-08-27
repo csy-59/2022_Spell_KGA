@@ -80,10 +80,10 @@ MonoBehaviour:
   mode: 1
   interactFailLine: Shining shard
   objectType: 11
-  necessaryEffect: 0b000000
-  necessaryItem: 01000000
-  necessaryObject: 0a000000
-  itemImage: {fileID: 21300000, guid: 26c4ac11c254dc1419c4d354cff2f2ab, type: 3}
+  necessaryEffect: 0b0000000b000000
+  necessaryItem: 0100000001000000
+  necessaryObject: 1300000014000000
+  itemImage: {fileID: 21300000, guid: fd2aece9e95ed5841a8621b138f5a0f7, type: 3}
   itemType: 21
   itemPickSize: 0.2
   itemPickRotation: {x: 0, y: 0, z: 0}

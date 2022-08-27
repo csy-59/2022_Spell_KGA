@@ -97,9 +97,4 @@ namespace InteractAsset
 
         ObjectMax
     }
-
-    public static class CurrentItem
-    {
-
-    }
 }

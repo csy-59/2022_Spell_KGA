@@ -25,13 +25,16 @@ public class PlayerInteraction : MonoBehaviour
         pickedItem = null;
     }
 
-    public void Do(InteractiveObject focusObject)
+    public void interact(InteractiveObject focusObject)
     {
-        if(focusObject)
+        if (!UIManager.Instance.IsUIShown)
         {
-            if (!PickOrMoveToInventoryItem(focusObject))
+            if (focusObject)
             {
-                InteractWithObejct(focusObject);
+                if (!PickOrMoveToInventoryItem(focusObject))
+                {
+                    InteractWithObejct(focusObject);
+                }
             }
         }
 
@@ -104,7 +107,12 @@ public class PlayerInteraction : MonoBehaviour
 
     public void DropItem()
     {
-        if(input.Q)
+        if (UIManager.Instance.IsUIShown)
+        {
+            return;
+        }
+
+        if (input.Q)
         {
             pickedItem.DropDown();
             SetPickedItem();

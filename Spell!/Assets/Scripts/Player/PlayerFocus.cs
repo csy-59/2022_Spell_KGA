@@ -19,14 +19,14 @@ public class PlayerFocus : MonoBehaviour
     }
 
     private PlayerInput input;
-    private PlayerInteraction interact;
+    private PlayerInteraction interaction;
 
     private int layerMask;
 
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
-        interact = GetComponent<PlayerInteraction>();
+        interaction = GetComponent<PlayerInteraction>();
 
 
         // ∑π¿Ã ΩÓ±‚
@@ -42,22 +42,27 @@ public class PlayerFocus : MonoBehaviour
 
     void Update()
     {
-        if(!UIManager.Instance.IsUIShown)
-        {
-            FocusInteractive();
-            interact.Do(focusObject);
-        }
+        FocusInteractive();
+        interaction.interact(focusObject);
     }
 
     private void FocusInteractive()
-    {        
+    {
+        if (UIManager.Instance.IsUIShown)
+        {
+            return;
+        }
+
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hit;
         if(Physics.Raycast(ray.origin, ray.direction, out hit, reach, layerMask))
         {
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
+            {
+                SetFocusObject();
                 return;
+            }
 
             InteractiveObject nowFocusObejct = hit.transform.gameObject.GetComponent<InteractiveObject>();
             if(nowFocusObejct)

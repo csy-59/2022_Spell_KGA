@@ -98,13 +98,16 @@ public class FlaskInteract : ItemInteract
             UIManager.Instance.SetEffectImage(effectSprite);
             player.SetPlayerEffect(potionEffect);
             potionEffect = EffectList.NoEffect;
+            effectSprite = null;
             flaskMaterial.color = originalColor;
             return true;
         }
-
-        UIManager.Instance.SetInfoTextBar("I fill nothing...");
-        UIManager.Instance.SetEffectImage(effectSprite);
-        player.SetPlayerEffect(potionEffect);
+        else
+        {
+            UIManager.Instance.SetInfoTextBar("I fill nothing...");
+            UIManager.Instance.SetEffectImage(effectSprite);
+            player.SetPlayerEffect(potionEffect);
+        }
 
         return false;
     }

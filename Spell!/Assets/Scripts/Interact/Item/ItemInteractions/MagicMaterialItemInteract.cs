@@ -15,7 +15,7 @@ public class MagicMaterialItemInteract : ItemInteract
 
     public override bool Interact(ItemList item, ObjectList objectToInteract)
     {
-        if(InteractPreAssertForItem(item, objectToInteract, 0))
+        if(InteractPreAssertForItem(item, objectToInteract) != -1)
         {
             Destroy(gameObject);
             return true;

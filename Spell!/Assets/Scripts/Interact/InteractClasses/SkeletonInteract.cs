@@ -40,29 +40,24 @@ public class SkeletonInteract : InteractiveObject
     {
         if(base.InteractPreAssert(item, effect, 1))
         {
-            if(isBoneGiven)
+            if(!isBoneGiven)
             {
-                UIManager.Instance.SetInfoTextBar(afterBoneLine);
-                return false;
+                UIManager.Instance.SetInfoTextBar(getBoneLine);
+                Instantiate(bone, bonePosition.position, bonePosition.rotation);
+                isBoneGiven = true;
+                return true;
             }
-
-            UIManager.Instance.SetInfoTextBar(getBoneLine);
-            Instantiate(bone, bonePosition.position, bonePosition.rotation);
-            isBoneGiven = true;
-            return true;
         }
-        else
+
+        if (isItemGiven)
         {
-            if (isItemGiven)
-            {
-                UIManager.Instance.SetInfoTextBar(afterItemLine);
-                return false;
-            }
-
-            UIManager.Instance.SetInfoTextBar(getItemLine);
-            this.item.SetActive(true);
-            isItemGiven = true;
-            return true;
+            UIManager.Instance.SetInfoTextBar(afterItemLine);
+            return false;
         }
+
+        UIManager.Instance.SetInfoTextBar(getItemLine);
+        this.item.SetActive(true);
+        isItemGiven = true;
+        return true;
     }
 }

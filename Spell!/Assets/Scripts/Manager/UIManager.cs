@@ -21,6 +21,7 @@ public class UIManager : SingletonBehaviour<UIManager>
     public PlayerInventory inventoryScript;
     
     public Button ButtonPrefab;
+    private Sprite originalButtonSprite;
     [SerializeField] private float xStartPos = 40f;
     [SerializeField] private float yStartPos = -40f;
     [SerializeField] private float positionOffset = 90f;
@@ -49,6 +50,8 @@ public class UIManager : SingletonBehaviour<UIManager>
     {
         SetInfoTextBar("");
 
+        originalButtonSprite = ButtonPrefab.GetComponentInChildren<Image>().sprite;
+
         for(int i = 0; i< inventoryCapacity; ++i)
         {
             Button newButton = Instantiate(ButtonPrefab, ItemPanel.transform);
@@ -61,7 +64,7 @@ public class UIManager : SingletonBehaviour<UIManager>
                 inventoryScript.SelectItem(temp); 
             });
 
-            Image itemImage = newButton.GetComponentInChildren<Image>();
+            Image itemImage = newButton.GetComponentsInChildren<Image>()[1];
             itemImage.sprite = null;
             itemImage.color = readyColor;
 
@@ -87,6 +90,9 @@ public class UIManager : SingletonBehaviour<UIManager>
 
     public void ShowInventory(List<ItemInteract> inventory)
     {
+        if (IsUIShown && !isInventoryShown)
+            return;
+
         isInventoryShown = !isInventoryShown;
         inventoryPanel.SetActive(isInventoryShown);
         SetIsUIShown();
@@ -115,7 +121,7 @@ public class UIManager : SingletonBehaviour<UIManager>
 
         for(int i = inventory.Count; i < inventoryCapacity; ++i)
         {
-            itemInventory[i].sprite = null;
+            itemInventory[i].sprite = originalButtonSprite;
             itemInventory[i].color = originalColor;
         }
     }
@@ -143,7 +149,7 @@ public class UIManager : SingletonBehaviour<UIManager>
             currentAlpha = Mathf.Lerp(currentAlpha, endAlpha, speed * Time.deltaTime);
             
             blackOutImage.color = new Color(0f, 0f, 0f, currentAlpha);
-            if(Mathf.Abs(endAlpha - currentAlpha) < 0.001f)
+            if(Mathf.Abs(endAlpha - currentAlpha) < 0.01f)
             {
                 blackOutImage.color = originalColorBlack;
                 break;
@@ -161,7 +167,7 @@ public class UIManager : SingletonBehaviour<UIManager>
             currentAlpha = Mathf.Lerp(currentAlpha, startAlpha, speed * Time.deltaTime);
 
             blackOutImage.color = new Color(0f, 0f, 0f, currentAlpha);
-            if (Mathf.Abs(startAlpha - currentAlpha) < 0.001f)
+            if (Mathf.Abs(startAlpha - currentAlpha) < 0.01f)
             {
                 blackOutImage.color = readyColor;
                 break;
@@ -177,6 +183,9 @@ public class UIManager : SingletonBehaviour<UIManager>
 
     public void ShowScroll(Sprite scrollSprite)
     {
+        if (IsUIShown && !isScrollShown)
+            return;
+
         isScrollShown = !isScrollShown;
         scrollPanel.SetActive(isScrollShown);
         SetIsUIShown();
@@ -186,11 +195,20 @@ public class UIManager : SingletonBehaviour<UIManager>
 
     private void SetIsUIShown()
     {
-        IsUIShown = isInventoryShown | isBlackOutPanelShown;
+        IsUIShown = isInventoryShown | isBlackOutPanelShown | isScrollShown;
     }
 
     public void SetEffectImage(Sprite effectSprite)
     {
-        effectImage.sprite = effectSprite;
+        if (effectSprite)
+        {
+            effectImage.color = originalColor;
+            effectImage.sprite = effectSprite;
+        }
+        else
+        {
+            effectImage.color = readyColor;
+            effectImage.sprite = null;
+        }
     }
 }

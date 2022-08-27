@@ -107,8 +107,9 @@ GameObject:
   - component: {fileID: 3405903715981514153}
   - component: {fileID: 2057671539357910358}
   - component: {fileID: 7029526296147172073}
+  - component: {fileID: 8602886761600144213}
   m_Layer: 0
-  m_Name: WoodBoard
+  m_Name: Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,6 +160,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8602886761600144213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6927313645090541309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29511f437c0eba14fa3cbc65be48d347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 1
+  interactFailLine: interact
+  objectType: 11
+  necessaryEffect: 
+  necessaryItem: 
+  necessaryObject: 01000000
+  itemImage: {fileID: 21300000, guid: 37ea1ad1f74b0394dbd026003c957c9e, type: 3}
+  itemType: 10
+  itemPickSize: 0.5
+  itemPickRotation: {x: 0, y: 85, z: -43}
 --- !u!1 &8355352308679012666
 GameObject:
   m_ObjectHideFlags: 0

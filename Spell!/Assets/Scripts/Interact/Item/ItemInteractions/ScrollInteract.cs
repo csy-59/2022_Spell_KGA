@@ -11,6 +11,12 @@ public class ScrollInteract : ItemInteract
         base.Awake();
     }
 
+    public override void OnFocus()
+    {
+        base.OnFocus();
+        UIManager.Instance.SetInfoTextBar("Old Scroll");
+    }
+
     public override bool Use(PlayerInteraction player)
     {
         UIManager.Instance.ShowScroll(scrollSprite);

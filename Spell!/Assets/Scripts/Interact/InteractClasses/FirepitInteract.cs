@@ -3,12 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirepitInteract : InteractiveObject
+public class FirepitInteract : WoodenPlankinteract
 {
     [Header("Fierpit Interact")]
-    [SerializeField] private GameObject fire;
-    private bool isFireOn = false;
-
     [SerializeField] private GameObject fireScroll;
     private bool isScrollGiven = false;
 
@@ -17,23 +14,15 @@ public class FirepitInteract : InteractiveObject
         base.Awake();
 
         fireScroll.SetActive(false);
-        fire.SetActive(false);
         objectType = ObjectList.Firepit;
     }
 
     public override bool Interact(ItemList item, EffectList effect)
     {
-        if(isFireOn)
-        {
-            UIManager.Instance.SetInfoTextBar("The fire is warm");
-            return false;
-        }
+        base.Interact(item, effect);
 
         if(base.InteractPreAssert(item, effect) != -1)
         {
-            UIManager.Instance.SetInfoTextBar("I set the fire");
-            isFireOn = true;
-            fire.SetActive(true);
             objectType = ObjectList.FirepitWithFire;
             return true;
         }

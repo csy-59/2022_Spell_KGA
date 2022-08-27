@@ -83,7 +83,7 @@ MonoBehaviour:
   necessaryEffect: 0b000000
   necessaryItem: 01000000
   necessaryObject: 0a000000
-  itemImage: {fileID: 21300000, guid: f86b42a19bf866b4d8129178e1c2686f, type: 3}
+  itemImage: {fileID: 21300000, guid: 5c9cb77a94c3bf043887e14ee51db283, type: 3}
   itemType: 7
   itemPickSize: 0.6
   itemPickRotation: {x: 0, y: 0, z: 0}
