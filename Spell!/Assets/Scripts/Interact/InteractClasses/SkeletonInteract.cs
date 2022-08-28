@@ -15,7 +15,6 @@ public class SkeletonInteract : InteractiveObject
     [SerializeField] private GameObject bone;
     [SerializeField] private Transform bonePosition;
     [SerializeField] private string getBoneLine = "He's already dead, right?";
-    [SerializeField] private string afterBoneLine = "Sorry for that...";
     private bool isBoneGiven = false;
 
     protected override void Awake()

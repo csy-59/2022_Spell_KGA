@@ -21,7 +21,6 @@ public class UIManager : SingletonBehaviour<UIManager>
     public PlayerInventory inventoryScript;
     
     public Button ButtonPrefab;
-    private Sprite originalButtonSprite;
     [SerializeField] private float xStartPos = 40f;
     [SerializeField] private float yStartPos = -40f;
     [SerializeField] private float positionOffset = 90f;
@@ -50,21 +49,24 @@ public class UIManager : SingletonBehaviour<UIManager>
     {
         SetInfoTextBar("");
 
-        originalButtonSprite = ButtonPrefab.GetComponentInChildren<Image>().sprite;
+        GridLayoutGroup itemPanelGrideGroup = ItemPanel.GetComponent<GridLayoutGroup>();
+        RectTransform itemPanelRectTransform = ItemPanel.GetComponent<RectTransform>();
+
+        itemPanelGrideGroup.cellSize = new Vector2(
+            itemPanelRectTransform.rect.width / 10,
+            itemPanelRectTransform.rect.width / 10
+            );
 
         for(int i = 0; i< inventoryCapacity; ++i)
         {
             Button newButton = Instantiate(ButtonPrefab, ItemPanel.transform);
-            newButton.transform.localPosition = new Vector2(
-                xStartPos + positionOffset * (i % 10),
-                yStartPos - positionOffset * (i / 10));
 
             int temp = i;
             newButton.onClick.AddListener(() => { 
                 inventoryScript.SelectItem(temp); 
             });
 
-            Image itemImage = newButton.GetComponentsInChildren<Image>()[1];
+            Image itemImage = newButton.GetComponentsInChildren<Image>()[2];
             itemImage.sprite = null;
             itemImage.color = readyColor;
 
@@ -121,8 +123,7 @@ public class UIManager : SingletonBehaviour<UIManager>
 
         for(int i = inventory.Count; i < inventoryCapacity; ++i)
         {
-            itemInventory[i].sprite = originalButtonSprite;
-            itemInventory[i].color = originalColor;
+            itemInventory[i].color = readyColor;
         }
     }
 
