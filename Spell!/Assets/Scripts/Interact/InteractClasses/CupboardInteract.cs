@@ -14,10 +14,13 @@ public class CupboardInteract : InteractiveObject
     [SerializeField] private float doorOpenYOffset = 90f;
     [SerializeField] private float doorSpeed;
     private bool isDoorOpen = false;
+    private Collider doorCollider;
 
     protected override void Awake()
     {
         base.Awake();
+
+        doorCollider = GetComponent<Collider>();
     }
 
     public override bool Interact(ItemList item, EffectList effect)
@@ -28,11 +31,13 @@ public class CupboardInteract : InteractiveObject
             {
                 DoorOpen(doors[0], -doorOpenYOffset);
                 DoorOpen(doors[1], doorOpenYOffset);
+                doorCollider.enabled = true;
             }
             else
             {
                 DoorOpen(doors[0], doorOpenYOffset);
                 DoorOpen(doors[1], -doorOpenYOffset);
+                doorCollider.enabled = false;
             }
 
             isDoorOpen = !isDoorOpen;
