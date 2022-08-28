@@ -27,6 +27,9 @@ public class FlaskInteract : ItemInteract
     [SerializeField] private Material flaskMaterial;
     private Sprite effectSprite;
 
+    [Header("Effect Ending")]
+    [SerializeField] private EndingList[] endingType;
+
     protected override void Awake()
     {
         base.Awake();
@@ -48,12 +51,12 @@ public class FlaskInteract : ItemInteract
         return SetEffect(cauldron.GetRecipe());
     }
 
-    private bool SetEffect(List<ItemList> itemQueue)
+    private bool SetEffect(List<ItemList> itemList)
     {
 
         for(int i = 0; i < potionRecipes.Length; ++i)
         {
-            if(CheckRecipe(itemQueue, i))
+            if(CheckRecipe(itemList, i))
             {
                 potionEffect = potionRecipes[i].effect;
                 flaskMaterial.color = potionRecipes[i].potionColor;
@@ -69,19 +72,18 @@ public class FlaskInteract : ItemInteract
         return false;
     }
 
-    private bool CheckRecipe(List<ItemList> itemQueue, int recipeNumber)
+    private bool CheckRecipe(List<ItemList> itemList, int recipeNumber)
     {
         PotionRecipe recipe = potionRecipes[recipeNumber];
 
-        if (itemQueue.Count != recipe.RecipeItemlist.Length)
+        if (itemList.Count != recipe.RecipeItemlist.Length)
         {
             return false;
         }
 
-        for (int i = 0; i < itemQueue.Count; ++i)
+        for (int i = 0; i < itemList.Count; ++i)
         {
-            if (itemQueue[i] != recipe.RecipeItemlist[i]
-                && recipe.RecipeItemlist[i] != ItemList.DontCare)
+            if (itemList[i] != recipe.RecipeItemlist[i])
             {
                 return false;
             }
@@ -96,10 +98,18 @@ public class FlaskInteract : ItemInteract
         {
             UIManager.Instance.SetInfoTextBar($"I fill something...!{potionEffect}");
             UIManager.Instance.SetEffectImage(effectSprite);
+
             player.SetPlayerEffect(potionEffect);
             potionEffect = EffectList.NoEffect;
             effectSprite = null;
             flaskMaterial.color = originalColor;
+
+            if ((int)potionEffect >= (int) EffectList.ChangeToSkeleton)
+            {
+                GameManager.Instance.SetEnding(endingType[(int)potionEffect - (int)EffectList.ChangeToSkeleton]);
+                return false;
+            }
+            
             return true;
         }
         else

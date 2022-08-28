@@ -42,7 +42,8 @@ public class SkeletonInteract : InteractiveObject
             if(!isBoneGiven)
             {
                 UIManager.Instance.SetInfoTextBar(getBoneLine);
-                Instantiate(bone, bonePosition.position, bonePosition.rotation);
+                GameObject newBone = Instantiate(bone, bonePosition.position, bonePosition.rotation);
+                newBone.name = bone.name;
                 isBoneGiven = true;
                 return true;
             }

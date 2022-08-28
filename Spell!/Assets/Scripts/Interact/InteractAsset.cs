@@ -57,6 +57,12 @@ namespace InteractAsset
         Change,
 
         DontCare,
+
+        ChangeToBird,
+        ChangeToSkeleton,
+        ChangeToSlime,
+        ChangeToRat,
+
         EffectMax
     }
 

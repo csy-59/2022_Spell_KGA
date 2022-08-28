@@ -15,6 +15,11 @@ public class EndingInteraction : InteractiveObject
 
     public override bool Interact(ItemList item, EffectList effect)
     {
+        if(!base.Interact(item, effect))
+        {
+            return false;
+        }
+
         int endingNumber = base.InteractPreAssert(item, effect);
 
         if(endingNumber == -1)
