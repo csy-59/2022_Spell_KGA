@@ -1,44 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using InteractAsset;
+using UtilityAsset;
+using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonBehaviour<GameManager>
 {
-    //private int lightBit = 0;
-    //[SerializeField] private int[] secretLightNumber = { 3, 9 };
-    //[SerializeField] private bool isSecretOpen = false;
-    //private int secretLightMask;
+    [SerializeField] private Sprite[] endingSprites;
+    public bool IsGameOver { get; private set; }
 
-    //private void Awake()
-    //{
-    //    foreach(int num in secretLightNumber)
-    //    {
-    //        secretLightMask = secretLightMask | (1 << num);
-    //    }
-    //}
+    private void Awake()
+    {
+        IsGameOver = false;
+    }
 
-    //void Update()
-    //{
-        
-    //}
+    public void SetEnding(EndingList endingType)
+    {
+        if(endingType == EndingList.NoEnding)
+        {
+            return;
+        }
 
-    //public void LightOn(int lightNumber)
-    //{
-    //    lightBit = lightBit | (1 << lightNumber);
-    //    LightCheck();
-    //}
+        IsGameOver = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
-    //public void LightOff(int lightNumber)
-    //{
-    //    lightBit = lightBit & ~(1 << lightNumber);
-    //    LightCheck();
-    //}
+        int endingNumber = (int)endingType;
+        PlayerPrefsKey.SetEndingList(endingNumber);
+        UIManager.Instance.SetEndingImage(endingSprites[endingNumber]);
+    }
 
-    //private void LightCheck()
-    //{
-    //    if(lightBit == secretLightMask)
-    //    {
-    //        isSecretOpen = true;
-    //    }
-    //}
+    public void ReturnToMain()
+    {
+        if(IsGameOver)
+        {
+
+        }
+
+
+    }
+
+    public void EndGame()
+    {
+
+    }
 }

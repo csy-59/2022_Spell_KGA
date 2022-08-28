@@ -48,7 +48,7 @@ public class PlayerFocus : MonoBehaviour
 
     private void FocusInteractive()
     {
-        if (UIManager.Instance.IsUIShown)
+        if (UIManager.Instance.IsUIShown || GameManager.Instance.IsGameOver)
         {
             return;
         }

@@ -97,4 +97,20 @@ namespace InteractAsset
 
         ObjectMax
     }
+    
+    public enum EndingList
+    {
+        SecretPath,
+        Sticky,
+        Break,
+        Teleport,
+        Shurink,
+        ChangeToBird,
+        ChangeToSkeleton,
+        ChangeToSlime,
+        ChangeToRat,
+        
+        NoEnding,
+        EndingMax
+    }
 }

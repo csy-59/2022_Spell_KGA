@@ -27,6 +27,11 @@ public class PlayerInteraction : MonoBehaviour
 
     public void interact(InteractiveObject focusObject)
     {
+        if (GameManager.Instance.IsGameOver)
+        {
+            return;
+        }
+
         if (!UIManager.Instance.IsUIShown)
         {
             if (focusObject)

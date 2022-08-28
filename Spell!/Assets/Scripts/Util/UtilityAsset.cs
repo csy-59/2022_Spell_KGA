@@ -106,4 +106,45 @@ namespace UtilityAsset
 
         public static readonly int Bed_Punch = Animator.StringToHash("Punch");
     }
+
+    public static class PlayerPrefsKey
+    {
+        public const string EndingListKey = "Ending";
+
+        // 초기화
+        private static readonly Dictionary<string, int> ResetValue = new Dictionary<string, int> {
+            { EndingListKey, 0}
+        };
+        private static bool hasBeenReset = false;
+
+        // 초기화
+        private static void ResetAllPrefs(bool resetAgain)
+        {
+            if (resetAgain)
+            {
+                PlayerPrefs.DeleteAll();
+
+                foreach (KeyValuePair<string, int> reset in ResetValue)
+                {
+                    PlayerPrefs.SetInt(reset.Key, reset.Value);
+                }
+
+                hasBeenReset = true;
+            }
+        }
+
+        public static void SetEndingList(int endingNumber)
+        {
+            if(!hasBeenReset)
+            {
+                ResetAllPrefs(false);
+            }
+
+            int preEndingList = PlayerPrefs.GetInt(EndingListKey);
+            int newEndingList = preEndingList | (1 << endingNumber);
+            PlayerPrefs.SetInt(EndingListKey, newEndingList);
+        }
+
+    }
+
 }

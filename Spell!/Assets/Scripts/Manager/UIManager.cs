@@ -21,10 +21,6 @@ public class UIManager : SingletonBehaviour<UIManager>
     public PlayerInventory inventoryScript;
     
     public Button ButtonPrefab;
-    [SerializeField] private float xStartPos = 40f;
-    [SerializeField] private float yStartPos = -40f;
-    [SerializeField] private float positionOffset = 90f;
-    
     private List<Image> itemInventory = new List<Image>();
 
     public bool IsUIShown = false;
@@ -44,6 +40,12 @@ public class UIManager : SingletonBehaviour<UIManager>
     [SerializeField] private GameObject scrollPanel;
     private Image scrollImage;
     private bool isScrollShown = false;
+
+    [Header("Ending")]
+    [SerializeField] private GameObject endingPanel;
+    [SerializeField] private float endSpeed = 5f;
+    private Image endingImage;
+    private bool isEndingShown = false;
 
     private void Awake()
     {
@@ -83,6 +85,9 @@ public class UIManager : SingletonBehaviour<UIManager>
 
         scrollImage = scrollPanel.GetComponent<Image>();
         scrollPanel.SetActive(false);
+
+        endingImage = endingPanel.GetComponent<Image>();
+        endingPanel.SetActive(false);
     }
 
     public void SetInfoTextBar(string info)
@@ -182,6 +187,7 @@ public class UIManager : SingletonBehaviour<UIManager>
         SetIsUIShown();
     }
 
+
     public void ShowScroll(Sprite scrollSprite)
     {
         if (IsUIShown && !isScrollShown)
@@ -196,7 +202,8 @@ public class UIManager : SingletonBehaviour<UIManager>
 
     private void SetIsUIShown()
     {
-        IsUIShown = isInventoryShown | isBlackOutPanelShown | isScrollShown;
+        IsUIShown = isInventoryShown | isBlackOutPanelShown 
+            | isScrollShown | isEndingShown;
     }
 
     public void SetEffectImage(Sprite effectSprite)
@@ -211,5 +218,36 @@ public class UIManager : SingletonBehaviour<UIManager>
             effectImage.color = readyColor;
             effectImage.sprite = null;
         }
+    }
+
+    public void SetEndingImage(Sprite endingSprite)
+    {
+        StartCoroutine(GameEnd(0f, 1f, endSpeed, endingSprite));
+    }
+    private IEnumerator GameEnd(float startAlpha, float endAlpha, float speed, Sprite endingSprite)
+    {
+        blackOutPanel.SetActive(true);
+
+        float currentAlpha = startAlpha;
+
+        while (true)
+        {
+            currentAlpha = Mathf.Lerp(currentAlpha, endAlpha, speed * Time.deltaTime);
+
+            blackOutImage.color = new Color(0f, 0f, 0f, currentAlpha);
+            if (Mathf.Abs(endAlpha - currentAlpha) < 0.01f)
+            {
+                blackOutImage.color = originalColorBlack;
+                break;
+            }
+
+            yield return null;
+        }
+
+        endingImage.sprite = endingSprite;
+
+        isEndingShown = !isEndingShown;
+        endingPanel.SetActive(isEndingShown);
+        SetIsUIShown();
     }
 }
