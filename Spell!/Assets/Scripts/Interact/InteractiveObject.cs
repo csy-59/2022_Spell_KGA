@@ -9,7 +9,7 @@ public class InteractiveObject: MonoBehaviour
     [Header ("Basic Interactive")]
     [SerializeField] private Outline.Mode mode = Outline.Mode.OutlineVisible;
     private float lineWidth = 5f;
-    private Outline outline;
+    protected Outline outline;
     [SerializeField] private string interactFailLine = "interact";
 
     [SerializeField] protected ObjectList objectType;

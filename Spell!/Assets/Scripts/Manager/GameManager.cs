@@ -31,18 +31,8 @@ public class GameManager : SingletonBehaviour<GameManager>
         UIManager.Instance.SetEndingImage(endingSprites[endingNumber]);
     }
 
-    public void ReturnToMain()
-    {
-        if(IsGameOver)
-        {
-
-        }
-
-
-    }
-
     public void EndGame()
     {
-
+        SceneManager.LoadScene(0);
     }
 }
