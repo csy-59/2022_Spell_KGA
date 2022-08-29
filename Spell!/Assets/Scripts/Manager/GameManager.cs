@@ -35,4 +35,9 @@ public class GameManager : SingletonBehaviour<GameManager>
     {
         SceneManager.LoadScene(0);
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }

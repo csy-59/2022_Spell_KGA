@@ -7,6 +7,7 @@ using TMPro;
 
 public class UIManager : SingletonBehaviour<UIManager>
 {
+    [Header ("Information Text")]
     public TextMeshProUGUI InfoText;
     public TextMeshProUGUI InstructionText;
 
@@ -41,6 +42,10 @@ public class UIManager : SingletonBehaviour<UIManager>
     private Image scrollImage;
     private bool isScrollShown = false;
 
+    [Header("Pause")]
+    [SerializeField] private GameObject pausePanel;
+    private bool isPausePanelShown = false;
+
     [Header("Ending")]
     [SerializeField] private GameObject endingPanel;
     [SerializeField] private float endSpeed = 5f;
@@ -51,6 +56,10 @@ public class UIManager : SingletonBehaviour<UIManager>
     {
         SetInfoTextBar("");
 
+        // Effect
+        effectImage.sprite = null;
+
+        // inventory
         GridLayoutGroup itemPanelGrideGroup = ItemPanel.GetComponent<GridLayoutGroup>();
         RectTransform itemPanelRectTransform = ItemPanel.GetComponent<RectTransform>();
 
@@ -75,26 +84,32 @@ public class UIManager : SingletonBehaviour<UIManager>
             itemInventory.Add(itemImage);
         }
 
-        effectImage.sprite = null;
-
         inventoryPanel.SetActive(false);
         
+        // Black out
         blackOutImage = blackOutPanel.GetComponent<Image>();
         blackOutImage.color = readyColorBlack;
         blackOutPanel.SetActive(false);
 
+        // Scroll
         scrollImage = scrollPanel.GetComponent<Image>();
         scrollPanel.SetActive(false);
 
+        // Pause
+        pausePanel.SetActive(false);
+
+        // Ending
         endingImage = endingPanel.GetComponent<Image>();
         endingPanel.SetActive(false);
     }
 
+    // Information
     public void SetInfoTextBar(string info)
     {
         InfoText.text = info;
     }
 
+    // Inventory
     public void ShowInventory(List<ItemInteract> inventory)
     {
         if (IsUIShown && !isInventoryShown)
@@ -132,6 +147,22 @@ public class UIManager : SingletonBehaviour<UIManager>
         }
     }
 
+    // Effect
+    public void SetEffectImage(Sprite effectSprite)
+    {
+        if (effectSprite)
+        {
+            effectImage.color = originalColor;
+            effectImage.sprite = effectSprite;
+        }
+        else
+        {
+            effectImage.color = readyColor;
+            effectImage.sprite = null;
+        }
+    }
+
+    // Black Out
     public delegate void BlackOutEvent();
 
     public void BlackOut(float speed, BlackOutEvent beforeBlackOut, 
@@ -187,7 +218,7 @@ public class UIManager : SingletonBehaviour<UIManager>
         SetIsUIShown();
     }
 
-
+    // Scroll
     public void ShowScroll(Sprite scrollSprite)
     {
         if (IsUIShown && !isScrollShown)
@@ -200,26 +231,39 @@ public class UIManager : SingletonBehaviour<UIManager>
         scrollImage.sprite = scrollSprite;
     }
 
-    private void SetIsUIShown()
+    // Pause
+    private void Update()
     {
-        IsUIShown = isInventoryShown | isBlackOutPanelShown 
-            | isScrollShown | isEndingShown;
-    }
-
-    public void SetEffectImage(Sprite effectSprite)
-    {
-        if (effectSprite)
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            effectImage.color = originalColor;
-            effectImage.sprite = effectSprite;
-        }
-        else
-        {
-            effectImage.color = readyColor;
-            effectImage.sprite = null;
+            if(isPausePanelShown)
+            {
+                ClosePausePanel();
+            }
+            else
+            {
+                ShowPausePanel();
+            }
         }
     }
 
+    public void ShowPausePanel()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
+        PanelShowSetting(ref isPausePanelShown, true, pausePanel);
+    }
+
+    public void ClosePausePanel()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        
+        PanelShowSetting(ref isPausePanelShown, false, pausePanel);
+    }
+
+    // Ending
     public void SetEndingImage(Sprite endingSprite)
     {
         StartCoroutine(GameEnd(0f, 1f, endSpeed, endingSprite));
@@ -250,4 +294,25 @@ public class UIManager : SingletonBehaviour<UIManager>
         endingPanel.SetActive(isEndingShown);
         SetIsUIShown();
     }
+
+    // Util
+    private void PanelShowSetting(ref bool shownCheck, GameObject panel)
+    {
+        PanelShowSetting(ref shownCheck, !shownCheck, panel);
+    }
+
+    private void PanelShowSetting(ref bool shownCheck, bool shownValue, GameObject panel)
+    {
+        shownCheck = shownValue;
+        panel.SetActive(shownCheck);
+        SetIsUIShown();
+        Debug.Log($"{isPausePanelShown} {IsUIShown}");
+        Debug.Log(IsUIShown);
+    }
+
+    private void SetIsUIShown()
+    {
+        IsUIShown = isInventoryShown | isBlackOutPanelShown | isScrollShown | isPausePanelShown | isEndingShown;
+    }
+
 }
