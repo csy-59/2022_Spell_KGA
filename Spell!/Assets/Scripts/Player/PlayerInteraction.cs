@@ -104,10 +104,13 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (this.item != ItemList.NoItem)
         {
-            inventory.AddItemToInventory(pickedItem);
+            if (ItemToInventory(pickedItem))
+            {
+                SetPickedItem(item);
+                item.PickUp(handPosition);
+            }
         }
-        SetPickedItem(item);
-        item.PickUp(handPosition);
+        
     }
 
     public void DropItem()
