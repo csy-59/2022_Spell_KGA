@@ -863,7 +863,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Restart?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad1a04a56e493904d978254fc6651263, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -927,7 +927,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &104889780
@@ -1047,6 +1047,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1988736598}
     m_Modifications:
+    - target: {fileID: 545836999646346987, guid: bf6556059b70ea149b224e337c1189d6, type: 3}
+      propertyPath: shardGenerateOffsetTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4630034154017807413, guid: bf6556059b70ea149b224e337c1189d6, type: 3}
       propertyPath: m_Name
       value: YellowCristal
@@ -2496,6 +2500,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 955091854}
     m_Modifications:
+    - target: {fileID: 713634034271325066, guid: 790f64c04c009ea4e948b1865eab6284, type: 3}
+      propertyPath: shardGenerateOffsetTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2409228414846846231, guid: 790f64c04c009ea4e948b1865eab6284, type: 3}
       propertyPath: m_Name
       value: PinkCristal
@@ -5059,7 +5067,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6272673527394417273, guid: df246ab49000d6849b461ca458517aa7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.312
       objectReference: {fileID: 0}
     - target: {fileID: 6272673527394417273, guid: df246ab49000d6849b461ca458517aa7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11856,7 +11864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7736157565684273436, guid: b54a995f9e59fcb468c6eef95bcb967c, type: 3}
       propertyPath: knockCount
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7736157565684273436, guid: b54a995f9e59fcb468c6eef95bcb967c, type: 3}
       propertyPath: walls.Array.size
@@ -12386,7 +12394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7641848504133436609, guid: 923437aa12aec2c42b272574f8de4dc6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.312
       objectReference: {fileID: 0}
     - target: {fileID: 7641848504133436609, guid: 923437aa12aec2c42b272574f8de4dc6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13169,7 +13177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 469871356277058968, guid: 0629b98c814a749478dc719b57f1c577, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.008626821
+      value: 1.3206267
       objectReference: {fileID: 0}
     - target: {fileID: 469871356277058968, guid: 0629b98c814a749478dc719b57f1c577, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16129,6 +16137,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 607906006}
     m_Modifications:
+    - target: {fileID: -3664236562804154869, guid: 07018232e586e8048a68c65911597738, type: 3}
+      propertyPath: necessaryItem.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3664236562804154869, guid: 07018232e586e8048a68c65911597738, type: 3}
+      propertyPath: necessaryEffect.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3664236562804154869, guid: 07018232e586e8048a68c65911597738, type: 3}
+      propertyPath: necessaryObject.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3664236562804154869, guid: 07018232e586e8048a68c65911597738, type: 3}
+      propertyPath: necessaryItem.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3664236562804154869, guid: 07018232e586e8048a68c65911597738, type: 3}
+      propertyPath: necessaryEffect.Array.data[1]
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -3664236562804154869, guid: 07018232e586e8048a68c65911597738, type: 3}
+      propertyPath: necessaryObject.Array.data[0]
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: -3664236562804154869, guid: 07018232e586e8048a68c65911597738, type: 3}
+      propertyPath: necessaryObject.Array.data[1]
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6188320415492826436, guid: 07018232e586e8048a68c65911597738, type: 3}
       propertyPath: m_Name
       value: FireStone

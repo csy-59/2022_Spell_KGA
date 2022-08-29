@@ -74,7 +74,6 @@ public class FlaskInteract : ItemInteract
 
     private bool CheckRecipe(List<ItemList> itemList, int recipeNumber)
     {
-        Debug.Log(itemList);
         PotionRecipe recipe = potionRecipes[recipeNumber];
 
         if (itemList.Count != recipe.RecipeItemlist.Length)

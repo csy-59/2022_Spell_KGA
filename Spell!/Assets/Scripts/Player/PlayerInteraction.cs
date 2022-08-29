@@ -102,13 +102,10 @@ public class PlayerInteraction : MonoBehaviour
 
     public void PickItem(ItemInteract item)
     {
-        if (this.item != ItemList.NoItem)
+        if (this.item != ItemList.NoItem &&
+            !ItemToInventory(pickedItem))
         {
-            if (ItemToInventory(pickedItem))
-            {
-                SetPickedItem(item);
-                item.PickUp(handPosition);
-            }
+            return;
         }
 
         SetPickedItem(item);
