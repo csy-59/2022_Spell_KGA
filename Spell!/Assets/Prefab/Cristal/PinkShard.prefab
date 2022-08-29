@@ -84,7 +84,7 @@ MonoBehaviour:
   necessaryItem: 0100000001000000
   necessaryObject: 1300000014000000
   itemImage: {fileID: 21300000, guid: 7ccc7ff9668518148be1aec2fd1e23a8, type: 3}
-  itemType: 20
+  itemType: 19
   itemPickSize: 0.2
   itemPickRotation: {x: 0, y: 0, z: 0}
 --- !u!1001 &7855567384569935358

@@ -37,8 +37,6 @@ public class MossedWallInteract : InteractiveObject
             newMoss.transform.Rotate(90f, 0f, 0f);
             newMoss.transform.localScale = new Vector3(scale, scale, scale);
 
-            Debug.Log("newMoss");
-
             mossStack.Push(newMoss);
         }
     }

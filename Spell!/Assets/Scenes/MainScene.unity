@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18827617, g: 0.19113809, b: 0.19109794, a: 1}
+  m_IndirectSpecularColor: {r: 0.1882762, g: 0.19113821, b: 0.19109797, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1873,9 +1873,9 @@ MonoBehaviour:
   mode: 1
   interactFailLine: It's too high...
   objectType: 0
-  necessaryEffect: 060000000c000000
-  necessaryItem: 0100000001000000
-  endingTypes: 0100000005000000
+  necessaryEffect: 060000000c00000009000000
+  necessaryItem: 010000000100000001000000
+  endingTypes: 010000000500000003000000
 --- !u!4 &253525857 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4447305291191581662, guid: 6e31ce836fd3fd4479f4e5ffa5fb3469, type: 3}
@@ -11066,7 +11066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 1
-  interactFailLine: interact
+  interactFailLine: It's rainning...
   objectType: 0
   necessaryEffect: 
   necessaryItem: 
@@ -13880,6 +13880,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: ad180869d1ea7ac4e94453af4f9e5196, type: 2}
     - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
+      propertyPath: endingType.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
+      propertyPath: endingType.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
+      propertyPath: endingType.Array.data[1]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
+      propertyPath: endingType.Array.data[2]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
       propertyPath: necessaryItem.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -13988,24 +14004,40 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
+      propertyPath: potionRecipes.Array.data[9].RecipeItemlist.Array.data[0]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
+      propertyPath: potionRecipes.Array.data[9].RecipeItemlist.Array.data[1]
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
+      propertyPath: potionRecipes.Array.data[9].RecipeItemlist.Array.data[2]
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
+      propertyPath: potionRecipes.Array.data[9].RecipeItemlist.Array.data[3]
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
       propertyPath: potionRecipes.Array.data[9].RecipeItemlist.Array.data[9]
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
       propertyPath: potionRecipes.Array.data[10].RecipeItemlist.Array.data[0]
-      value: 16
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
       propertyPath: potionRecipes.Array.data[10].RecipeItemlist.Array.data[1]
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
-      propertyPath: potionRecipes.Array.data[10].RecipeItemlist.Array.data[2]
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
+      propertyPath: potionRecipes.Array.data[10].RecipeItemlist.Array.data[2]
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
       propertyPath: potionRecipes.Array.data[10].RecipeItemlist.Array.data[3]
-      value: 20
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
       propertyPath: potionRecipes.Array.data[10].RecipeItemlist.Array.data[4]
@@ -14033,19 +14065,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
       propertyPath: potionRecipes.Array.data[11].RecipeItemlist.Array.data[0]
-      value: 16
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
       propertyPath: potionRecipes.Array.data[11].RecipeItemlist.Array.data[1]
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
-      propertyPath: potionRecipes.Array.data[11].RecipeItemlist.Array.data[2]
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
+      propertyPath: potionRecipes.Array.data[11].RecipeItemlist.Array.data[2]
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
       propertyPath: potionRecipes.Array.data[11].RecipeItemlist.Array.data[3]
-      value: 20
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
       propertyPath: potionRecipes.Array.data[11].RecipeItemlist.Array.data[4]
@@ -14073,19 +14105,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
       propertyPath: potionRecipes.Array.data[12].RecipeItemlist.Array.data[0]
-      value: 16
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
       propertyPath: potionRecipes.Array.data[12].RecipeItemlist.Array.data[1]
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
-      propertyPath: potionRecipes.Array.data[12].RecipeItemlist.Array.data[2]
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
+      propertyPath: potionRecipes.Array.data[12].RecipeItemlist.Array.data[2]
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
       propertyPath: potionRecipes.Array.data[12].RecipeItemlist.Array.data[3]
-      value: 20
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3406136036165940280, guid: 7e4c5f0fe3f117d41a2f4c034203f310, type: 3}
       propertyPath: potionRecipes.Array.data[12].RecipeItemlist.Array.data[4]

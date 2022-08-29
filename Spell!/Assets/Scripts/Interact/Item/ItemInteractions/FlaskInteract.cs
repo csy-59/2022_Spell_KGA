@@ -74,6 +74,7 @@ public class FlaskInteract : ItemInteract
 
     private bool CheckRecipe(List<ItemList> itemList, int recipeNumber)
     {
+        Debug.Log(itemList);
         PotionRecipe recipe = potionRecipes[recipeNumber];
 
         if (itemList.Count != recipe.RecipeItemlist.Length)
@@ -100,16 +101,18 @@ public class FlaskInteract : ItemInteract
             UIManager.Instance.SetEffectImage(effectSprite);
 
             player.SetPlayerEffect(potionEffect);
-            potionEffect = EffectList.NoEffect;
-            effectSprite = null;
-            flaskMaterial.color = originalColor;
 
+            Debug.Log($"{(int)potionEffect} {(int)EffectList.ChangeToSkeleton}");
             if ((int)potionEffect >= (int) EffectList.ChangeToSkeleton)
             {
                 GameManager.Instance.SetEnding(endingType[(int)potionEffect - (int)EffectList.ChangeToSkeleton]);
                 return false;
             }
-            
+
+            potionEffect = EffectList.NoEffect;
+            effectSprite = null;
+            flaskMaterial.color = originalColor;
+
             return true;
         }
         else

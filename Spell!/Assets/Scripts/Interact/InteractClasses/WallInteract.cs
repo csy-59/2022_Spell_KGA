@@ -42,7 +42,6 @@ public class WallInteract : InteractiveObject
             return false;
         }
 
-        Debug.Log("knock");
         --currentKnockCount;
 
         if (currentKnockCount > 0)
