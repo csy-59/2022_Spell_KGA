@@ -119,4 +119,59 @@ namespace InteractAsset
         NoEnding,
         EndingMax
     }
+
+    public enum ScrollList
+    {
+        FirstScroll,
+        PotionMaking101,
+        CristalEffectScroll,
+        SecretPathScroll,
+        WizardScroll,
+        PieonScroll,
+        SecretChestScroll,
+        FireBallScroll,
+        SuperPowerScroll,
+        StickyScroll,
+        ShurinkScroll,
+        TeleportScroll,
+        ChangePotionScroll,
+        ScrollMax
+    }
+
+    public enum CristalList
+    {
+        WhiteScristal,
+        PurpleCristal,
+        BlueCristal,
+        RedCristal,
+        BlackCristal,
+        YellowCristal,
+        PinkCristal,
+        CristalMax
+    }
+
+    public enum MagicalMaterialList
+    {
+        Moss,
+        Cauldron,
+        Flask,
+        FireStone,
+        Bone,
+        Feather,
+        RatFur,
+        MagicalMaterialList
+    }
+
+    public enum CommonItemList
+    {
+        Spoon,
+        Bowl,
+        Torch,
+        Pigeon,
+        Cheese,
+        Meat,
+        Key,
+        Chest,
+        CommonItemMax
+    }
 }

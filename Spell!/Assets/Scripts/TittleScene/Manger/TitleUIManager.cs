@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TitleUIManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class TitleUIManager : MonoBehaviour
     public bool IsEndingScroll { get; private set; }
 
     [SerializeField] private Sprite[] endingScrollSprites;
+
+    [SerializeField] private TextMeshProUGUI infomationText;
 
     private void Awake()
     {
@@ -23,22 +26,31 @@ public class TitleUIManager : MonoBehaviour
     {
         if(IsEndingScroll && Input.GetKeyDown(KeyCode.Escape))
         {
-            CloseEndingScroll();
+            CloseScroll();
         }
     }
 
     public void ShowEndingScroll(int endingNumber)
     {
-        endingScrollImage.sprite = endingScrollSprites[endingNumber];
+        ShowScroll(endingScrollSprites[endingNumber]);
+    }
+
+    public void SetInformationText(string text)
+    {
+        infomationText.text = text;
+    }
+
+    public void ShowScroll(Sprite scrollSprite)
+    {
+        endingScrollImage.sprite = scrollSprite;
 
         IsEndingScroll = true;
         endingScrollPanel.SetActive(IsEndingScroll);
     }
 
-    public void CloseEndingScroll()
+    public void CloseScroll()
     {
         IsEndingScroll = false;
         endingScrollPanel.SetActive(IsEndingScroll);
     }
-
 }

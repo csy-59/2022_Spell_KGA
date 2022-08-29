@@ -110,17 +110,25 @@ namespace UtilityAsset
     public static class PlayerPrefsKey
     {
         public const string EndingListKey = "Ending";
+        public const string ScrollKey = "Scroll";
+        public const string CristalKey = "Cristal";
+        public const string MagicMaterialKey = "MagicMaterial";
+        public const string CommonItemKey = "CommonItem";
 
         // 초기화 값
         private static readonly Dictionary<string, int> ResetValue = new Dictionary<string, int> {
-            { EndingListKey, 0}
+            { EndingListKey, 0},
+            { ScrollKey, 0 },
+            { CristalKey, 0 },
+            { MagicMaterialKey, 0 },
+            { CommonItemKey, 0 }
         };
         private static bool hasBeenReset = false;
 
         // 초기화
         private static void ResetAllPrefs(bool resetAgain)
-        {
-            if (resetAgain)
+        { 
+            if(!hasBeenReset || resetAgain)
             {
                 PlayerPrefs.DeleteAll();
 
@@ -133,28 +141,70 @@ namespace UtilityAsset
             }
         }
 
+        private static void SetListValue(string key, int number)
+        {
+            ResetAllPrefs(false);
+
+            int preList = PlayerPrefs.GetInt(key);
+            int newList = preList | (1 << number);
+            PlayerPrefs.SetInt(key, newList);
+        }
+
         public static void SetEndingList(int endingNumber)
         {
-            if(!hasBeenReset)
-            {
-                ResetAllPrefs(false);
-            }
+            SetListValue(EndingListKey, endingNumber);
+        }
 
-            int preEndingList = PlayerPrefs.GetInt(EndingListKey);
-            int newEndingList = preEndingList | (1 << endingNumber);
-            PlayerPrefs.SetInt(EndingListKey, newEndingList);
+        public static void SetScrollList(int scrollNumber)
+        {
+            SetListValue(ScrollKey, scrollNumber);
+        }
+
+        public static void SetCristalList(int cristalNumber)
+        {
+            SetListValue(CristalKey, cristalNumber);
+        }
+
+        public static void SetMagicalMaterialList(int materialNumber)
+        {
+            SetListValue(MagicMaterialKey, materialNumber);
+        }
+
+        public static void SetCommonItemList(int commonItemNumber)
+        {
+            SetListValue(CommonItemKey, commonItemNumber);
+        }
+
+        public static bool GetListValueInBool(string key, int number)
+        {
+            ResetAllPrefs(false);
+
+            int endingList = PlayerPrefs.GetInt(key);
+            return ((endingList & (1 << number)) != 0);
         }
 
         public static bool IsEndingCollacted(int endingNumber)
         {
-            if (!hasBeenReset)
-            {
-                ResetAllPrefs(false);
-            }
-
-            int endingList = PlayerPrefs.GetInt(EndingListKey);
-            return ((endingList & (1 << endingNumber)) != 0);
+            return GetListValueInBool(EndingListKey, endingNumber);
         }
+
+        public static bool isScrollCollacted(int scrollNumber)
+        {
+            return GetListValueInBool(ScrollKey, scrollNumber);
+        }
+        public static bool isCristalCollacted(int cristalNumber)
+        {
+            return GetListValueInBool(CristalKey, cristalNumber);
+        }
+        public static bool isMagicMaterialCollacted(int materialNumber)
+        {
+            return GetListValueInBool(MagicMaterialKey, materialNumber);
+        }
+        public static bool isCommonItemCollacted(int commonItemNumber)
+        {
+            return GetListValueInBool(CommonItemKey, commonItemNumber);
+        }
+    
     }
 
 }
