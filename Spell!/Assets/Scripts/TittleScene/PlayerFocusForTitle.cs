@@ -8,6 +8,8 @@ public class PlayerFocusForTitle : MonoBehaviour
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float reach = 1.8f;
     private InteractiveObject focusObject;
+
+    [SerializeField] private TitleUIManager uiManger;
     public InteractiveObject FocusObject
     {
         get => focusObject;
@@ -39,8 +41,11 @@ public class PlayerFocusForTitle : MonoBehaviour
 
     void Update()
     {
-        FocusInteractive();
-        Interact();
+        if(!uiManger.IsEndingScroll)
+        {
+            FocusInteractive();
+            Interact();
+        }
     }
 
     private void FocusInteractive()

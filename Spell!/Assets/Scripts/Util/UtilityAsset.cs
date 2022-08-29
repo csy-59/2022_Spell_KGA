@@ -111,7 +111,7 @@ namespace UtilityAsset
     {
         public const string EndingListKey = "Ending";
 
-        // 초기화
+        // 초기화 값
         private static readonly Dictionary<string, int> ResetValue = new Dictionary<string, int> {
             { EndingListKey, 0}
         };
@@ -145,6 +145,16 @@ namespace UtilityAsset
             PlayerPrefs.SetInt(EndingListKey, newEndingList);
         }
 
+        public static bool IsEndingCollacted(int endingNumber)
+        {
+            if (!hasBeenReset)
+            {
+                ResetAllPrefs(false);
+            }
+
+            int endingList = PlayerPrefs.GetInt(EndingListKey);
+            return ((endingList & (1 << endingNumber)) != 0);
+        }
     }
 
 }

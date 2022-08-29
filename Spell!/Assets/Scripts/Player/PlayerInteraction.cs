@@ -110,7 +110,9 @@ public class PlayerInteraction : MonoBehaviour
                 item.PickUp(handPosition);
             }
         }
-        
+
+        SetPickedItem(item);
+        item.PickUp(handPosition);
     }
 
     public void DropItem()
