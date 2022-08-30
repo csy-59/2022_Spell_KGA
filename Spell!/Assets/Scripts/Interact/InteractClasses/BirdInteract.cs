@@ -75,6 +75,8 @@ public class BirdInteract : InteractiveObject
         pigeonModel.LookAt(awayPoint);
         pigeonAnim.SetBool(AnimationID.Bird_Fly, true);
 
+        PlayerPrefsKey.SetCommonItemList((int)CommonItemList.Pigeon);
+
         ObjectMove.Instance.ObjectMoveToTargetPosition(
             pigeonModel, awayPoint.position, flySpeed,
             new ObjectMove.BeforeService(() => { Debug.Log("gogo"); gameObject.layer = LayerMask.NameToLayer("Default"); } ),

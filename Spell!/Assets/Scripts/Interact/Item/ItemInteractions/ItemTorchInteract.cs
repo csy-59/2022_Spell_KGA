@@ -2,6 +2,7 @@ using InteractAsset;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UtilityAsset;
 
 public class ItemTorchInteract : ItemInteract
 {
@@ -14,6 +15,13 @@ public class ItemTorchInteract : ItemInteract
 
         isFireOn = false;
         itemType = ItemList.Tourch;
+    }
+
+    public override void PickUp(Transform itemTransform)
+    {
+        base.PickUp(itemTransform);
+
+        PlayerPrefsKey.SetCommonItemList((int)CommonItemList.Torch);
     }
 
     public override bool Interact(ItemList item, ObjectList objectToInteract)

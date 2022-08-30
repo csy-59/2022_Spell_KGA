@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4122226010052696255}
   - component: {fileID: 6559318457400762146}
   - component: {fileID: 4507158028484800190}
-  - component: {fileID: 8828143381948078550}
+  - component: {fileID: 8311807312821605729}
   m_Layer: 0
   m_Name: Feather
   m_TagString: Untagged
@@ -64,7 +64,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8828143381948078550
+--- !u!114 &8311807312821605729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,19 +73,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 4122226010053051551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29511f437c0eba14fa3cbc65be48d347, type: 3}
+  m_Script: {fileID: 11500000, guid: b0b3f93c8cadf884dae48b5c2218710f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 1
   interactFailLine: interact
   objectType: 11
-  necessaryEffect: 0000000000000000
-  necessaryItem: 0000000000000000
+  necessaryEffect: 0b0000000b000000
+  necessaryItem: 0100000001000000
   necessaryObject: 1300000014000000
   itemImage: {fileID: 21300000, guid: ba0991798de330e49aca889212d6dfca, type: 3}
   itemType: 8
   itemPickSize: 1
   itemPickRotation: {x: 0, y: 0, z: 0}
+  materialType: 5
 --- !u!1001 &4158256259876050803
 PrefabInstance:
   m_ObjectHideFlags: 0

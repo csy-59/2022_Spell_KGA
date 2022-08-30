@@ -2,6 +2,7 @@ using InteractAsset;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UtilityAsset;
 
 public class CauldronInteract : InteractiveObject
 {
@@ -23,6 +24,8 @@ public class CauldronInteract : InteractiveObject
 
     public override bool Interact(ItemList item, EffectList effect)
     {
+        PlayerPrefsKey.SetMagicalMaterialList((int)MagicalMaterialList.Cauldron);
+
         if(!fire.IsFireOn)
         {
             UIManager.Instance.SetInfoTextBar("The water is cold... I can't make potion!");

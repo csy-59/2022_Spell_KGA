@@ -87,6 +87,7 @@ MonoBehaviour:
   itemType: 7
   itemPickSize: 0.6
   itemPickRotation: {x: 0, y: 0, z: 0}
+  materialType: 3
 --- !u!1001 &6188320414844047865
 PrefabInstance:
   m_ObjectHideFlags: 0

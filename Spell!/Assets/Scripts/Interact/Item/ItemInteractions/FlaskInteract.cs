@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using InteractAsset;
-
-
+using UtilityAsset;
 
 public class FlaskInteract : ItemInteract
 {
@@ -38,6 +37,13 @@ public class FlaskInteract : ItemInteract
 
         flaskMaterial.color = originalColor;
         cauldrons = FindObjectsOfType<CauldronInteract>();
+    }
+
+    public override void PickUp(Transform itemTransform)
+    {
+        base.PickUp(itemTransform);
+
+        PlayerPrefsKey.SetMagicalMaterialList((int)MagicalMaterialList.Flask);
     }
 
     public override bool Interact(ItemList item, ObjectList objectToInteract)

@@ -138,3 +138,4 @@ MonoBehaviour:
   itemType: 24
   itemPickSize: 0.1
   itemPickRotation: {x: 0, y: 0, z: 0}
+  materialType: 6

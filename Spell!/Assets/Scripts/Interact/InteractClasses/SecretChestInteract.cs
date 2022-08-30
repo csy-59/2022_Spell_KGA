@@ -68,6 +68,7 @@ public class SecretChestInteract : InteractiveObject
             yield return null;
         }
 
+        PlayerPrefsKey.SetCommonItemList((int)CommonItemList.Chest);
         gameObject.layer = LayerMask.NameToLayer("Interactive");
         inChestItems.SetActive(true);
     }
