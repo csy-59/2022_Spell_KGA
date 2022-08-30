@@ -41,7 +41,7 @@ public class PlayerFocusForTitle : MonoBehaviour
 
     void Update()
     {
-        if(!uiManger.IsEndingScroll)
+        if(!uiManger.IsEndingScrollShown)
         {
             FocusInteractive();
             Interact();

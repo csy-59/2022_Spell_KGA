@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class StartandExitInteraction : InteractiveObject
 {
+    [SerializeField] private TitleUIManager uIManager;
+
     [Header("Start Or Exit")]
     [SerializeField] private bool isStart = true;
 
@@ -28,7 +30,7 @@ public class StartandExitInteraction : InteractiveObject
     {
         if(isStart)
         {
-            SceneManager.LoadScene(1);
+            uIManager.StartIntro();
         }
         else
         {

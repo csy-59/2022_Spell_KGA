@@ -9562,7 +9562,7 @@ PrefabInstance:
     - target: {fileID: 3209240998118642404, guid: 0629b98c814a749478dc719b57f1c577, type: 3}
       propertyPath: scrollSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 535803ad2b4698a4d8ed4d2a2bfef3ba, type: 3}
+      objectReference: {fileID: 21300000, guid: 1d1101800ff4c2f43947f73dacc7eda9, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0629b98c814a749478dc719b57f1c577, type: 3}
 --- !u!1001 &1274926701
