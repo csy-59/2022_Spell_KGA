@@ -16,7 +16,7 @@ public class TitleScrollInteraction : TitleInteractiveObject
 
         scrollNumber = (int)scrollType;
 
-        if(!TitleGameManger.Instance.IsCollactiveObejctCollected(PlayerPrefsKey.CommonItemKey, scrollNumber))
+        if(!TitleGameManger.Instance.IsCollactiveObejctCollected(PlayerPrefsKey.ScrollKey, scrollNumber))
         {
             gameObject.SetActive(false);
             return;

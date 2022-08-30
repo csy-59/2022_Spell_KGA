@@ -112,9 +112,9 @@ MonoBehaviour:
   necessaryEffect: 0b000000
   necessaryItem: 05000000
   cristalShard: {fileID: 7255555062616322518, guid: 327a95f4a590dca4da369dad8d67cf0f, type: 3}
+  cristalType: 5
   popForce: 3
   shardPosition: {fileID: 5909319375514207515}
-  target: {fileID: 0}
   shardGenerateOffsetTime: 15
 --- !u!1001 &8045089723983667270
 PrefabInstance:

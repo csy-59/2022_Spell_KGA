@@ -128,22 +128,33 @@ namespace UtilityAsset
         // √ ±‚»≠
         private static void ResetAllPrefs(bool resetAgain)
         { 
-            if(!hasBeenReset || resetAgain)
+            if(!resetAgain)
             {
-                PlayerPrefs.DeleteAll();
-
-                foreach (KeyValuePair<string, int> reset in ResetValue)
-                {
-                    PlayerPrefs.SetInt(reset.Key, reset.Value);
-                }
-
-                hasBeenReset = true;
+                return;
             }
+
+            PlayerPrefs.DeleteAll();
+
+            foreach (KeyValuePair<string, int> reset in ResetValue)
+            {
+                PlayerPrefs.SetInt(reset.Key, reset.Value);
+            }
+
+            hasBeenReset = true;
+        }
+        private static void PreSetKeyValue(string key)
+        {
+            if(PlayerPrefs.HasKey(key))
+            {
+                return;
+            }
+
+            PlayerPrefs.SetInt(key, ResetValue[key]);
         }
 
         private static void SetListValue(string key, int number)
         {
-            ResetAllPrefs(false);
+            PreSetKeyValue(key);
 
             int preList = PlayerPrefs.GetInt(key);
             int newList = preList | (1 << number);
@@ -177,9 +188,10 @@ namespace UtilityAsset
 
         public static bool GetListValueInBool(string key, int number)
         {
-            ResetAllPrefs(false);
+            PreSetKeyValue(key);
 
             int endingList = PlayerPrefs.GetInt(key);
+            Debug.Log($"{key}: {endingList}");
             return ((endingList & (1 << number)) != 0);
         }
 

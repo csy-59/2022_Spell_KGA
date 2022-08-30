@@ -99,6 +99,7 @@ MonoBehaviour:
   necessaryEffect: 0b000000
   necessaryItem: 05000000
   cristalShard: {fileID: 7096924729989000777, guid: 8a9146d83590ea34bbe328a56b5aab6a, type: 3}
+  cristalType: 1
   popForce: 3
   shardPosition: {fileID: 8145816129134426608}
   target: {fileID: 0}

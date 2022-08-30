@@ -15,7 +15,7 @@ public class TitleInteractiveObject : InteractiveObject
     public override void OnFocus()
     {
         outline.enabled = true;
-        uiManger.SetInformationText(gameObject.name);
+        uiManger.SetInformationText(gameObject.name.ToString());
     }
 
     public override void OutFocus()

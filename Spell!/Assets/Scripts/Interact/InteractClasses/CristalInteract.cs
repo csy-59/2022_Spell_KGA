@@ -2,15 +2,16 @@ using InteractAsset;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UtilityAsset;
 
 public class CristalInteract : InteractiveObject
 {
     [Header ("\nCristal Interaction")]
     [SerializeField] private GameObject cristalShard;
+    [SerializeField] private CristalList cristalType;
     [SerializeField] private float popForce = 3;
 
     [SerializeField] private Transform shardPosition;
-    [SerializeField] private Transform target;
 
     [SerializeField] private float shardGenerateOffsetTime = 15f;
     private float lastShardGenerateTime;
@@ -34,8 +35,10 @@ public class CristalInteract : InteractiveObject
 
         GameObject shard = Instantiate(cristalShard, shardPosition.position, shardPosition.rotation);
         shard.name = cristalShard.name;
-        shard.transform.LookAt(target);
         shard.GetComponent<Rigidbody>().AddForce(Vector3.up * popForce, ForceMode.Impulse);
+
+        PlayerPrefsKey.SetCristalList((int)cristalType);
+
         return true;
     }
 }
