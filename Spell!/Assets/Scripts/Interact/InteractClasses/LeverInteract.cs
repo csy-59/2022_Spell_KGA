@@ -70,6 +70,7 @@ public class LeverInteract : InteractiveObject
         isLeverOn = !isLeverOn;
         gameObject.layer = LayerMask.NameToLayer("Interactive");
 
+        tile.GetComponent<AudioSource>().Play();
         ObjectMove.Instance.ObjectMoveToTargetPosition(
             tile,
             tile.position + tileMoveOffset,
@@ -78,9 +79,13 @@ public class LeverInteract : InteractiveObject
 
     private void AfterTileMove()
     {
+        tile.GetComponent<AudioSource>().Pause();
         ObjectMove.Instance.ObjectMoveToTargetPosition(
             ladder,
             ladderMovePosition.position,
-            ladderMoveSpeed);
+            ladderMoveSpeed,
+            null,
+            () => { ladder.GetComponent<AudioSource>().Play(); }
+            );
     }
 }

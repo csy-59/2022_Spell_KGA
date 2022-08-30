@@ -82,8 +82,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6, y: 0.72, z: 1.09}
-  m_Center: {x: -0.08, y: 0.27, z: 0}
+  m_Size: {x: 1, y: 0.5, z: 1.01}
+  m_Center: {x: -0.27, y: 0.21, z: -0.08}
 --- !u!65 &766155595843743038
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -118,7 +118,6 @@ MonoBehaviour:
   cristalType: 4
   popForce: 3
   shardPosition: {fileID: 3940688854762522990}
-  target: {fileID: 0}
   shardGenerateOffsetTime: 30
 --- !u!1001 &8052394854967265286
 PrefabInstance:

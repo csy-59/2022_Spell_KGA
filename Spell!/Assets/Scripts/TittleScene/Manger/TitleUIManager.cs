@@ -13,15 +13,22 @@ public class TitleUIManager : MonoBehaviour
     public bool IsEndingScrollShown { get; private set; }
 
     [SerializeField] private Sprite[] endingScrollSprites;
+
+    [Header("Information Text")]
+    [SerializeField] private TextMeshProUGUI infomationText;
+
+    [Header("Start Intro")]
+    [SerializeField] private GameObject blackPanel;
     [SerializeField] private Sprite startScrollSprite;
+    private Image blackPanelImage;
     private bool isStartScrollShown = false;
 
-    [SerializeField] private TextMeshProUGUI infomationText;
-    [SerializeField] private GameObject blackPanel;
-    private Image blackPanelImage;
+    private AudioSource ranningSound;
 
     private void Awake()
     {
+        ranningSound = GetComponent<AudioSource>();
+
         blackPanelImage = blackPanel.GetComponent<Image>();
         blackPanel.SetActive(false);
 
@@ -71,6 +78,7 @@ public class TitleUIManager : MonoBehaviour
 
     public void StartIntro()
     {
+        ranningSound.Pause();
         StartCoroutine(ShowIntro());
     }
 

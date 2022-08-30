@@ -54,6 +54,7 @@ public class TorchManager : SingletonBehaviour<TorchManager>
         if (lightBit == secretLightMask)
         {
             isSecretOpen = true;
+            secretTile.GetComponent<AudioSource>().Play();
             ObjectMove.Instance.ObjectMoveToTargetPosition(
                 secretTile,
                 secretTile.position + tileOffset,
@@ -66,5 +67,6 @@ public class TorchManager : SingletonBehaviour<TorchManager>
     private void ActiveTeleport()
     {
         TeleportSetting(true);
+        secretTile.GetComponent<AudioSource>().Pause();
     }
 }
