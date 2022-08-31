@@ -7,6 +7,8 @@ using TMPro;
 
 public class UIManager : SingletonBehaviour<UIManager>
 {
+    [SerializeField] private PlayerInput input;
+
     [Header ("Information Text")]
     public TextMeshProUGUI InfoText;
     public TextMeshProUGUI InstructionText;
@@ -234,7 +236,7 @@ public class UIManager : SingletonBehaviour<UIManager>
     // Pause
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(input.Esc)
         {
             if(isPausePanelShown)
             {
@@ -306,8 +308,6 @@ public class UIManager : SingletonBehaviour<UIManager>
         shownCheck = shownValue;
         panel.SetActive(shownCheck);
         SetIsUIShown();
-        Debug.Log($"{isPausePanelShown} {IsUIShown}");
-        Debug.Log(IsUIShown);
     }
 
     private void SetIsUIShown()

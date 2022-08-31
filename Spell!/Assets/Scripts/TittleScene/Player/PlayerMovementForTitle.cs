@@ -43,19 +43,18 @@ public class PlayerMovementForTitle : MonoBehaviour
 
     private void Move()
     {
-        if(TitleGameManger.Instance.isNotOculus)
+        Vector3 moveOffset;
+        if (TitleGameManger.Instance.isNotOculus)
         {
-            Vector3 moveOffset = input.X * moveSpeed * Time.fixedDeltaTime * transform.right
+            moveOffset = input.X * moveSpeed * Time.fixedDeltaTime * transform.right
             + input.Z * moveSpeed * Time.fixedDeltaTime * transform.forward;
-
-            rigid.MovePosition(rigid.position + moveOffset);
         }
         else
         {
-            Vector3 moveOffset = input.X * moveSpeed * Time.fixedDeltaTime * cameraTransform.right
+            moveOffset = input.X * moveSpeed * Time.fixedDeltaTime * cameraTransform.right
             + input.Z * moveSpeed * Time.fixedDeltaTime * cameraTransform.forward;
-
-            rigid.MovePosition(rigid.position + moveOffset);    
         }
+
+        rigid.MovePosition(rigid.position + moveOffset);
     }
 }

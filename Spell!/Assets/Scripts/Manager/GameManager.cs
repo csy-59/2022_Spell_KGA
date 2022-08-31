@@ -10,6 +10,9 @@ public class GameManager : SingletonBehaviour<GameManager>
     [SerializeField] private Sprite[] endingSprites;
     public bool IsGameOver { get; private set; }
 
+    [SerializeField] private bool isNotOculus = true;
+    public bool IsNotOculus { get => isNotOculus; private set { isNotOculus = value; } }
+
     private void Awake()
     {
         IsGameOver = false;
