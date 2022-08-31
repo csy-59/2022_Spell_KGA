@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public float X { get; private set; }
-    public float Z { get; private set; }
+    public float X { get; protected set; }
+    public float Z { get; protected set; }
 
-    public float MouseX { get; private set; }
-    public float MouseY { get; private set; }
-    public bool Mouse0Click { get; private set; }
-    public bool Mouse1Click { get; private set; }
+    public float MouseX { get; protected set; }
+    public float MouseY { get; protected set; }
+    public bool Mouse0Click { get; protected set; }
+    public bool Mouse1Click { get; protected set; }
 
-    public bool Shift { get; private set; }
-    public bool E { get; private set; }
-    public bool Q { get; private set; }
+    public bool Shift { get; protected set; }
+    public bool E { get; protected set; }
+    public bool Q { get; protected set; }
+
+    public bool AnyKey { get; protected set; }
+    public bool Esc { get; protected set; }
 
     private void Update()
     {
@@ -29,5 +32,8 @@ public class PlayerInput : MonoBehaviour
         Shift = Input.GetKey(KeyCode.LeftShift);
         E = Input.GetKeyDown(KeyCode.E);
         Q = Input.GetKeyDown(KeyCode.Q);
+
+        AnyKey = Input.anyKey;
+        Esc = Input.GetKeyDown(KeyCode.Escape);
     }
 }

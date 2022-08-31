@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class PlayerFocusForTitle : MonoBehaviour
 {
-    [Header("Focus Obejct")]
+    [Header("Focus Obejct For General")]
     [SerializeField] private Camera playerCamera;
-    [SerializeField] private float reach = 1.8f;
+    [SerializeField] private float cameraReach = 1.8f;
+
+    [Header("Focus Object For Oculus")]
+    [SerializeField] private Transform handPointer;
+    [SerializeField] private Transform lineRendererPosition;
+    private LineRenderer handPointerLineRenderer;
+    [SerializeField] private float handReach = 5f;
+    
     private InteractiveObject focusObject;
 
     [SerializeField] private TitleUIManager uiManger;
@@ -26,7 +33,10 @@ public class PlayerFocusForTitle : MonoBehaviour
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
-
+        if(!TitleGameManger.Instance.isNotOculus)
+        {
+            handPointerLineRenderer = handPointer.GetComponent<LineRenderer>();
+        }
 
         // ∑π¿Ã ΩÓ±‚
         LayerMask interactiveLayer = LayerMask.NameToLayer("Interactive");
@@ -41,10 +51,29 @@ public class PlayerFocusForTitle : MonoBehaviour
 
     void Update()
     {
-        if(!uiManger.IsEndingScrollShown)
+        if(!TitleGameManger.Instance.isNotOculus)
+            LineRendererSetting();
+
+        if (!uiManger.IsEndingScrollShown)
+        {
+            FocusSetting();
+            Interact();
+        }
+        else
+        {
+            SetFocusObject();
+        }
+    }
+
+    private void FocusSetting()
+    {
+        if(TitleGameManger.Instance.isNotOculus)
         {
             FocusInteractive();
-            Interact();
+        }
+        else
+        {
+            FocusInteractiveForOculus();
         }
     }
 
@@ -52,8 +81,31 @@ public class PlayerFocusForTitle : MonoBehaviour
     {
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
 
+        Focus(ray);
+    }
+
+    private void FocusInteractiveForOculus()
+    {
+
+        Ray ray = new Ray(handPointer.position, handPointer.forward);
+
+        Focus(ray);
+    }
+
+    private void LineRendererSetting()
+    {
+        Vector3[] linePosition = new Vector3[]
+        {
+            lineRendererPosition.position,
+            lineRendererPosition.position + lineRendererPosition.forward * 1.2f
+        };
+        handPointerLineRenderer.SetPositions(linePosition);
+    }
+
+    private void Focus(Ray ray)
+    {
         RaycastHit hit;
-        if (Physics.Raycast(ray.origin, ray.direction, out hit, reach, layerMask))
+        if (Physics.Raycast(ray.origin, ray.direction, out hit, cameraReach, layerMask))
         {
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
             {
@@ -79,6 +131,7 @@ public class PlayerFocusForTitle : MonoBehaviour
         {
             SetFocusObject();
         }
+
     }
 
     private void SetFocusObject(InteractiveObject item)
