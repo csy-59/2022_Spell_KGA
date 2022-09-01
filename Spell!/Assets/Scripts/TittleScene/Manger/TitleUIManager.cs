@@ -7,6 +7,9 @@ using TMPro;
 
 public class TitleUIManager : MonoBehaviour
 {
+    private PlayerInput input;
+    [SerializeField] private bool isOculus = false;
+
     [Header("Ending List")]
     [SerializeField] private GameObject endingScrollPanel;
     private Image endingScrollImage;
@@ -20,6 +23,7 @@ public class TitleUIManager : MonoBehaviour
     [Header("Start Intro")]
     [SerializeField] private GameObject blackPanel;
     [SerializeField] private Sprite startScrollSprite;
+    [SerializeField] private GameObject map;
     private Image blackPanelImage;
     private bool isStartScrollShown = false;
 
@@ -27,6 +31,17 @@ public class TitleUIManager : MonoBehaviour
 
     private void Awake()
     {
+        TitleGameManger.Instance.SetPlatformType(isOculus);
+
+        if(isOculus)
+        {
+            input = FindObjectOfType<PlayerInputForOculus>();
+        }
+        else
+        {
+            input = FindObjectOfType<PlayerInput>();
+        }
+
         ranningSound = GetComponent<AudioSource>();
 
         blackPanelImage = blackPanel.GetComponent<Image>();
@@ -39,12 +54,11 @@ public class TitleUIManager : MonoBehaviour
 
     private void Update()
     {
-
-        if (isStartScrollShown && Input.anyKeyDown)
+        if (isStartScrollShown && input.AnyKey)
         {
             StartGame();
         }
-        else if (IsEndingScrollShown && Input.GetKeyDown(KeyCode.Escape))
+        else if (IsEndingScrollShown && input.Esc)
         {
             CloseScroll();
         }
@@ -79,6 +93,7 @@ public class TitleUIManager : MonoBehaviour
     public void StartIntro()
     {
         ranningSound.Pause();
+        map.SetActive(false);
         StartCoroutine(ShowIntro());
     }
 
@@ -105,7 +120,7 @@ public class TitleUIManager : MonoBehaviour
         }
 
         ShowScroll(startScrollSprite);
-        SetInformationText("Press any key");
+        SetInformationText("Press any key to start");
         isStartScrollShown = true;
     }
 

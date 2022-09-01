@@ -191,7 +191,6 @@ namespace UtilityAsset
             PreSetKeyValue(key);
 
             int endingList = PlayerPrefs.GetInt(key);
-            Debug.Log($"{key}: {endingList}");
             return ((endingList & (1 << number)) != 0);
         }
 

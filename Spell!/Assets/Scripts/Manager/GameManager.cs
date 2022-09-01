@@ -5,14 +5,31 @@ using InteractAsset;
 using UtilityAsset;
 using UnityEngine.SceneManagement;
 
+
 public class GameManager : SingletonBehaviour<GameManager>
 {
     [SerializeField] private Sprite[] endingSprites;
     public bool IsGameOver { get; private set; }
 
+    [SerializeField] private GameObject pcObjects;
+    [SerializeField] private GameObject vrObjects;
+    [SerializeField] private bool isNotOculus = true;
+    public bool IsNotOculus { get => isNotOculus; private set { isNotOculus = value; } }
+
     private void Awake()
     {
         IsGameOver = false;
+
+        //if(Application.platform == RuntimePlatform.Android)
+        //{
+        //    IsNotOculus = true;
+        //    Instantiate(vrObjects);
+        //}
+        //else
+        //{
+        //    IsNotOculus = false;
+        //    Instantiate(pcObjects);
+        //}
     }
 
     public void SetEnding(EndingList endingType)

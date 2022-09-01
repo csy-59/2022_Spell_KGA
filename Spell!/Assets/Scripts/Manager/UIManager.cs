@@ -7,9 +7,10 @@ using TMPro;
 
 public class UIManager : SingletonBehaviour<UIManager>
 {
+    [SerializeField] private PlayerInput input;
+
     [Header ("Information Text")]
     public TextMeshProUGUI InfoText;
-    public TextMeshProUGUI InstructionText;
 
     [Header("Effect")]
     [SerializeField] private Image effectImage;
@@ -76,6 +77,13 @@ public class UIManager : SingletonBehaviour<UIManager>
             newButton.onClick.AddListener(() => { 
                 inventoryScript.SelectItem(temp); 
             });
+
+            if(!GameManager.Instance.IsNotOculus)
+            {
+                RectTransform rectTransform = newButton.GetComponent<RectTransform>();
+                newButton.GetComponent<BoxCollider>().size =
+                    new Vector3(itemPanelRectTransform.rect.width / 10, itemPanelRectTransform.rect.width / 10, 2f);
+            }
 
             Image itemImage = newButton.GetComponentsInChildren<Image>()[2];
             itemImage.sprite = null;
@@ -234,7 +242,7 @@ public class UIManager : SingletonBehaviour<UIManager>
     // Pause
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(input.Esc)
         {
             if(isPausePanelShown)
             {
@@ -306,8 +314,6 @@ public class UIManager : SingletonBehaviour<UIManager>
         shownCheck = shownValue;
         panel.SetActive(shownCheck);
         SetIsUIShown();
-        Debug.Log($"{isPausePanelShown} {IsUIShown}");
-        Debug.Log(IsUIShown);
     }
 
     private void SetIsUIShown()

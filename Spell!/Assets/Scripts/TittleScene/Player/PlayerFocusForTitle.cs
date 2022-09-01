@@ -2,101 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFocusForTitle : MonoBehaviour
+public class PlayerFocusForTitle : PlayerFocus
 {
-    [Header("Focus Obejct")]
-    [SerializeField] private Camera playerCamera;
-    [SerializeField] private float reach = 1.8f;
-    private InteractiveObject focusObject;
-
-    [SerializeField] private TitleUIManager uiManger;
-    public InteractiveObject FocusObject
+    [SerializeField] private TitleUIManager titleUIManager;
+    protected override void Awake()
     {
-        get => focusObject;
-        private set
-        {
-            focusObject = value;
-        }
+        base.Awake();
     }
 
-    private PlayerInput input;
-
-    private int layerMask;
-
-    private void Awake()
+    protected override void Update()
     {
-        input = GetComponent<PlayerInput>();
-
-
-        // ∑π¿Ã ΩÓ±‚
-        LayerMask interactiveLayer = LayerMask.NameToLayer("Interactive");
-        layerMask = 1 << interactiveLayer;
-
-        LayerMask itemLayer = LayerMask.NameToLayer("Item");
-        layerMask = layerMask | (1 << itemLayer);
-
-        LayerMask FloorLayer = LayerMask.NameToLayer("Floor");
-        layerMask = layerMask | (1 << FloorLayer);
+        FocusSetting();
+        Interact();
     }
 
-    void Update()
+    protected override void FocusSetting()
     {
-        if(!uiManger.IsEndingScrollShown)
-        {
-            FocusInteractive();
-            Interact();
-        }
-    }
-
-    private void FocusInteractive()
-    {
-        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit hit;
-        if (Physics.Raycast(ray.origin, ray.direction, out hit, reach, layerMask))
-        {
-            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
-            {
-                SetFocusObject();
-                return;
-            }
-
-            InteractiveObject nowFocusObejct = hit.transform.gameObject.GetComponent<InteractiveObject>();
-            if (nowFocusObejct)
-            {
-                if (focusObject == nowFocusObejct)
-                    return;
-
-
-                SetFocusObject(nowFocusObejct);
-            }
-            else
-            {
-                SetFocusObject();
-            }
-        }
-        else
+        if(titleUIManager.IsEndingScrollShown)
         {
             SetFocusObject();
+            return;
         }
+
+        FocusInteractiveObejct();
     }
-
-    private void SetFocusObject(InteractiveObject item)
-    {
-        focusObject?.OutFocus();
-        focusObject = item;
-
-        if (focusObject)
-        {
-            focusObject.OnFocus();
-        }
-    }
-
-    private void SetFocusObject()
-    {
-        SetFocusObject(null);
-    }
-
     private void Interact()
     {
         if(input.Mouse0Click && focusObject)

@@ -105,7 +105,7 @@ public class FlaskInteract : ItemInteract
             UIManager.Instance.SetInfoTextBar($"I fill something...!{potionEffect}");
             UIManager.Instance.SetEffectImage(effectSprite);
 
-            player.SetPlayerEffect(potionEffect);
+            player.SetPlayerEffect(potionEffect, flaskMaterial.color);
 
             Debug.Log($"{(int)potionEffect} {(int)EffectList.ChangeToSkeleton}");
             if ((int)potionEffect >= (int) EffectList.ChangeToSkeleton)
@@ -124,7 +124,7 @@ public class FlaskInteract : ItemInteract
         {
             UIManager.Instance.SetInfoTextBar("I fill nothing...");
             UIManager.Instance.SetEffectImage(effectSprite);
-            player.SetPlayerEffect(potionEffect);
+            player.SetPlayerEffect(potionEffect, Color.white);
         }
 
         return false;

@@ -13,6 +13,8 @@ public class PlayerInteraction : MonoBehaviour
 
     private PlayerInput input;
     private PlayerInventory inventory;
+    [SerializeField] private GameObject potionEffect;
+    private PotionEffect potionEffectScript;
 
     [Header("Item Position")]
     [SerializeField] private Transform handPosition;
@@ -21,6 +23,8 @@ public class PlayerInteraction : MonoBehaviour
     {
         input = GetComponent<PlayerInput>();
         inventory = GetComponent<PlayerInventory>();
+
+        potionEffectScript = potionEffect.GetComponent<PotionEffect>();
 
         pickedItem = null;
     }
@@ -158,8 +162,11 @@ public class PlayerInteraction : MonoBehaviour
         this.item = ItemList.NoItem;
     }
 
-    public void SetPlayerEffect(EffectList effect)
+    public void SetPlayerEffect(EffectList effect, Color newColor)
     {
         this.effect = effect;
+
+        potionEffect.SetActive(effect != EffectList.NoEffect);
+        potionEffectScript.SetPotionColor(newColor);
     }
 }

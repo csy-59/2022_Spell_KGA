@@ -142,42 +142,43 @@ MonoBehaviour:
   - RecipeItemlist: 14000000
     effect: 1
     effectSprite: {fileID: 21300000, guid: 3e2efac4baba3a84eb8f4e5840d3411a, type: 3}
-    potionColor: {r: 0.32941177, g: 0, b: 1, a: 0}
+    potionColor: {r: 0.32941177, g: 0, b: 1, a: 0.54901963}
   - RecipeItemlist: 11000000
     effect: 2
     effectSprite: {fileID: 21300000, guid: a384bacb52ce9da4ebfdfe63d63c13b8, type: 3}
-    potionColor: {r: 0, g: 0.039215688, b: 1, a: 0}
+    potionColor: {r: 0, g: 0.039215688, b: 1, a: 0.54901963}
   - RecipeItemlist: 10000000
     effect: 3
     effectSprite: {fileID: 21300000, guid: f6b674f0a34ba98459bd19af7ee45645, type: 3}
-    potionColor: {r: 0, g: 0, b: 0, a: 0}
+    potionColor: {r: 0, g: 0, b: 0, a: 0.54901963}
   - RecipeItemlist: 12000000
     effect: 4
     effectSprite: {fileID: 21300000, guid: 8f60fff70eeaa504e95b5710a3203d97, type: 3}
-    potionColor: {r: 1, g: 0, b: 0, a: 0}
+    potionColor: {r: 1, g: 0, b: 0, a: 0.54901963}
   - RecipeItemlist: 10000000100000001400000007000000
     effect: 5
     effectSprite: {fileID: 21300000, guid: caa6d109970287945bffb6fcfef18e41, type: 3}
-    potionColor: {r: 0.49019608, g: 0, b: 0, a: 0}
+    potionColor: {r: 0.49019608, g: 0, b: 0, a: 0.54901963}
   - RecipeItemlist: 1000000010000000120000000c000000
     effect: 6
     effectSprite: {fileID: 21300000, guid: fe16cdeaad049db40bcf2ed061df520e, type: 3}
-    potionColor: {r: 1, g: 0.27058825, b: 0, a: 0}
+    potionColor: {r: 1, g: 0.27058825, b: 0, a: 0.54901963}
   - RecipeItemlist: 140000001400000015000000
     effect: 7
     effectSprite: {fileID: 21300000, guid: ff46e9f09f827ac46a891bbe66f70964, type: 3}
-    potionColor: {r: 0, g: 1, b: 0.039215688, a: 0}
+    potionColor: {r: 0, g: 1, b: 0.039215688, a: 0.54901963}
   - RecipeItemlist: 12000000120000001500000014000000
     effect: 8
     effectSprite: {fileID: 21300000, guid: a7769f0e7c3ce7647af63b6380f706ef, type: 3}
-    potionColor: {r: 0.7490196, g: 1, b: 0, a: 0}
+    potionColor: {r: 0.7490196, g: 1, b: 0, a: 0.54901963}
   - RecipeItemlist: 11000000110000001100000015000000150000001300000013000000
     effect: 9
     effectSprite: {fileID: 21300000, guid: 96bd20c6ed47dc840bb45766536b8e9d, type: 3}
-    potionColor: {r: 0, g: 0.8627451, b: 1, a: 0}
+    potionColor: {r: 0, g: 0.8627451, b: 1, a: 0.54901963}
   - RecipeItemlist: 10000000120000001100000014000000150000001500000013000000130000001300000001000000
     effect: 10
     effectSprite: {fileID: 21300000, guid: c89b7a62d8c7f9a43a4a1f9233902ad8, type: 3}
-    potionColor: {r: 1, g: 1, b: 1, a: 0}
-  originalColor: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 0}
+    potionColor: {r: 1, g: 1, b: 1, a: 0.54901963}
+  originalColor: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 0.54509807}
   flaskMaterial: {fileID: 0}
+  endingType: 
