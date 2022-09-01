@@ -37,7 +37,7 @@ public class PlayerInputForOculus : PlayerInput
 
     private void SetOtherKey()
     {
-        Shift = OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger);
+        Shift = false;
         E = OVRInput.GetDown(OVRInput.Button.One);
         Q = OVRInput.GetDown(OVRInput.Button.Four);
 

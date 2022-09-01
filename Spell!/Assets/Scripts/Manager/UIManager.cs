@@ -11,7 +11,6 @@ public class UIManager : SingletonBehaviour<UIManager>
 
     [Header ("Information Text")]
     public TextMeshProUGUI InfoText;
-    public TextMeshProUGUI InstructionText;
 
     [Header("Effect")]
     [SerializeField] private Image effectImage;
