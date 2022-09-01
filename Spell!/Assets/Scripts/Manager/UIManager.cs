@@ -79,6 +79,13 @@ public class UIManager : SingletonBehaviour<UIManager>
                 inventoryScript.SelectItem(temp); 
             });
 
+            if(!GameManager.Instance.IsNotOculus)
+            {
+                RectTransform rectTransform = newButton.GetComponent<RectTransform>();
+                newButton.GetComponent<BoxCollider>().size =
+                    new Vector3(itemPanelRectTransform.rect.width / 10, itemPanelRectTransform.rect.width / 10, 2f);
+            }
+
             Image itemImage = newButton.GetComponentsInChildren<Image>()[2];
             itemImage.sprite = null;
             itemImage.color = readyColor;

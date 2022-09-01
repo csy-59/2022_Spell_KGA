@@ -15,6 +15,7 @@ public class PlayerFocus : MonoBehaviour
     [SerializeField] private Transform lineRendererPosition;
     private LineRenderer handPointerLineRenderer;
     [SerializeField] private float handReach = 5f;
+    [SerializeField] private GameObject pointer;
 
     private InteractiveObject focusObject;
     public InteractiveObject FocusObject
@@ -29,12 +30,15 @@ public class PlayerFocus : MonoBehaviour
     private PlayerInput input;
     private PlayerInteraction interaction;
 
-    private int layerMask;
+    private int layerMaskForInteractiveObject;
+    private int layerMaskForUI;
 
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
         interaction = GetComponent<PlayerInteraction>();
+
+        pointer.SetActive(false);
 
         if (!GameManager.Instance.IsNotOculus)
         {
@@ -43,13 +47,16 @@ public class PlayerFocus : MonoBehaviour
 
         // ∑π¿Ã ΩÓ±‚
         LayerMask interactiveLayer = LayerMask.NameToLayer("Interactive");
-        layerMask = 1 << interactiveLayer;
+        layerMaskForInteractiveObject = 1 << interactiveLayer;
 
         LayerMask itemLayer = LayerMask.NameToLayer("Item");
-        layerMask = layerMask | (1 << itemLayer);
+        layerMaskForInteractiveObject = layerMaskForInteractiveObject | (1 << itemLayer);
 
         LayerMask FloorLayer = LayerMask.NameToLayer("Floor");
-        layerMask = layerMask | (1 << FloorLayer);
+        layerMaskForInteractiveObject = layerMaskForInteractiveObject | (1 << FloorLayer);
+
+        LayerMask uiLayer = LayerMask.NameToLayer("UI");
+        layerMaskForUI = (1 << uiLayer);
     }
 
     void Update()
@@ -70,6 +77,15 @@ public class PlayerFocus : MonoBehaviour
         {
             lineRendererPosition.position,
             lineRendererPosition.position + lineRendererPosition.forward * 2f
+        };
+        handPointerLineRenderer.SetPositions(linePosition);
+    }
+    private void LineRendererSetting(Vector3 target)
+    {
+        Vector3[] linePosition = new Vector3[]
+        {
+            lineRendererPosition.position,
+            target
         };
         handPointerLineRenderer.SetPositions(linePosition);
     }
@@ -95,10 +111,11 @@ public class PlayerFocus : MonoBehaviour
     private void Focus(Ray ray)
     {
         RaycastHit hit;
-        if (Physics.Raycast(ray.origin, ray.direction, out hit, reach, layerMask))
+        if (Physics.Raycast(ray.origin, ray.direction, out hit, reach, layerMaskForInteractiveObject))
         {
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
             {
+                pointer.SetActive(false);
                 SetFocusObject();
                 return;
             }
@@ -109,16 +126,21 @@ public class PlayerFocus : MonoBehaviour
                 if (focusObject == nowFocusObejct)
                     return;
 
+                pointer.SetActive(true);
+                pointer.transform.position = hit.point;
+                LineRendererSetting(hit.point);
 
                 SetFocusObject(nowFocusObejct);
             }
             else
             {
+                pointer.SetActive(false);
                 SetFocusObject();
             }
         }
         else
         {
+            pointer.SetActive(false);
             SetFocusObject();
         }
     }
@@ -139,26 +161,32 @@ public class PlayerFocus : MonoBehaviour
 
     private void UIButtonClick()
     {
-        if (GameManager.Instance.IsNotOculus || UIManager.Instance.IsUIShown)
+        if (GameManager.Instance.IsNotOculus || !UIManager.Instance.IsUIShown)
         {
             return;
         }
 
         Ray ray = new Ray(handPointer.position, handPointer.forward);
 
-        LayerMask layerMask = LayerMask.NameToLayer("UI");
-        int targetLayer = 1 << layerMask;
-
         RaycastHit hit;
-        if(Physics.Raycast(ray.origin, ray.direction, out hit, reach, targetLayer))
+        if(Physics.Raycast(ray.origin, ray.direction, out hit, reach, layerMaskForUI))
         {
-            Debug.Log(hit.transform.name);
             Button hitButton  = hit.transform.GetComponent<Button>();
             if(hitButton != null)
             {
-                hitButton.onClick.Invoke();
+                pointer.SetActive(true);
+                pointer.transform.position = hit.point;
+
+                if(input.Mouse0Click)
+                {
+                    hitButton.onClick.Invoke();
+                }
+
+                return;
             }
         }
+
+        pointer.SetActive(false);
     }
 
     private void SetFocusObject(InteractiveObject item)
