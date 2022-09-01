@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFocusForTitle : PlayerFocus
+public class PlayerFocusForTitleForOculus : PlayerFocusForOculus
 {
     protected override void Awake()
     {
@@ -11,13 +11,14 @@ public class PlayerFocusForTitle : PlayerFocus
 
     protected override void Update()
     {
+        LineRendererSetting();
         FocusSetting();
         Interact();
     }
 
     protected override void FocusSetting()
     {
-        if(TitleGameManger.Instance.isNotOculus)
+        if (TitleGameManger.Instance.isNotOculus)
         {
             SetFocusObject();
             return;
@@ -27,9 +28,9 @@ public class PlayerFocusForTitle : PlayerFocus
     }
     private void Interact()
     {
-        if(input.Mouse0Click && focusObject)
+        if (input.Mouse0Click && focusObject)
         {
-            focusObject.Interact(InteractAsset.ItemList.NoItem, 
+            focusObject.Interact(InteractAsset.ItemList.NoItem,
                 InteractAsset.EffectList.NoEffect);
         }
     }

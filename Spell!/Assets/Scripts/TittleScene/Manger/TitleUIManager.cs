@@ -54,9 +54,6 @@ public class TitleUIManager : MonoBehaviour
 
     private void Update()
     {
-        if(input.AnyKey)
-            Debug.Log(isStartScrollShown && input.AnyKey);
-
         if (isStartScrollShown && input.AnyKey)
         {
             StartGame();

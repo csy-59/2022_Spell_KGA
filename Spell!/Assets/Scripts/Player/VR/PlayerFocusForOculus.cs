@@ -34,11 +34,11 @@ public class PlayerFocusForOculus : PlayerFocus
         base.Update();
     }
 
-    private void LineRendererSetting()
+    protected void LineRendererSetting()
     {
         LineRendererSetting(lineRendererPosition.position + lineRendererPosition.forward * 2f);
     }
-    private void LineRendererSetting(Vector3 targetPosition)
+    protected void LineRendererSetting(Vector3 targetPosition)
     {
         Vector3[] linePosition = new Vector3[]
         {

@@ -23,14 +23,12 @@ public class GameManager : SingletonBehaviour<GameManager>
         //if(Application.platform == RuntimePlatform.Android)
         //{
         //    IsNotOculus = true;
-        //    vrObjects.SetActive(true);
-        //    pcObjects.SetActive(false);
+        //    Instantiate(vrObjects);
         //}
         //else
         //{
         //    IsNotOculus = false;
-        //    vrObjects.SetActive(false);
-        //    pcObjects.SetActive(true);
+        //    Instantiate(pcObjects);
         //}
     }
 

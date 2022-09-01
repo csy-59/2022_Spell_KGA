@@ -40,7 +40,7 @@ public class PlayerFocus : MonoBehaviour
         interaction.interact(focusObject);
     }
 
-    private void FocusSetting()
+    protected virtual void FocusSetting()
     {
         if (UIManager.Instance.IsUIShown || GameManager.Instance.IsGameOver)
         {

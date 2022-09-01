@@ -32,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
 
     protected void Move(float speed, Transform targetTransform)
     {
-
         Vector3 moveOffset = input.X * speed * Time.fixedDeltaTime * targetTransform.right
             + input.Z * speed * Time.fixedDeltaTime * targetTransform.forward;
 
