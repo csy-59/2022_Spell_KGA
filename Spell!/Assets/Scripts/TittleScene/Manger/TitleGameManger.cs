@@ -14,7 +14,6 @@ public class TitleGameManger : SingletonBehaviour<TitleGameManger>
 
     private void Awake()
     {
-        PlayerPrefsKey.SetCommonItemList(3);
         CollectedCount(PlayerPrefsKey.ScrollKey, (int)ScrollList.ScrollMax, ref collectedScrollCount);
         CollectedCount(PlayerPrefsKey.CristalKey, (int)CristalList.CristalMax, ref collectedCristalCount);
         CollectedCount(PlayerPrefsKey.CommonItemKey, (int)CommonItemList.CommonItemMax, ref collectedCollectionCount);
