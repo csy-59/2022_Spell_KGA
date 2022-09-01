@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerFocusForTitle : PlayerFocus
 {
+    [SerializeField] private TitleUIManager titleUIManager;
     protected override void Awake()
     {
         base.Awake();
@@ -17,7 +18,7 @@ public class PlayerFocusForTitle : PlayerFocus
 
     protected override void FocusSetting()
     {
-        if(TitleGameManger.Instance.isNotOculus)
+        if(titleUIManager.IsEndingScrollShown)
         {
             SetFocusObject();
             return;
