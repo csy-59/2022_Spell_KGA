@@ -53,11 +53,12 @@ public class InteractiveObject: MonoBehaviour
     public virtual void OnFocus()
     {
         outline.enabled = true;
-        UIManager.Instance.SetInfoTextBar(gameObject.name.ToString());
+        UIManager.Instance.SetNameTextBar(gameObject.name.ToString());
     }
     public virtual void OutFocus()
     {
         outline.enabled = false;
+        UIManager.Instance.SetNameTextBar("");
         UIManager.Instance.SetInfoTextBar("");
     }
 

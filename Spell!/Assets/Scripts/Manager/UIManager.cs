@@ -10,7 +10,8 @@ public class UIManager : SingletonBehaviour<UIManager>
     [SerializeField] private PlayerInput input;
 
     [Header ("Information Text")]
-    public TextMeshProUGUI InfoText;
+    [SerializeField] private TextMeshProUGUI objectInfoText;
+    [SerializeField] private TextMeshProUGUI objectNameTextMesh;
 
     [Header("Effect")]
     [SerializeField] private Image effectImage;
@@ -60,6 +61,7 @@ public class UIManager : SingletonBehaviour<UIManager>
     private void Awake()
     {
         SetInfoTextBar("");
+        SetNameTextBar("");
 
         // Effect
         effectImage.sprite = null;
@@ -118,7 +120,12 @@ public class UIManager : SingletonBehaviour<UIManager>
     // Information
     public void SetInfoTextBar(string info)
     {
-        InfoText.text = info;
+        objectInfoText.text = info;
+    }
+
+    public void SetNameTextBar(string name)
+    {
+        objectNameTextMesh.text = name;
     }
 
     // Inventory

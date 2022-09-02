@@ -8,6 +8,7 @@ public class ScrollInteract : ItemInteract
 {
     [SerializeField] private ScrollList scrollType;
     [SerializeField] private Sprite scrollSprite;
+    private bool isBeingUsed = false;
 
     protected override void Awake()
     {
@@ -17,7 +18,14 @@ public class ScrollInteract : ItemInteract
     public override void OnFocus()
     {
         base.OnFocus();
-        UIManager.Instance.SetInfoTextBar("Old Scroll");
+        if(isBeingUsed)
+        {
+            UIManager.Instance.SetNameTextBar(gameObject.name);
+        }
+        else
+        {
+            UIManager.Instance.SetNameTextBar("Old Scroll");
+        }
     }
 
     public override bool Use(PlayerInteraction player)
@@ -25,6 +33,8 @@ public class ScrollInteract : ItemInteract
         UIManager.Instance.ShowScroll(scrollSprite);
 
         PlayerPrefsKey.SetScrollList((int)scrollType);
+
+        isBeingUsed = true;
 
         return true;
     }
