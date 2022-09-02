@@ -67,7 +67,6 @@ public class UIManager : SingletonBehaviour<UIManager>
         // inventory
         GridLayoutGroup itemPanelGrideGroup = ItemPanel.GetComponent<GridLayoutGroup>();
         RectTransform itemPanelRectTransform = ItemPanel.GetComponent<RectTransform>();
-        pickedItem = new ItemInteract();
 
         itemPanelGrideGroup.cellSize = new Vector2(
             itemPanelRectTransform.rect.width / 10,
@@ -148,18 +147,6 @@ public class UIManager : SingletonBehaviour<UIManager>
 
     public void SetInventory(List<ItemInteract> inventory)
     {
-        if (this.pickedItem.ItemType != InteractAsset.ItemList.NoItem)
-        {
-            pickedItemImage.sprite = this.pickedItem.itemImage;
-            pickedItemImage.color = originalColor;
-            pickedItemName.text = this.pickedItem.gameObject.name;
-        }
-        else
-        {
-            pickedItemImage.color = readyColor;
-            pickedItemName.text = "";
-        }
-
         for (int i = 0; i < inventory.Count; ++i)
         {
             itemInventory[i].sprite = inventory[i].itemImage;
@@ -180,6 +167,17 @@ public class UIManager : SingletonBehaviour<UIManager>
     public void SetPickedItem(ItemInteract pickedItem)
     {
         this.pickedItem = pickedItem;
+        if (this.pickedItem.ItemType != InteractAsset.ItemList.NoItem)
+        {
+            pickedItemImage.sprite = this.pickedItem.itemImage;
+            pickedItemImage.color = originalColor;
+            pickedItemName.text = this.pickedItem.gameObject.name;
+        }
+        else
+        {
+            pickedItemImage.color = readyColor;
+            pickedItemName.text = "";
+        }
     }
 
     // Effect

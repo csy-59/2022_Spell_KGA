@@ -8,6 +8,7 @@ public class PlayerInteraction : MonoBehaviour
     [Header("Player State")]
     [SerializeField] private ItemList item;
     private ItemInteract pickedItem;
+    private ItemInteract nullPickedItem;
 
     [SerializeField] private EffectList effect;
 
@@ -19,14 +20,21 @@ public class PlayerInteraction : MonoBehaviour
     [Header("Item Position")]
     [SerializeField] private Transform handPosition;
 
+    [Header("Sound")]
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip itemPickupSound;
+
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
         inventory = GetComponent<PlayerInventory>();
+        audioSource = GetComponent<AudioSource>();
 
         potionEffectScript = potionEffect.GetComponent<PotionEffect>();
 
-        pickedItem = null;
+        nullPickedItem = new ItemInteract();
+        pickedItem = nullPickedItem;
+        UIManager.Instance.SetPickedItem(pickedItem);
     }
 
     public void interact(InteractiveObject focusObject)
@@ -113,16 +121,12 @@ public class PlayerInteraction : MonoBehaviour
         }
 
         SetPickedItem(item);
+        PlaySound(itemPickupSound);
         item.PickUp(handPosition);
     }
 
     public void DropItem()
     {
-        if (UIManager.Instance.IsUIShown)
-        {
-            return;
-        }
-
         if (input.Q)
         {
             pickedItem.DropDown();
@@ -135,6 +139,7 @@ public class PlayerInteraction : MonoBehaviour
         preItem = pickedItem;
 
         SetPickedItem(item);
+        PlaySound(itemPickupSound);
         item.PickUp(handPosition);
     }
 
@@ -145,6 +150,7 @@ public class PlayerInteraction : MonoBehaviour
             inventory.AddItemToInventory(pickedItem);
         }
         SetPickedItem();
+        PlaySound(itemPickupSound);
     }
 
     public void DestroyItem(ItemInteract item)
@@ -167,8 +173,9 @@ public class PlayerInteraction : MonoBehaviour
 
     private void SetPickedItem()
     {
-        pickedItem = null;
+        pickedItem = nullPickedItem;
         this.item = ItemList.NoItem;
+        UIManager.Instance.SetPickedItem(nullPickedItem);
     }
 
     public void SetPlayerEffect(EffectList effect, Color newColor)
@@ -177,5 +184,10 @@ public class PlayerInteraction : MonoBehaviour
 
         potionEffect.SetActive(effect != EffectList.NoEffect);
         potionEffectScript.SetPotionColor(newColor);
+    }
+
+    public void PlaySound(AudioClip audioClip)
+    {
+        audioSource.PlayOneShot(audioClip);
     }
 }

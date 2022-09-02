@@ -8,7 +8,6 @@ public class BedInteract : InteractiveObject
 {
     [Header("Bed Interaction")]
     [SerializeField] private GameObject brakeEffect;
-    [SerializeField] private GameObject[] itemToPop;
     [SerializeField] private int punchCount = 5;
 
     private Animator punchEffect;
@@ -18,11 +17,6 @@ public class BedInteract : InteractiveObject
         base.Awake();
 
         punchEffect = GetComponent<Animator>();
-
-        foreach(GameObject item in itemToPop)
-        {
-            item.SetActive(false);
-        }
 
         brakeEffect.SetActive(false);
     }
@@ -40,11 +34,6 @@ public class BedInteract : InteractiveObject
             }
 
             UIManager.Instance.SetInfoTextBar("I did it!");
-            
-            foreach(GameObject itemPop in itemToPop)
-            {
-                itemPop.SetActive(true);
-            }
             
             brakeEffect.SetActive(true);
             brakeEffect.GetComponent<ParticleSystem>().Play();
