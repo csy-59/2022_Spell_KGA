@@ -38,7 +38,7 @@ public class BirdInteract : InteractiveObject
             }
             else
             {
-                UIManager.Instance.SetInfoTextBar("The Bird is staring at me. He seems hungry");
+                UIManager.Instance.SetInfoTextBar("The Bird is staring at me. He seems hungry. He need");
                 return false;
             }
         }

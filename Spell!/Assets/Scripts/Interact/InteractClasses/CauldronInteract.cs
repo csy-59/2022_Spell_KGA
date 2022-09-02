@@ -15,11 +15,14 @@ public class CauldronInteract : InteractiveObject
 
     public WoodenPlankinteract fire;
 
+    private AudioSource audioSource;
+
     protected override void Awake()
     {
         base.Awake();
 
         waterMaterial.color = effectColors[0];
+        audioSource = GetComponent<AudioSource>();
     }
 
     public override bool Interact(ItemList item, EffectList effect)

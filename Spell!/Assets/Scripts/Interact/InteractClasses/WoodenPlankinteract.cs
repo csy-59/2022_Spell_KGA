@@ -6,6 +6,7 @@ using UnityEngine;
 public class WoodenPlankinteract : InteractiveObject
 {
     [SerializeField] private GameObject fire;
+    [SerializeField] private GameObject boilingEffect;
     public bool IsFireOn
     {
         get;
@@ -17,6 +18,7 @@ public class WoodenPlankinteract : InteractiveObject
         base.Awake();
 
         fire.SetActive(false);
+        boilingEffect.SetActive(false);
         objectType = ObjectList.WoodenPlank;
     }
 
@@ -37,6 +39,7 @@ public class WoodenPlankinteract : InteractiveObject
             UIManager.Instance.SetInfoTextBar("Water is boilling...");
             IsFireOn = true;
             fire.SetActive(true);
+            boilingEffect.SetActive(true);
             objectType = ObjectList.WoodenPlankWithFire;
             return true;
         }

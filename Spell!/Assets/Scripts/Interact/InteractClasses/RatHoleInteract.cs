@@ -58,7 +58,7 @@ public class RatHoleInteract : InteractiveObject
 
             if(!base.InteractPreAssert(item, effect, 0))
             {
-                UIManager.Instance.SetInfoTextBar("Rats seem hungry");
+                UIManager.Instance.SetInfoTextBar("Rats seem hungry. They need Cheese...");
                 return false;
             }
 
