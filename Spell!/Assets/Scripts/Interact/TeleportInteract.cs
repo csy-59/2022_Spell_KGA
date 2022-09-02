@@ -6,11 +6,20 @@ using UnityEngine;
 public class TeleportInteract : InteractiveObject
 {
     [SerializeField] private Transform teleportTransform;
-    [SerializeField] private GameObject player;
+    private GameObject player;
 
     protected override void Awake()
     {
         base.Awake();
+
+        PlayerInteraction[] players = FindObjectsOfType<PlayerInteraction>();
+        foreach(var candidate in players)
+        {
+            if(candidate.gameObject.activeSelf)
+            {
+                player = candidate.gameObject;
+            }
+        }
     }
 
     //private void PropSettings(bool isActive)

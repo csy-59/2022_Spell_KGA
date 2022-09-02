@@ -809,6 +809,14 @@ PrefabInstance:
       propertyPath: potionEffect
       value: 
       objectReference: {fileID: 1833703753}
+    - target: {fileID: 6336357651636367756, guid: b9b11d52a4a8d9d40913c34248ae120e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 615272065}
+    - target: {fileID: 6336357651636367756, guid: b9b11d52a4a8d9d40913c34248ae120e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EndGame
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9b11d52a4a8d9d40913c34248ae120e, type: 3}
 --- !u!1001 &129895779
@@ -5771,7 +5779,6 @@ MonoBehaviour:
   necessaryEffect: 
   necessaryItem: 
   teleportTransform: {fileID: 1868981709}
-  player: {fileID: 0}
 --- !u!65 &861622997
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6385,7 +6392,6 @@ MonoBehaviour:
   necessaryEffect: 0b000000
   necessaryItem: 01000000
   teleportTransform: {fileID: 437741385}
-  player: {fileID: 0}
 --- !u!82 &1032610808
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7133,6 +7139,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1568890324206411188, guid: 7077ac095d152df4ab78fe234bbb0282, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 615272065}
+    - target: {fileID: 1568890324206411188, guid: 7077ac095d152df4ab78fe234bbb0282, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EndGame
+      objectReference: {fileID: 0}
     - target: {fileID: 1568890324221779364, guid: 7077ac095d152df4ab78fe234bbb0282, type: 3}
       propertyPath: potionEffect
       value: 
@@ -7141,6 +7155,14 @@ PrefabInstance:
       propertyPath: position
       value: 
       objectReference: {fileID: 90700861}
+    - target: {fileID: 1568890324872895245, guid: 7077ac095d152df4ab78fe234bbb0282, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 615272065}
+    - target: {fileID: 1568890324872895245, guid: 7077ac095d152df4ab78fe234bbb0282, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EndGame
+      objectReference: {fileID: 0}
     - target: {fileID: 1568890326237988666, guid: 7077ac095d152df4ab78fe234bbb0282, type: 3}
       propertyPath: m_Name
       value: VR
@@ -10390,7 +10412,6 @@ MonoBehaviour:
   necessaryEffect: 
   necessaryItem: 
   teleportTransform: {fileID: 2003633316}
-  player: {fileID: 0}
 --- !u!65 &1705879095
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10672,7 +10693,6 @@ MonoBehaviour:
   necessaryEffect: 
   necessaryItem: 
   teleportTransform: {fileID: 197243865}
-  player: {fileID: 0}
 --- !u!65 &1746090718
 BoxCollider:
   m_ObjectHideFlags: 0
