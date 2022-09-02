@@ -38,7 +38,7 @@ public class WallInteract : InteractiveObject
 
         if(base.InteractPreAssert(item,effect) == -1)
         {
-            UIManager.Instance.SetInfoTextBar("Wall");
+            UIManager.Instance.SetInfoTextBar("It's wall. With more power, I think I can brake it.");
             return false;
         }
 
