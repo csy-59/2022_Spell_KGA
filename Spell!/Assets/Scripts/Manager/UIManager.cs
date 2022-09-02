@@ -21,6 +21,10 @@ public class UIManager : SingletonBehaviour<UIManager>
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private GameObject ItemPanel;
     public PlayerInventory inventoryScript;
+
+    [SerializeField] private Image pickedItemImage;
+    [SerializeField] private TextMeshProUGUI pickedItemName;
+    private ItemInteract pickedItem;
     
     public Button ButtonPrefab;
     private List<Image> itemInventory = new List<Image>();
@@ -63,6 +67,7 @@ public class UIManager : SingletonBehaviour<UIManager>
         // inventory
         GridLayoutGroup itemPanelGrideGroup = ItemPanel.GetComponent<GridLayoutGroup>();
         RectTransform itemPanelRectTransform = ItemPanel.GetComponent<RectTransform>();
+        pickedItem = new ItemInteract();
 
         itemPanelGrideGroup.cellSize = new Vector2(
             itemPanelRectTransform.rect.width / 10,
@@ -143,16 +148,38 @@ public class UIManager : SingletonBehaviour<UIManager>
 
     public void SetInventory(List<ItemInteract> inventory)
     {
-        for(int i = 0; i < inventory.Count; ++i)
+        if (this.pickedItem.ItemType != InteractAsset.ItemList.NoItem)
+        {
+            pickedItemImage.sprite = this.pickedItem.itemImage;
+            pickedItemImage.color = originalColor;
+            pickedItemName.text = this.pickedItem.gameObject.name;
+        }
+        else
+        {
+            pickedItemImage.color = readyColor;
+            pickedItemName.text = "";
+        }
+
+        for (int i = 0; i < inventory.Count; ++i)
         {
             itemInventory[i].sprite = inventory[i].itemImage;
             itemInventory[i].color = originalColor;
         }
 
-        for(int i = inventory.Count; i < inventoryCapacity; ++i)
+        for (int i = inventory.Count; i < inventoryCapacity; ++i)
         {
             itemInventory[i].color = readyColor;
         }
+    }
+    public void SetInventory(List<ItemInteract> inventory, ItemInteract pickedItem)
+    {
+        SetPickedItem(pickedItem);
+        SetInventory(inventory);
+    }
+
+    public void SetPickedItem(ItemInteract pickedItem)
+    {
+        this.pickedItem = pickedItem;
     }
 
     // Effect

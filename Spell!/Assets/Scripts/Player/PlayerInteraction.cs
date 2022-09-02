@@ -162,6 +162,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         pickedItem = item;
         this.item = item.ItemType;
+        UIManager.Instance.SetPickedItem(item);
     }
 
     private void SetPickedItem()
