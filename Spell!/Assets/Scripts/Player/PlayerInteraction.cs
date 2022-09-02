@@ -130,6 +130,14 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
+    public void SelectItem(ItemInteract item, out ItemInteract preItem)
+    {
+        preItem = pickedItem;
+
+        SetPickedItem(item);
+        item.PickUp(handPosition);
+    }
+
     public void SendPickedItemToInventory()
     {
         if (this.item != ItemList.NoItem)

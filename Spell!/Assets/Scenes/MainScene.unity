@@ -751,7 +751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6336357650193267296, guid: b9b11d52a4a8d9d40913c34248ae120e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6336357650193267299, guid: b9b11d52a4a8d9d40913c34248ae120e, type: 3}
       propertyPath: m_RootOrder
@@ -3776,7 +3776,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 97d41e61d64d5c54ba1461b3282daf2e, type: 3}
   pcObjects: {fileID: 6336357650193267296, guid: b9b11d52a4a8d9d40913c34248ae120e, type: 3}
   vrObjects: {fileID: 1568890326237988666, guid: 7077ac095d152df4ab78fe234bbb0282, type: 3}
-  isNotOculus: 0
+  isNotOculus: 1
 --- !u!4 &615272066
 Transform:
   m_ObjectHideFlags: 0
@@ -7169,7 +7169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1568890326237988666, guid: 7077ac095d152df4ab78fe234bbb0282, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1568890326237988667, guid: 7077ac095d152df4ab78fe234bbb0282, type: 3}
       propertyPath: m_RootOrder

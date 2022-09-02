@@ -33,9 +33,11 @@ public class PlayerInventory : MonoBehaviour
             return;
 
         ItemInteract selectedItem = inventory[itemNumber];
-        
-        inventory.RemoveAt(itemNumber);
-        interaction.PickItem(selectedItem);
+
+        ItemInteract previousItem;
+        interaction.SelectItem(selectedItem, out previousItem);
+        previousItem.ToInventory(position);
+        inventory[itemNumber] = previousItem;
 
         UIManager.Instance.SetInventory(inventory);
     }
