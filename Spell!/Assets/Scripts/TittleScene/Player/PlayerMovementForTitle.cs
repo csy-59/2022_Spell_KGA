@@ -12,6 +12,7 @@ public class PlayerMovementForTitle : MonoBehaviour
 
     private Rigidbody rigid;
     private PlayerInput input;
+    [SerializeField] private TitleUIManager uIManager;
 
     [SerializeField] private Transform cameraTransform;
 
@@ -31,7 +32,7 @@ public class PlayerMovementForTitle : MonoBehaviour
 
     private void Rotate()
     {
-        if(!TitleGameManger.Instance.isNotOculus)
+        if (!TitleGameManger.Instance.isNotOculus)
         {
             PlayerInputForOculus oculusInput = (PlayerInputForOculus)input;
 
@@ -43,6 +44,11 @@ public class PlayerMovementForTitle : MonoBehaviour
 
     private void Move()
     {
+        if (uIManager.IsEndingScrollShown)
+        {
+            return;
+        }
+
         Vector3 moveOffset;
         if (TitleGameManger.Instance.isNotOculus)
         {

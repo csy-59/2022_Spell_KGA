@@ -25,7 +25,7 @@ public class TitleUIManager : MonoBehaviour
     [SerializeField] private Sprite startScrollSprite;
     [SerializeField] private GameObject map;
     private Image blackPanelImage;
-    private bool isStartScrollShown = false;
+    public bool isStartScrollShown { get; private set; }
 
     private AudioSource ranningSound;
 

@@ -708,6 +708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   stickSensitivity: 200
+  uIManager: {fileID: 2036204493}
   cameraTransform: {fileID: 2085748673}
 --- !u!114 &71702033
 MonoBehaviour:
@@ -8401,6 +8402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.5
   stickSensitivity: 50
+  uIManager: {fileID: 1819125907}
   cameraTransform: {fileID: 783159724}
 --- !u!114 &1245277427
 MonoBehaviour:
