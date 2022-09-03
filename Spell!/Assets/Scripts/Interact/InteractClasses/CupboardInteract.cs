@@ -8,11 +8,14 @@ public class CupboardInteract : InteractiveObject
 {
     [Header("Cupboard Interact")]
     [SerializeField] private GameObject lockToShelf;
+    [SerializeField] private AudioClip unlockAudioClip;
+    private AudioSource audioSource;
     private bool isLockOpen = false;
 
     [SerializeField] private Transform[] doors;
     [SerializeField] private float doorOpenYOffset = 90f;
     [SerializeField] private float doorSpeed;
+    [SerializeField] private AudioClip openAndCloseClip;
     private bool isDoorOpen = false;
     private Collider doorCollider;
 
@@ -21,6 +24,13 @@ public class CupboardInteract : InteractiveObject
         base.Awake();
 
         doorCollider = GetComponent<Collider>();
+        audioSource = GetComponent<AudioSource>();
+        if(!audioSource)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
     }
 
     public override bool Interact(ItemList item, EffectList effect)
@@ -32,12 +42,14 @@ public class CupboardInteract : InteractiveObject
                 DoorOpen(doors[0], -doorOpenYOffset);
                 DoorOpen(doors[1], doorOpenYOffset);
                 doorCollider.enabled = true;
+                audioSource.PlayOneShot(openAndCloseClip);
             }
             else
             {
                 DoorOpen(doors[0], doorOpenYOffset);
                 DoorOpen(doors[1], -doorOpenYOffset);
                 doorCollider.enabled = false;
+                audioSource.PlayOneShot(openAndCloseClip);
             }
 
             isDoorOpen = !isDoorOpen;
@@ -52,6 +64,7 @@ public class CupboardInteract : InteractiveObject
             }
 
             UIManager.Instance.SetInfoTextBar("Lock opened");
+            audioSource.PlayOneShot(unlockAudioClip);
             isLockOpen = true;
             lockToShelf.SetActive(false);
             return true;

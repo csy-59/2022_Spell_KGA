@@ -15,6 +15,11 @@ public class CauldronInteract : InteractiveObject
 
     public WoodenPlankinteract fire;
 
+    [SerializeField] private GameObject itemDropEffects;
+    [SerializeField] private ParticleSystem[] itemDropEffectParticles;
+    private AudioSource itemDropAudioSource;
+    [SerializeField] private AudioClip itemDropAudioClip;
+
     private AudioSource audioSource;
 
     protected override void Awake()
@@ -23,6 +28,9 @@ public class CauldronInteract : InteractiveObject
 
         waterMaterial.color = effectColors[0];
         audioSource = GetComponent<AudioSource>();
+
+        itemDropAudioSource = itemDropEffects.GetComponent<AudioSource>();
+        itemDropEffects.SetActive(false);
     }
 
     public override bool Interact(ItemList item, EffectList effect)
@@ -64,6 +72,7 @@ public class CauldronInteract : InteractiveObject
             UIManager.Instance.SetInfoTextBar("Water is Clear. Cauldron has been reset...");
             magicMaterialsQueue.Clear();
             waterMaterial.color = effectColors[0];
+            PlayItemDropEffect();
             return true;
         }
 
@@ -73,7 +82,22 @@ public class CauldronInteract : InteractiveObject
             waterMaterial.color = effectColors[interactionNumber];
         }
         magicMaterialsQueue.Add(item);
+        PlayItemDropEffect();
+
         return true;
+    }
+
+    private void PlayItemDropEffect()
+    {
+        itemDropEffects.SetActive(true);
+        foreach (var particleSystem in itemDropEffectParticles)
+        {
+            var instantiatedParticalSystem = Instantiate(particleSystem, itemDropEffects.transform.position, 
+                particleSystem.transform.rotation, itemDropEffects.transform);
+            instantiatedParticalSystem.transform.localScale = gameObject.transform.localScale;
+
+        }
+        itemDropAudioSource.PlayOneShot(itemDropAudioClip);
     }
 
     public List<ItemList> GetRecipe()

@@ -15,6 +15,8 @@ public class SecretChestInteract : InteractiveObject
     [Header("Chest Head")]
     [SerializeField] private GameObject chestHead;
     [SerializeField] private float chestHeadSpeed = 5f;
+    [SerializeField] private AudioClip chestOpenAndCloseAudioClip;
+    private AudioSource audioSource;
     private bool isChestOpen = false;
 
     protected override void Awake()
@@ -27,6 +29,11 @@ public class SecretChestInteract : InteractiveObject
         meshRenderers[1].material.SetFloat("_Cutoff", 0f);
 
         inChestItems.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
+        if(!audioSource)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     private void OnEnable()
@@ -103,6 +110,7 @@ public class SecretChestInteract : InteractiveObject
         }
 
         isChestOpen = !isChestOpen;
+        audioSource.PlayOneShot(chestOpenAndCloseAudioClip);
         return true;
     }
 

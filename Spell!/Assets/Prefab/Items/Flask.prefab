@@ -182,3 +182,6 @@ MonoBehaviour:
   originalColor: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 0.54509807}
   flaskMaterial: {fileID: 0}
   endingType: 
+  getPotionSound: {fileID: 8300000, guid: 722f5aef791c29c4dbe49f5f6b6a186a, type: 3}
+  giveEffectSound: {fileID: 8300000, guid: bb7732e78f7a96b4cb259c6c2bccae26, type: 3}
+  drinkSound: {fileID: 8300000, guid: 344a170bf8f39674d9e3f8ae2f38ad89, type: 3}

@@ -32,6 +32,8 @@ public class FlaskInteract : ItemInteract
     [Header("Effect Sound")]
     private AudioSource audioSource;
     [SerializeField] private AudioClip getPotionSound;
+    [SerializeField] private AudioClip giveEffectSound;
+    [SerializeField] private AudioClip drinkSound;
 
     protected override void Awake()
     {
@@ -108,7 +110,7 @@ public class FlaskInteract : ItemInteract
     {
         if(potionEffect != EffectList.NoEffect)
         {
-            UIManager.Instance.SetInfoTextBar($"I fill something...!{potionEffect}");
+            UIManager.Instance.SetInfoTextBar($"I fill something...! {potionEffect}");
             UIManager.Instance.SetEffectImage(effectSprite);
 
             player.SetPlayerEffect(potionEffect, flaskMaterial.color);
@@ -122,6 +124,7 @@ public class FlaskInteract : ItemInteract
             potionEffect = EffectList.NoEffect;
             effectSprite = null;
             flaskMaterial.color = originalColor;
+            audioSource.PlayOneShot(giveEffectSound);
 
             return true;
         }
@@ -129,6 +132,7 @@ public class FlaskInteract : ItemInteract
         {
             UIManager.Instance.SetInfoTextBar("I fill nothing...");
             UIManager.Instance.SetEffectImage(effectSprite);
+            audioSource.PlayOneShot(drinkSound);
         }
 
         return false;

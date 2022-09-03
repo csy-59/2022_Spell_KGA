@@ -6,7 +6,8 @@ using UtilityAsset;
 
 public class BirdInteract : InteractiveObject
 {
-    [Header ("Bird Interact")]
+    [Header("Bird Interact")]
+    [SerializeField] private AudioClip guguAudioClip;
     [SerializeField] private GameObject hintScroll;
     private bool isHintGiven = false;
 
@@ -19,16 +20,28 @@ public class BirdInteract : InteractiveObject
     [SerializeField] private Animator pigeonAnim;
     [SerializeField] private Transform awayPoint;
     [SerializeField] private float flySpeed;
+    [SerializeField] private AudioClip flyAwayAudioClip;
+    private AudioSource audioSource;
 
     protected override void Awake()
     {
         base.Awake();
 
         hintScroll.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
+        if(!audioSource)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
     }
 
     public override bool Interact(ItemList item, EffectList effect)
     {
+        audioSource.PlayOneShot(guguAudioClip);
+
         if(base.InteractPreAssert(item, effect) == -1)
         {
             if(isHintGiven)
@@ -82,5 +95,7 @@ public class BirdInteract : InteractiveObject
             new ObjectMove.BeforeService(() => { Debug.Log("gogo"); gameObject.layer = LayerMask.NameToLayer("Default"); } ),
             new ObjectMove.AfterService(() => { Debug.Log("byebye"); Destroy(gameObject); })
             );
+
+        audioSource.PlayOneShot(flyAwayAudioClip);
     }
 }
