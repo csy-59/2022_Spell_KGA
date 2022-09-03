@@ -101,8 +101,8 @@ MonoBehaviour:
   cristalShard: {fileID: 7096924729989000777, guid: 8a9146d83590ea34bbe328a56b5aab6a, type: 3}
   cristalType: 1
   popForce: 3
+  giveShardAudioClip: {fileID: 8300000, guid: 055b4a51281f2bb4dac91e1d31194669, type: 3}
   shardPosition: {fileID: 8145816129134426608}
-  target: {fileID: 0}
   shardGenerateOffsetTime: 15
 --- !u!1001 &393148941713519541
 PrefabInstance:

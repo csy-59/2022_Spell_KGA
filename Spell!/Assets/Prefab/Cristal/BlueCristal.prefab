@@ -70,8 +70,8 @@ MonoBehaviour:
   cristalShard: {fileID: 2184437748229750150, guid: 97827e95d56b582479ad828f59aa1366, type: 3}
   cristalType: 2
   popForce: 3
+  giveShardAudioClip: {fileID: 8300000, guid: 055b4a51281f2bb4dac91e1d31194669, type: 3}
   shardPosition: {fileID: 3666140512281283558}
-  target: {fileID: 0}
   shardGenerateOffsetTime: 15
 --- !u!1 &4481416427393751266
 GameObject:

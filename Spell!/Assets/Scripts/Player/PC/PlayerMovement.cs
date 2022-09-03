@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         bool isNowWalking = (input.X != 0 || input.Z != 0);
         if(isNowWalking != isWalking)
         {
+            Debug.Log($"{isWalking} {isNowWalking}");
             if(isNowWalking)
             {
                 audioSource.Play();

@@ -10,6 +10,8 @@ public class CristalInteract : InteractiveObject
     [SerializeField] private GameObject cristalShard;
     [SerializeField] private CristalList cristalType;
     [SerializeField] private float popForce = 3;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip giveShardAudioClip;
 
     [SerializeField] private Transform shardPosition;
 
@@ -21,6 +23,7 @@ public class CristalInteract : InteractiveObject
         base.Awake();
 
         lastShardGenerateTime = Time.time;
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     public override bool Interact(ItemList item, EffectList effect)
@@ -36,6 +39,7 @@ public class CristalInteract : InteractiveObject
         GameObject shard = Instantiate(cristalShard, shardPosition.position, shardPosition.rotation);
         shard.name = cristalShard.name;
         shard.GetComponent<Rigidbody>().AddForce(Vector3.up * popForce, ForceMode.Impulse);
+        audioSource.PlayOneShot(giveShardAudioClip);
 
         PlayerPrefsKey.SetCristalList((int)cristalType);
 
