@@ -124,7 +124,7 @@ public class FlaskInteract : ItemInteract
         {
             UIManager.Instance.SetInfoTextBar("I fill nothing...");
             UIManager.Instance.SetEffectImage(effectSprite);
-            player.SetPlayerEffect(potionEffect, Color.white);
+            //player.SetPlayerEffect(potionEffect, Color.white);
         }
 
         return false;
