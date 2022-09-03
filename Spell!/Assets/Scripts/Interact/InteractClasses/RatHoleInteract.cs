@@ -10,6 +10,8 @@ public class RatHoleInteract : InteractiveObject
     [SerializeField] private GameObject key;
     [SerializeField] private float keySlideSpeed = 5;
     [SerializeField] private Transform keyPosition;
+    [SerializeField] private AudioClip ratSquakeAudioClip;
+    private AudioSource audioSource;
 
     private bool isKeyGiven = false;
 
@@ -23,14 +25,12 @@ public class RatHoleInteract : InteractiveObject
         base.Awake();
 
         hair.SetActive(false);
-    }
-
-    void Update()
-    {
+        audioSource = GetComponent<AudioSource>();
     }
 
     public override bool Interact(ItemList item, EffectList effect)
     {
+        audioSource.PlayOneShot(ratSquakeAudioClip);
         if(base.InteractPreAssert(item, effect, 1))
         {
             if(isHairGiven)
