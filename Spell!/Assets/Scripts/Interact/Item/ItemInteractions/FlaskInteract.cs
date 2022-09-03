@@ -29,6 +29,10 @@ public class FlaskInteract : ItemInteract
     [Header("Effect Ending")]
     [SerializeField] private EndingList[] endingType;
 
+    [Header("Effect Sound")]
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip getPotionSound;
+
     protected override void Awake()
     {
         base.Awake();
@@ -37,6 +41,7 @@ public class FlaskInteract : ItemInteract
 
         flaskMaterial.color = originalColor;
         cauldrons = FindObjectsOfType<CauldronInteract>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public override void PickUp(Transform itemTransform)
@@ -53,6 +58,7 @@ public class FlaskInteract : ItemInteract
             return false;
         }
 
+        audioSource.PlayOneShot(getPotionSound);
         CauldronInteract cauldron = cauldrons[0].ObjectType == objectToInteract ? cauldrons[0] : cauldrons[1];
         return SetEffect(cauldron.GetRecipe());
     }
@@ -107,7 +113,6 @@ public class FlaskInteract : ItemInteract
 
             player.SetPlayerEffect(potionEffect, flaskMaterial.color);
 
-            Debug.Log($"{(int)potionEffect} {(int)EffectList.ChangeToSkeleton}");
             if ((int)potionEffect >= (int) EffectList.ChangeToSkeleton)
             {
                 GameManager.Instance.SetEnding(endingType[(int)potionEffect - (int)EffectList.ChangeToSkeleton]);
@@ -124,7 +129,6 @@ public class FlaskInteract : ItemInteract
         {
             UIManager.Instance.SetInfoTextBar("I fill nothing...");
             UIManager.Instance.SetEffectImage(effectSprite);
-            //player.SetPlayerEffect(potionEffect, Color.white);
         }
 
         return false;

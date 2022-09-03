@@ -13,10 +13,14 @@ public class PlayerMovement : MonoBehaviour
     protected Rigidbody rigid;
     protected PlayerInput input;
 
+    private AudioSource audioSource;
+    private bool isWalking;
+
     protected virtual void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         input = GetComponent<PlayerInput>();
+        audioSource = GetComponent<AudioSource>();
 
         SitAndSand(false);
     }
@@ -32,6 +36,21 @@ public class PlayerMovement : MonoBehaviour
 
     protected void Move(float speed, Transform targetTransform)
     {
+        bool isNowWalking = (input.X != 0 || input.Z != 0);
+        if(isNowWalking != isWalking)
+        {
+            if(isNowWalking)
+            {
+                audioSource.Play();
+            }
+            else
+            {
+                audioSource.Pause();
+            }
+
+            isWalking = isNowWalking;
+        }
+
         Vector3 moveOffset = input.X * speed * Time.fixedDeltaTime * targetTransform.right
             + input.Z * speed * Time.fixedDeltaTime * targetTransform.forward;
 
