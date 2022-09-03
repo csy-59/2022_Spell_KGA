@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class SkeletonInteract : InteractiveObject
 {
+    private AudioSource audioSource;
+    [SerializeField] AudioClip boneAudioClip;
+
     [Header ("\nSkeleton Item Interaction")]
     [SerializeField] private GameObject item;
     [SerializeField] private string getItemLine = "SomeThing dropped";
@@ -33,10 +36,17 @@ public class SkeletonInteract : InteractiveObject
         };
 
         item.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
+        if(!audioSource)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     public override bool Interact(ItemList item, EffectList effect)
     {
+        audioSource.PlayOneShot(boneAudioClip);
+
         if(base.InteractPreAssert(item, effect, 1))
         {
             if(!isBoneGiven)

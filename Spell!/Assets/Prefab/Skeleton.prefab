@@ -65,13 +65,13 @@ MonoBehaviour:
   objectType: 8
   necessaryEffect: 0b00000001000000
   necessaryItem: 0100000001000000
+  boneAudioClip: {fileID: 8300000, guid: 59f4c591d5744994da67e4c3a47f4aab, type: 3}
   item: {fileID: 0}
   getItemLine: It's an old scroll
   afterItemLine: I think it's better not to touch him...
   bone: {fileID: 8104405982418883155, guid: c5440d3279e27c541a6c1fa4369d07ed, type: 3}
   bonePosition: {fileID: 4207444983054194311}
   getBoneLine: He's already dead, right?
-  afterBoneLine: Sorry for that...
 --- !u!1 &5137513097917817416
 GameObject:
   m_ObjectHideFlags: 0

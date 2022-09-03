@@ -7,6 +7,8 @@ using UtilityAsset;
 public class BedInteract : InteractiveObject
 {
     [Header("Bed Interaction")]
+    [SerializeField] private AudioClip crackAudioClip;
+    private AudioSource audioSource;
     [SerializeField] private GameObject brakeEffect;
     [SerializeField] private int punchCount = 5;
 
@@ -17,12 +19,15 @@ public class BedInteract : InteractiveObject
         base.Awake();
 
         punchEffect = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         brakeEffect.SetActive(false);
     }
 
     public override bool Interact(ItemList item, EffectList effect)
     {
+        audioSource.PlayOneShot(crackAudioClip);
+
         if(base.InteractPreAssert(item, effect, 0))
         {
             --punchCount;
