@@ -17,6 +17,11 @@ public class ItemTorchInteract : ItemInteract
         itemType = ItemList.Tourch;
     }
 
+    private void OnEnable()
+    {
+        GetComponent<AudioSource>().playOnAwake = false;
+    }
+
     public override void PickUp(Transform itemTransform)
     {
         base.PickUp(itemTransform);

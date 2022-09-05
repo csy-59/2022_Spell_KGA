@@ -57,7 +57,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if(item != ItemList.NoItem)
         {
-            UseItem();
+            UseItem(focusObject);
             DropItem();
         }
     }
@@ -103,9 +103,9 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    private void UseItem()
+    private void UseItem(InteractiveObject focusObject)
     {
-        if(input.Mouse1Click)
+        if(input.Mouse1Click && !focusObject)
         {
             pickedItem.Use(this);
             SetPickedItem(pickedItem);
@@ -184,6 +184,13 @@ public class PlayerInteraction : MonoBehaviour
 
         potionEffect.SetActive(effect != EffectList.NoEffect);
         potionEffectScript.SetPotionColor(newColor);
+    }
+
+    public void SetPlayerEffect()
+    {
+        this.effect = EffectList.NoEffect;
+
+        potionEffect.SetActive(false);
     }
 
     public void PlaySound(AudioClip audioClip)

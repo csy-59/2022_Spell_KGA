@@ -133,6 +133,7 @@ public class FlaskInteract : ItemInteract
             UIManager.Instance.SetInfoTextBar("I fill nothing...");
             UIManager.Instance.SetEffectImage(effectSprite);
             audioSource.PlayOneShot(drinkSound);
+            player.SetPlayerEffect();
         }
 
         return false;

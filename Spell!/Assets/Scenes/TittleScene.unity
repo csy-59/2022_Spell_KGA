@@ -570,6 +570,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 840492873}
     m_Modifications:
+    - target: {fileID: 3853728759150995543, guid: a10a2be8b1dc46e4686f53a9db9abd5e, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8368979360448464732, guid: a10a2be8b1dc46e4686f53a9db9abd5e, type: 3}
       propertyPath: m_Name
       value: Cauldron
